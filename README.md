@@ -10,25 +10,13 @@ You'll also need to install extra cli tools as described in this blog post:
 
 ✍🏼 Blog Post : [7 Amazing CLI Tools You Won't Be Able To Live Without](https://josean.com/posts/7-amazing-cli-tools)
 
-- [fzf](https://github.com/junegunn/fzf.git)
-- [fd](https://github.com/sharkdp/fd)
-- [fzf-git](https://github.com/junegunn/fzf-git.sh)
-- [bat](https://github.com/sharkdp/bat)
-- [delta](https://github.com/dandavison/delta)
-- [eza](https://github.com/eza-community/eza.git)
-- [tldr](https://github.com/tldr-pages/tldr)
-- [thefuck](https://github.com/nvbn/thefuck)
-
 ### Relevant Files
 
 - [.zshrc](.zshrc) - Zsh Shell Configuration
-- [coolnight.toml](.config/alacritty/themes/themes/coolnight.toml) - Alacritty Color Scheme
 
 # Tmux Setup
 
 ✍🏼 Blog Post: [How To Use and Configure Tmux Alongside Neovim](https://josean.com/posts/tmux-setup)
-
-📹 Youtube Guide: [How I Setup And Use Tmux Alongside Neovim for an Awesome Dev Workflow](https://youtu.be/U-omALWIBos)
 
 ### Relevant Files
 
@@ -41,7 +29,6 @@ You'll also need to install extra cli tools as described in this blog post:
 If you are coming from my full neovim setup video with packer, that config is found here: [Packer Config](https://github.com/josean-dev/dev-environment-files/tree/packer-nvim-setup)
 
 ✍🏼 Blog Post: [How I Setup Neovim On My Mac To Make It AMAZING In 2024](https://josean.com/posts/how-to-setup-neovim-2024)
-📹 Complete Neovim Setup Guide: [How I Setup Neovim On My Mac To Make It AMAZING In 2024](https://youtu.be/6pAG3BHurdM)
 
 _If you clone the repo into your machine and use the config by copying .config/nvim to your home folder, wait for the plugins, language servers and parsers to install with lazy.nvim, Mason and nvim-treesitter.
 If you are opening a lua file or another file I have language servers configured for, like html, css or javascript/typescript, you might also get an error saying that the server failed to start. This is because Mason hasn't installed it yet. Press enter to continue, Mason will automatically install it._
