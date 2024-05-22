@@ -2,22 +2,13 @@
 
 **IMPORTANT:** These are primarily meant for inspiration. I wouldn't just blindly use them. Proceed at your own risk!
 
-📹 Youtube Playlist With Detailed Walkthroughs on My Setup: [💻 My Dev Environment & Workflow](https://youtube.com/playlist?list=PLnu5gT9QrFg36OehOdECFvxFFeMHhb_07)
-
 # Terminal Setup
-
-After recommendations from you guys, I've swapped out Alacritty for [WezTerm](https://wezfurlong.org/wezterm/index.html)!
-Everything is the same except the Alacritty config file, you can swap it out with this [~/.wezterm.lua](.wezterm.lua) file and everything should look and work very similar to Alacritty!
 
 🏼 ✍Blog Post Step-by-Step Guide: [How To Make Your Boring Mac Terminal Amazing With Alacritty](https://josean.com/posts/how-to-setup-alacritty-terminal)
 
-📹 Youtube Guide: [How To Make Your Boring Mac Terminal Amazing With Alacritty](https://youtu.be/uOnL4fEnldA)
-
-You'll also need to install extra cli tools as described in this blog post and video:
+You'll also need to install extra cli tools as described in this blog post:
 
 ✍🏼 Blog Post : [7 Amazing CLI Tools You Won't Be Able To Live Without](https://josean.com/posts/7-amazing-cli-tools)
-
-📹 Youtube Video: [7 Amazing CLI Tools You Won't Be Able To Live Without](https://www.youtube.com/mmqDYw9C30I)
 
 - [fzf](https://github.com/junegunn/fzf.git)
 - [fd](https://github.com/sharkdp/fd)
@@ -42,39 +33,6 @@ You'll also need to install extra cli tools as described in this blog post and v
 ### Relevant Files
 
 - [.tmux.conf](.tmux.conf) - Tmux Configuration File
-
-# Yabai Tiling Window Manager Setup
-
-✍🏼 Blog Post: [How To Setup And Use The Yabai Tiling Window Manager On Mac](https://josean.com/posts/yabai-setup)
-
-📹 Youtube Guide: [How To Setup And Use The Yabai Tiling Window Manager On Mac](https://youtu.be/k94qImbFKWE)
-
-### Relevant Files
-
-- [.config/yabai/yabairc](.config/yabai/yabairc)
-- [.config/skhd/skhdrc](.config/skhd/skhdrc)
-
-# Sketchybar Custom Menu Bar Setup
-
-✍🏼 Blog Post: [How To Make An Amazing Custom Menu Bar For Your Mac With Sketchybar](https://josean.com/posts/sketchybar-setup)
-
-📹 Youtube Guide: [How To Make An Amazing Custom Menu Bar For Your Mac With Sketchybar](https://youtu.be/k94qImbFKWE)
-
-### Setup Requires
-
-- sketchybar: `brew tap FelixKratz/formulae` and `brew install sketchybar`
-- jq (json command line processor): `brew install jq`
-- SF Pro Font: `brew tap homebrew/cask-fonts` and `brew install font-sf-pro`
-- SF Symbols: `brew install --cask sf-symbols`:
-- Sketchybar App Font:
-
-```bash
-`curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.16/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf`
-```
-
-### Relevant Files
-
-- [.config/sketchybar](.config/sketchybar/)
 
 # Neovim Setup
 
