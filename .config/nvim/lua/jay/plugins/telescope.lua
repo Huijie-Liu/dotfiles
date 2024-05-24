@@ -46,5 +46,9 @@ return {
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
     keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+    keymap.set("n", "<leader>fC", "<cmd>Telescope colorscheme<cr>", { desc = "Change colorscheme" })
+    keymap.set("n", "<leader>fx", "<cmd>Telescope commands<cr>", { desc = "Exec commands" })
+    keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Check all keymaps" })
+    keymap.set("n", "<leader>fh", "<cmd>Telescope command_history<cr>", { desc = "Command history" })
   end,
 }
