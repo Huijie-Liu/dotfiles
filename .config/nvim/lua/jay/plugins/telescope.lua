@@ -24,6 +24,15 @@ return {
 
     telescope.setup({
       defaults = {
+        layout_strategy = "horizontal",
+        layout_config = {
+          horizontal = {
+            height = 0.9,
+            preview_cutoff = 120,
+            prompt_position = "bottom",
+            width = 0.8
+          }
+        },
         path_display = { "smart" },
         mappings = {
           i = {
@@ -50,5 +59,6 @@ return {
     keymap.set("n", "<leader>fx", "<cmd>Telescope commands<cr>", { desc = "Exec commands" })
     keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Check all keymaps" })
     keymap.set("n", "<leader>fh", "<cmd>Telescope command_history<cr>", { desc = "Command history" })
+    keymap.set("n", "<leader>fH", "<cmd>Telescope help_tags<cr>", { desc = "Help tags" })
   end,
 }
