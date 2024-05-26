@@ -30,7 +30,7 @@ starship init fish | source
 # -----fzf-----
 fzf_configure_bindings --directory=\ct --git_status=\cgs --git_log=\cgl --history=\cr --processes=\cp
 set fzf_preview_dir_cmd eza --all --color=always
-set fzf_fd_opts --hidden --max-depth 5
+set fzf_fd_opts --exclude .git --hidden --max-depth 5
 
 
 # ---- Eza (better ls) -----
@@ -45,5 +45,4 @@ thefuck --alias fk | source
 
 # ---- Zoxide (better cd) ----
 zoxide init fish | source
-
 alias cd="z"
