@@ -23,23 +23,14 @@ end
 # <<< conda initialize <<<
 
 
-# -----bobthefish-----
-set -g theme_powerline_fonts yes
-set -g theme_nerd_fonts yes
-set -g theme_color_scheme solarized
-
-# left side
-set -g theme_display_user ssh
-set -g default_user jay
-
-# right side
-set -g theme_display_date yes
-set -g theme_date_format -u +%h:%M:%S
-set -g theme_display_cmd_duration no
+# -----starship-----
+starship init fish | source
 
 
 # -----fzf-----
 fzf_configure_bindings --directory=\ct --git_status=\cgs --git_log=\cgl --history=\cr --processes=\cp
+set fzf_preview_dir_cmd eza --all --color=always
+set fzf_fd_opts --hidden --max-depth 5
 
 
 # ---- Eza (better ls) -----
