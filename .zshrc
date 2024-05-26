@@ -94,8 +94,8 @@ _fzf_compgen_dir() {
 }
 
 # Need to run this first:
-# git clone https://github.com/junegunn/fzf-git.sh.git
-source ~/fzf-git.sh/fzf-git.sh
+# git clone https://github.com/junegunn/fzf-git.sh.git .fzf-get.sh
+source ~/.fzf-git.sh/fzf-git.sh
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
