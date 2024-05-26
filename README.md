@@ -30,6 +30,15 @@ You'll also need to install extra cli tools as described in this blog post:
 
 - [.config/fish/config.fish](.config/fish/config.fish) - Fish Shell Configuration
 
+# Yabai Tiling Window Manager Setup
+
+✍🏼 Blog Post: [How To Setup And Use The Yabai Tiling Window Manager On Mac](https://josean.com/posts/yabai-setup)
+
+### Relevant Files
+
+- [.config/yabai/yabairc](.config/yabai/yabairc)
+- [.config/skhd/skhdrc](.config/skhd/skhdrc)
+
 # Tmux Setup
 
 ✍🏼 Blog Post: [How To Use and Configure Tmux Alongside Neovim](https://josean.com/posts/tmux-setup)
