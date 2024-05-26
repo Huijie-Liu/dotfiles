@@ -4,6 +4,8 @@
 
 # Terminal Setup
 
+## Zsh Setup
+
 ✍🏼 Blog Post Step-by-Step Guide: [How To Make Your Boring Mac Terminal Amazing With Alacritty](https://josean.com/posts/how-to-setup-alacritty-terminal)
 
 You'll also need to install extra cli tools as described in this blog post:
@@ -13,6 +15,20 @@ You'll also need to install extra cli tools as described in this blog post:
 ### Relevant Files
 
 - [.zshrc](.zshrc) - Zsh Shell Configuration
+
+## Fish Setup
+
+### Plugins
+
+- fisher
+- jorgebucaran/fisher
+- patrickf1/fzf.fish
+- jorgebucaran/autopair.fish
+- jhillyerd/plugin-git
+
+### Relevant Files
+
+- [.config/fish/config.fish](.config/fish/config.fish) - Fish Shell Configuration
 
 # Tmux Setup
 

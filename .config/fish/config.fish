@@ -39,21 +39,7 @@ set -g theme_display_cmd_duration no
 
 
 # -----fzf-----
-# Set up fzf key bindings
-fzf --fish | source
-
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-  --color=fg:-1,fg+:#d0d0d0,bg:-1,bg+:#262626
-  --color=hl:#5f87af,hl+:#5fd7ff,info:#afaf87,marker:#87ff00
-  --color=prompt:#d7005f,spinner:#af5fff,pointer:#af5fff,header:#87afaf
-  --color=border:#262626,label:#aeaeae,query:#d9d9d9
-  --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
-  --marker=">" --pointer="◆" --separator="─" --scrollbar="│"'
-
-# -- Use fd instead of fzf --
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+fzf_configure_bindings --directory=\ct --git_status=\cgs --git_log=\cgl --history=\cr --processes=\cp
 
 
 # ---- Eza (better ls) -----
@@ -68,3 +54,5 @@ thefuck --alias fk | source
 
 # ---- Zoxide (better cd) ----
 zoxide init fish | source
+
+alias cd="z"
