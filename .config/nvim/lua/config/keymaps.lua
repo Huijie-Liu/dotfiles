@@ -59,14 +59,14 @@ keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Diagnostics
-keymap.set("n", "<C-j>", function()
+keymap.set("n", "<Leader>cj", function()
   vim.diagnostic.goto_next()
-end, opts)
+end, { desc = "Jump to next diagnostic issue" }, opts)
 
 keymap.set("n", "<leader>r", function()
   require("jay.hsl").replaceHexWithHSL()
-end)
+end, { desc = "Replace hex color with HSL" })
 
 keymap.set("n", "<leader>i", function()
   require("jay.lsp").toggleInlayHints()
-end)
+end, { desc = "Toggle LSP inlay hints" })
