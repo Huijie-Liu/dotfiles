@@ -24,14 +24,24 @@ return {
 
     telescope.setup({
       defaults = {
+        vimgrep_arguments = {
+          "rg",
+          "--hidden",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+        },
         layout_strategy = "horizontal",
         layout_config = {
           horizontal = {
             height = 0.9,
             preview_cutoff = 120,
             prompt_position = "bottom",
-            width = 0.8
-          }
+            width = 0.8,
+          },
         },
         path_display = { "smart" },
         mappings = {
@@ -41,6 +51,11 @@ return {
             ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
             ["<C-t>"] = trouble_telescope.smart_open_with_trouble,
           },
+        },
+      },
+      pickers = {
+        find_files = {
+          hidden = true,
         },
       },
     })
