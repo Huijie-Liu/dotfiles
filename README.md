@@ -4,17 +4,11 @@
 
 # Terminal Setup
 
+My personal favorite shells: zsh & fish. With the starship theme.
+
 ## Zsh Setup
 
-✍🏼 Blog Post Step-by-Step Guide: [How To Make Your Boring Mac Terminal Amazing With Alacritty](https://josean.com/posts/how-to-setup-alacritty-terminal)
-
-You'll also need to install extra cli tools as described in this blog post:
-
 ✍🏼 Blog Post : [7 Amazing CLI Tools You Won't Be Able To Live Without](https://www.josean.com/posts/7-amazing-cli-tools)
-
-### Relevant Files
-
-- [.zshrc](.zshrc) - Zsh Shell Configuration
 
 ### Setup Requires
 
@@ -32,6 +26,10 @@ You'll also need to install extra cli tools as described in this blog post:
   - [thefuck](https://github.com/nvbn/thefuck) - auto correct mistyped commands
   - [zoxide](https://github.com/ajeetdsouza/zoxide) - better cd
 
+### Relevant Files
+
+- [.zshrc](.zshrc) - Zsh Shell Configuration
+
 ## Fish Setup
 
 ### Plugins
@@ -40,10 +38,6 @@ You'll also need to install extra cli tools as described in this blog post:
 - patrickf1/fzf.fish - fzf config for fish
 - jorgebucaran/autopair.fish - autopair ()[]''{}...
 - jhillyerd/plugin-git - git shortcuts
-
-### Relevant Files
-
-- [.config/fish/config.fish](.config/fish/config.fish) - Fish Shell Configuration
 
 ### Setup Requires
 
@@ -56,6 +50,10 @@ You'll also need to install extra cli tools as described in this blog post:
   - [thefuck](https://github.com/nvbn/thefuck) - auto correct mistyped commands
   - [zoxide](https://github.com/ajeetdsouza/zoxide) - better cd
 
+### Relevant Files
+
+- [.config/fish/config.fish](.config/fish/config.fish) - Fish Shell Configuration
+
 ## Starship Setup
 
 The minimal, blazing-fast, and infinitely customizable prompt for any shell!
@@ -67,24 +65,52 @@ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 - **Feature rich:** support for all your favorite tools.
 - **Easy:** quick to install – start using it in minutes.
 
+### Setup Requires
+
+- starship
+
+  ```bash
+  curl -sS https://starship.rs/install.sh | sh
+  ```
+
+  or
+
+  ```bash
+  brew install starship
+  ```
+
 ### Relevant Files
 
 - [.config/starship.toml](.config/starship.toml) - Starship theme configuration
 
-# Yabai Tiling Window Manager Setup
+# Yabai Tiling Window Manager Setup (macOS)
 
 ✍🏼 Blog Post: [How To Setup And Use The Yabai Tiling Window Manager On Mac](https://josean.com/posts/yabai-setup)
 
-### Relevant Files
+## Setup Requires
+
+- yabai - tiling window manager
+
+  ```bash
+  brew install koekeishiya/formulae/yabai
+  ```
+
+- skhd - keyboard shortcuts manager
+
+  ```bash
+  brew install koekeishiya/formulae/skhd
+  ```
+
+## Relevant Files
 
 - [.config/yabai/yabairc](.config/yabai/yabairc)
 - [.config/skhd/skhdrc](.config/skhd/skhdrc)
 
-# Sketchybar Custom Menu Bar Setup
+# Sketchybar Custom Menu Bar Setup (macOS)
 
 ✍🏼 Blog Post: [How To Make An Amazing Custom Menu Bar For Your Mac With Sketchybar](https://josean.com/posts/sketchybar-setup)
 
-### Setup Requires
+## Setup Requires
 
 - sketchybar: `brew tap FelixKratz/formulae` and `brew install sketchybar`
 
@@ -100,7 +126,7 @@ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
   curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.16/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
   ```
 
-### Relevant Files
+## Relevant Files
 
 - [.config/sketchybar](.config/sketchybar)
 
@@ -108,26 +134,26 @@ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 
 ✍🏼 Blog Post: [How To Use and Configure Tmux Alongside Neovim](https://josean.com/posts/tmux-setup)
 
-### Relevant Files
+## Setup Requires
+
+- tpm - tmux plugin manager
+
+  ```bash
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  ```
+
+## Relevant Files
 
 - [.tmux.conf](.tmux.conf) - Tmux Configuration File
 
 # Neovim Setup
-
-**Important**: This is my latest config with lazy.nvim. It is similar, but not the same as my original packer setup.
-
-If you are coming from my full neovim setup video with packer, that config is found here: [Packer Config](https://github.com/josean-dev/dev-environment-files/tree/packer-nvim-setup)
 
 ✍🏼 Blog Post: [How I Setup Neovim On My Mac To Make It AMAZING In 2024](https://josean.com/posts/how-to-setup-neovim-2024)
 
 _If you clone the repo into your machine and use the config by copying .config/nvim to your home folder, wait for the plugins, language servers and parsers to install with lazy.nvim, Mason and nvim-treesitter.
 If you are opening a lua file or another file I have language servers configured for, like html, css or javascript/typescript, you might also get an error saying that the server failed to start. This is because Mason hasn't installed it yet. Press enter to continue, Mason will automatically install it._
 
-### Relevant Files
-
-- [.config/nvim](.config/nvim)
-
-### Setup Requires
+## Setup Requires
 
 - True Color Terminal Like: [iTerm2](https://iterm2.com/)
 - [Neovim](https://neovim.io/) (Version 0.9 or Later)
@@ -286,3 +312,7 @@ xcode-select --install
 
 - [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Show modifications on left hand side and interact with git hunks
 - [kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) - Use lazygit within Neovim
+
+## Relevant Files
+
+- [.config/nvim](.config/nvim)
