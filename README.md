@@ -80,6 +80,30 @@ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 - [.config/yabai/yabairc](.config/yabai/yabairc)
 - [.config/skhd/skhdrc](.config/skhd/skhdrc)
 
+# Sketchybar Custom Menu Bar Setup
+
+✍🏼 Blog Post: [How To Make An Amazing Custom Menu Bar For Your Mac With Sketchybar](https://josean.com/posts/sketchybar-setup)
+
+### Setup Requires
+
+- sketchybar: `brew tap FelixKratz/formulae` and `brew install sketchybar`
+
+- jq (json command line processor): `brew install jq`
+
+- SF Pro Font: `brew tap homebrew/cask-fonts` and `brew install font-sf-pro`
+
+- SF Symbols: `brew install --cask sf-symbols`:
+
+- Sketchybar App Font:
+
+  ```bash
+  curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.16/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
+  ```
+
+### Relevant Files
+
+- [.config/sketchybar](.config/sketchybar)
+
 # Tmux Setup
 
 ✍🏼 Blog Post: [How To Use and Configure Tmux Alongside Neovim](https://josean.com/posts/tmux-setup)
