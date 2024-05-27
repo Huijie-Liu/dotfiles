@@ -18,28 +18,28 @@ You'll also need to install extra cli tools as described in this blog post:
 
 ### Setup Requires
 
-- homebrew - package management
+- [homebrew](https://docs.brew.sh/Installation) - package management
 - git
-- Nerd Font - great for showing icons in the termina
-- powerlevel10k or starship - zsh theme
+- [Nerd Font](https://www.nerdfonts.com/) - great for showing icons in the termina
+- [powerlevel10k](https://github.com/romkatv/powerlevel10k) or [starship](https://starship.rs/) - zsh theme
 - CLI tools
-  - fzf - command line fuzzy finder
-  - fd - better find
-  - fzf-git - look for git related things with fzf
-  - bat - better cat
-  - eza - better ls
-  - delta - better git diff
-  - thefuck - auto correct mistyped commands
-  - zoxide - better cd
+  - [fzf](https://github.com/junegunn/fzf) - command line fuzzy finder
+  - [fd](https://github.com/sharkdp/fd) - better find
+  - [fzf-git](https://github.com/junegunn/fzf-git.sh) - look for git related things with fzf
+  - [bat](https://github.com/sharkdp/bat) - better cat
+  - [eza](https://github.com/eza-community/eza) - better ls
+  - [delta](https://github.com/dandavison/delta) - better git diff
+  - [thefuck](https://github.com/nvbn/thefuck) - auto correct mistyped commands
+  - [zoxide](https://github.com/ajeetdsouza/zoxide) - better cd
 
 ## Fish Setup
 
 ### Plugins
 
-- jorgebucaran/fisher
-- patrickf1/fzf.fish
-- jorgebucaran/autopair.fish
-- jhillyerd/plugin-git
+- jorgebucaran/fisher - fish plugin management
+- patrickf1/fzf.fish - fzf config for fish
+- jorgebucaran/autopair.fish - autopair ()[]''{}...
+- jhillyerd/plugin-git - git shortcuts
 
 ### Relevant Files
 
@@ -47,14 +47,14 @@ You'll also need to install extra cli tools as described in this blog post:
 
 ### Setup Requires
 
-- fisher - fish plugin management
+- [fisher](https://github.com/jorgebucaran/fisher) - fish plugin management
 - CLI tools
-  - fzf - command line fuzzy finder
-  - fd - better find
-  - bat - better cat
-  - eza - better ls
-  - thefuck - auto correct mistyped commands
-  - zoxide - better cd
+  - [fzf](https://github.com/junegunn/fzf) - command line fuzzy finder
+  - [fd](https://github.com/sharkdp/fd) - better find
+  - [bat](https://github.com/sharkdp/bat) - better cat
+  - [eza](https://github.com/eza-community/eza) - better ls
+  - [thefuck](https://github.com/nvbn/thefuck) - auto correct mistyped commands
+  - [zoxide](https://github.com/ajeetdsouza/zoxide) - better cd
 
 ## Starship Setup
 
