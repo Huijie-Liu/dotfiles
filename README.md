@@ -8,7 +8,7 @@ My personal favorite shells: zsh & fish. With the starship theme.
 
 ## Zsh Setup
 
-✍🏼 Blog Post : [7 Amazing CLI Tools You Won't Be Able To Live Without](https://www.josean.com/posts/7-amazing-cli-tools)
+Zsh is a shell designed for interactive use, although it is also a powerful scripting language.
 
 ### Setup Requires
 
@@ -31,6 +31,8 @@ My personal favorite shells: zsh & fish. With the starship theme.
 - [.zshrc](.zshrc) - Zsh Shell Configuration
 
 ## Fish Setup
+
+Fish is a smart and user-friendly command line shell for Linux, macOS, and the rest of the family.
 
 ### Plugins
 
@@ -85,17 +87,53 @@ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 
 ## CLI Tools Setup
 
+Amazing CLI tools you won't be able to live without!
+
 - [fzf](https://github.com/junegunn/fzf) - command line fuzzy finder
+
+  ```bash
+  brew install fzf
+  ```
+
 - [fd](https://github.com/sharkdp/fd) - better find
+
+  ```bash
+  brew install fd
+  ```
+
 - [bat](https://github.com/sharkdp/bat) - better cat
+
+  ```bash
+  brew install bat
+  ```
+
 - [eza](https://github.com/eza-community/eza) - better ls
+
+  ```bash
+  brew install eza
+  ```
+
 - [thefuck](https://github.com/nvbn/thefuck) - auto correct mistyped commands
+
+  ```bash
+  brew install thefuck
+  ```
+
 - [zoxide](https://github.com/ajeetdsouza/zoxide) - better cd
+
+  ```bash
+  brew install zoxide
+  ```
+
 - [tig](https://github.com/jonas/tig) - TLI for git
+
+  ```bash
+  brew install tig
+  ```
 
 # Yabai Tiling Window Manager Setup (macOS)
 
-✍🏼 Blog Post: [How To Setup And Use The Yabai Tiling Window Manager On Mac](https://josean.com/posts/yabai-setup)
+Yabai is a window management utility that is designed to work as an extension to the built-in window manager of macOS.
 
 ## Setup Requires
 
@@ -118,7 +156,7 @@ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 
 # Sketchybar Custom Menu Bar Setup (macOS)
 
-✍🏼 Blog Post: [How To Make An Amazing Custom Menu Bar For Your Mac With Sketchybar](https://josean.com/posts/sketchybar-setup)
+This bar project aims to create a highly flexible, customizable, fast and powerful status bar replacement for people that like playing with shell scripts.
 
 ## Setup Requires
 
@@ -142,7 +180,7 @@ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 
 # Tmux Setup
 
-✍🏼 Blog Post: [How To Use and Configure Tmux Alongside Neovim](https://josean.com/posts/tmux-setup)
+Tmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal.
 
 ## Setup Requires
 
@@ -157,6 +195,8 @@ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 - [.tmux.conf](.tmux.conf) - Tmux Configuration File
 
 # Neovim Setup
+
+Hyperextensible Vim-based text editor.
 
 ## Setup Requires
 
