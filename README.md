@@ -16,11 +16,26 @@ You'll also need to install extra cli tools as described in this blog post:
 
 - [.zshrc](.zshrc) - Zsh Shell Configuration
 
+### Setup Requires
+
+- homebrew - package management
+- git
+- Nerd Font - great for showing icons in the termina
+- powerlevel10k or starship - zsh theme
+- CLI tools
+  - fzf - command line fuzzy finder
+  - fd - better find
+  - fzf-git - look for git related things with fzf
+  - bat - better cat
+  - eza - better ls
+  - delta - better git diff
+  - thefuck - auto correct mistyped commands
+  - zoxide - better cd
+
 ## Fish Setup
 
 ### Plugins
 
-- fisher
 - jorgebucaran/fisher
 - patrickf1/fzf.fish
 - jorgebucaran/autopair.fish
@@ -29,6 +44,17 @@ You'll also need to install extra cli tools as described in this blog post:
 ### Relevant Files
 
 - [.config/fish/config.fish](.config/fish/config.fish) - Fish Shell Configuration
+
+### Setup Requires
+
+- fisher - fish plugin management
+- CLI tools
+  - fzf - command line fuzzy finder
+  - fd - better find
+  - bat - better cat
+  - eza - better ls
+  - thefuck - auto correct mistyped commands
+  - zoxide - better cd
 
 ## Starship Setup
 
