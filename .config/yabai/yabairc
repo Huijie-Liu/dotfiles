@@ -33,3 +33,6 @@ yabai -m rule --add app="^访达$" manage=off
 yabai -m rule --add app="^微信$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add app="^BetterTouchTool$" manage=off
+
+# leave space for sketchybar
+yabai -m config external_bar all:32:0
