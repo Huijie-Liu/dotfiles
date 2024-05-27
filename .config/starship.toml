@@ -1,5 +1,5 @@
 format = """
-[┌](fg:#33658A)\
+[┌](fg:#06969A)\
 [](#9A348E)\
 $os\
 $username\
@@ -21,12 +21,14 @@ $nodejs\
 $nim\
 $rust\
 $scala\
+$python\
 [](fg:#86BBD8 bg:#06969A)\
+$conda\
 $docker_context\
 [](fg:#06969A bg:#33658A)\
 $time\
 [ ](fg:#33658A)
-[└>](fg:#33658A)
+[└>](fg:#06969A)
 """
 
 # Disable the blank line at the start of the prompt
@@ -66,15 +68,11 @@ truncation_symbol = "…/"
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important 󰈙 " = " 󰈙 "
 
+# language prompt
 [c]
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
-
-[docker_context]
-symbol = " "
-style = "bg:#06969A"
-format = '[ $symbol $context ]($style)'
 
 [elixir]
 symbol = " "
@@ -138,6 +136,21 @@ format = '[ $symbol ($version) ]($style)'
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = "🐍 "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+# env prompt
+[conda]
+style = "bg:#06969A"
+format = '[ $symbol $environment ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:#06969A"
+format = '[ $symbol $context ]($style)'
 
 [time]
 disabled = false
