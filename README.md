@@ -30,6 +30,21 @@ You'll also need to install extra cli tools as described in this blog post:
 
 - [.config/fish/config.fish](.config/fish/config.fish) - Fish Shell Configuration
 
+## Starship Setup
+
+The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+
+- **Fast:** it's fast – *really really* fast! 🚀
+- **Customizable:** configure every aspect of your prompt.
+- **Universal:** works on any shell, on any operating system.
+- **Intelligent:** shows relevant information at a glance.
+- **Feature rich:** support for all your favorite tools.
+- **Easy:** quick to install – start using it in minutes.
+
+### Relevant Files
+
+- [.config/starship.toml](.config/starship.toml) - Starship theme configuration
+
 # Yabai Tiling Window Manager Setup
 
 ✍🏼 Blog Post: [How To Setup And Use The Yabai Tiling Window Manager On Mac](https://josean.com/posts/yabai-setup)
