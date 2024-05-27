@@ -83,6 +83,16 @@ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 
 - [.config/starship.toml](.config/starship.toml) - Starship theme configuration
 
+## CLI Tools Setup
+
+- [fzf](https://github.com/junegunn/fzf) - command line fuzzy finder
+- [fd](https://github.com/sharkdp/fd) - better find
+- [bat](https://github.com/sharkdp/bat) - better cat
+- [eza](https://github.com/eza-community/eza) - better ls
+- [thefuck](https://github.com/nvbn/thefuck) - auto correct mistyped commands
+- [zoxide](https://github.com/ajeetdsouza/zoxide) - better cd
+- [tig](https://github.com/jonas/tig) - TLI for git
+
 # Yabai Tiling Window Manager Setup (macOS)
 
 ✍🏼 Blog Post: [How To Setup And Use The Yabai Tiling Window Manager On Mac](https://josean.com/posts/yabai-setup)
