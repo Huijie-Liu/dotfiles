@@ -20,12 +20,12 @@ keymap.set("v", "<Leader>d", '"_d')
 keymap.set("v", "<Leader>D", '"_D')
 
 -- Move Lines
-keymap.set("n", "<C-S-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
-keymap.set("n", "<C-S-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
-keymap.set("i", "<C-S-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-keymap.set("i", "<C-S-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-keymap.set("v", "<C-S-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
-keymap.set("v", "<C-S-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
+keymap.set("n", "<A-down>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
+keymap.set("n", "<A-up>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
+keymap.set("i", "<A-down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+keymap.set("i", "<A-up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+keymap.set("v", "<A-down>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
+keymap.set("v", "<A-up>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
