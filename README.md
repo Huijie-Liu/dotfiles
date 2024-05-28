@@ -125,10 +125,16 @@ Amazing CLI tools you won't be able to live without!
   brew install zoxide
   ```
 
-- [tig](https://github.com/jonas/tig) - TLI for git
+- [lazygit](https://github.com/jesseduffield/lazygit) - TLI for git
 
   ```bash
-  brew install tig
+  brew install lazygit
+  ```
+
+- [tldr](https://github.com/tldr-pages/tldr) - user friendly man page
+
+  ```
+  brew install tldr
   ```
 
 # Yabai Tiling Window Manager Setup (macOS)
