@@ -23,7 +23,6 @@ Zsh is a shell designed for interactive use, although it is also a powerful scri
   - [bat](https://github.com/sharkdp/bat) - better cat
   - [eza](https://github.com/eza-community/eza) - better ls
   - [delta](https://github.com/dandavison/delta) - better git diff
-  - [thefuck](https://github.com/nvbn/thefuck) - auto correct mistyped commands
   - [zoxide](https://github.com/ajeetdsouza/zoxide) - better cd
 
 ### Relevant Files
@@ -50,7 +49,6 @@ Fish is a smart and user-friendly command line shell for Linux, macOS, and the r
   - [fd](https://github.com/sharkdp/fd) - better find
   - [bat](https://github.com/sharkdp/bat) - better cat
   - [eza](https://github.com/eza-community/eza) - better ls
-  - [thefuck](https://github.com/nvbn/thefuck) - auto correct mistyped commands
   - [zoxide](https://github.com/ajeetdsouza/zoxide) - better cd
 
 ### Relevant Files

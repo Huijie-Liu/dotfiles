@@ -31,11 +31,6 @@ alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time
 alias l="ls -la"
 
 
-# ----- TheFuck tool -----
-thefuck --alias | source
-thefuck --alias fk | source
-
-
 # ----- Zoxide (better cd) -----
 zoxide init fish | source
 alias cd="z"

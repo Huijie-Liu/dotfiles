@@ -124,12 +124,6 @@ alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time
 alias l="ls -la"
 
 
-# ---- TheFuck -----
-# thefuck alias
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
-
-
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
 alias cd="z"
