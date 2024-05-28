@@ -44,6 +44,7 @@ Fish is a smart and user-friendly command line shell for Linux, macOS, and the r
 ### Setup Requires
 
 - [fisher](https://github.com/jorgebucaran/fisher) - fish plugin management
+- [tide](https://github.com/IlanCosman/tide) - fish shell theme
 - CLI tools
   - [fzf](https://github.com/junegunn/fzf) - command line fuzzy finder
   - [fd](https://github.com/sharkdp/fd) - better find
