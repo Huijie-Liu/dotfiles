@@ -1,6 +1,11 @@
 # Homebrew
 eval (/opt/homebrew/bin/brew shellenv)
 
+
+# ----- greetings -----
+set fish_greeting # remove the greeting
+
+
 # ----- aliases -----
 alias proxy="export all_proxy=http://127.0.0.1:7890 && echo 代理成功"
 alias ydl="youtube-dl"
