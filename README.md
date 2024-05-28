@@ -39,6 +39,7 @@ Fish is a smart and user-friendly command line shell for Linux, macOS, and the r
 - patrickf1/fzf.fish - fzf config for fish
 - jorgebucaran/autopair.fish - autopair ()[]''{}...
 - jhillyerd/plugin-git - git shortcuts
+- IlanCosman/tide - fish theme
 
 ### Setup Requires
 
@@ -124,7 +125,7 @@ Amazing CLI tools you won't be able to live without!
   brew install zoxide
   ```
 
-- [lazygit](https://github.com/jesseduffield/lazygit) - TLI for git
+- [lazygit](https://github.com/jesseduffield/lazygit) or [tig](https://github.com/jonas/tig) - TLI for git
 
   ```bash
   brew install lazygit
