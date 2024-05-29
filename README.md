@@ -1,8 +1,8 @@
-# My Dev Environment Files 🚀
+# My Dev Environment Configuration 🚀
 
 **IMPORTANT:** These are primarily meant for inspiration. I wouldn't just blindly use them. Proceed at your own risk!
 
-# MacOS Setup
+# MacOS Setup (optional)
 
 Here are some tips to improve your Mac settings for better effectiveness.
 
@@ -25,6 +25,15 @@ Here are some tips to improve your Mac settings for better effectiveness.
   defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
   ```
 
+## Software Setup
+
+- [iTerm 2](https://iterm2.com/) - Replacement for Terminal.
+- [Bartender 5](https://www.macbartender.com/) - Superpowered your menu bar.
+- [BetterTouchTool](https://folivora.ai/) - BetterTouchTool is a great, feature packed app that allows you to customize various input devices on your Mac.
+- [Raycast](https://www.raycast.com/) - A collection of powerful productivity tools all within an extendable launcher. Fast, ergonomic and reliable.
+- [1Password](https://1password.com/zh-cn) - Password manager.
+- [typora](https://typora.io/) - Markdown editor.
+
 # Terminal Setup
 
 My personal favorite shells: zsh & fish. With the starship theme.
@@ -36,7 +45,7 @@ Zsh is a shell designed for interactive use, although it is also a powerful scri
 ### Setup Requires
 
 - [homebrew](https://docs.brew.sh/Installation) - package management
-- git
+- [git](https://git-scm.com/) - version control system
 - [Nerd Font](https://www.nerdfonts.com/) - great for showing icons in the termina
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k) or [starship](https://starship.rs/) - zsh theme
 - CLI tools
@@ -111,6 +120,12 @@ The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 ## CLI Tools Setup
 
 Amazing CLI tools you won't be able to live without!
+
+- [brew](https://brew.sh/) - package manager for macOS (or Linux)
+
+  ```
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
 
 - [fzf](https://github.com/junegunn/fzf) - command line fuzzy finder
 
