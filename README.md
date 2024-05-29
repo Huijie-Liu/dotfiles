@@ -2,6 +2,29 @@
 
 **IMPORTANT:** These are primarily meant for inspiration. I wouldn't just blindly use them. Proceed at your own risk!
 
+# MacOS Setup
+
+Here are some tips to improve your Mac settings for better effectiveness.
+
+## Display Setup
+
+- Accessibility > Display
+  - Turn On Reduce Motion
+- Desktop & Dock > Mission Control
+  - only keep “Displays Have Separate Spaces” turned on
+
+## Keyboard Setup
+
+- change keyboard binging
+  - Caps Lock <--> Control
+
+- Key repeating speed up
+
+  ```
+  defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+  defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+  ```
+
 # Terminal Setup
 
 My personal favorite shells: zsh & fish. With the starship theme.
