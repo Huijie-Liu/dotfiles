@@ -34,6 +34,7 @@ yabai -m rule --add app="^微信$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add app="^BetterTouchTool$" manage=off
 yabai -m rule --add app="^CleanShot X$" manage=off
+yabai -m rule --add app="^哔哩哔哩$" manage=off
 
 # leave space for sketchybar
 yabai -m config external_bar all:32:0
