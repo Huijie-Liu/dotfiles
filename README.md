@@ -218,6 +218,12 @@ This bar project aims to create a highly flexible, customizable, fast and powerf
   curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.16/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
   ```
 
+-  [SbarLua](https://github.com/FelixKratz/SbarLua) - The present config for sketchybar is done entirely in lua (and some C), using [SbarLua](https://github.com/FelixKratz/SbarLua).
+
+  ```
+  git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/
+  ```
+
 ## Relevant Files
 
 - [.config/sketchybar](.config/sketchybar)
