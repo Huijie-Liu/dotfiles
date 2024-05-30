@@ -47,7 +47,6 @@ set fish_greeting "
 alias proxy="export all_proxy=http://127.0.0.1:7890 && echo 代理成功"
 alias ydl="youtube-dl"
 alias dw="download_wallpaper"
-alias ssh_vcg="ssh -i ~/.ssh/id_vcg lhj@211.71.15.42" # 连接实验室服务器
 alias c="clear"
 alias x="exit"
 alias python="python3"
