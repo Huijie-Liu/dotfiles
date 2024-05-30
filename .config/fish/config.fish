@@ -3,7 +3,16 @@ eval (/opt/homebrew/bin/brew shellenv)
 
 
 # ----- greetings -----
-set fish_greeting # remove the greeting
+# set fish_greeting # remove the greeting
+
+function fish_greeting
+    echo -e "     \e[32m██╗   \e[34m█████╗  \e[31m██╗   ██╗\e[0m"
+    echo -e "     \e[32m██║  \e[34m██╔══██╗ \e[31m╚██╗ ██╔╝\e[0m"
+    echo -e "     \e[32m██║  \e[34m███████║  \e[31m╚████╔╝\e[0m"
+    echo -e "\e[32m██   ██║  \e[34m██╔══██║   \e[31m╚██╔╝\e[0m"
+    echo -e "\e[32m╚█████╔╝  \e[34m██║  ██║    \e[31m██║\e[0m"
+    echo -e "\e[32m ╚════╝   \e[34m╚═╝  ╚═╝    \e[31m╚═╝\e[0m"
+end
 
 
 # ----- aliases -----
