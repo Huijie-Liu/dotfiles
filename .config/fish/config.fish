@@ -53,6 +53,10 @@ alias python="python3"
 alias lg="lazygit"
 
 
+# ----- PATH -----
+export PATH="$HOME/.scripts:$PATH"
+
+
 # bind clear-screen shortcut from \cl to \el
 bind --preset \el clear-screen
 
