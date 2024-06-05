@@ -44,7 +44,7 @@ set fish_greeting # remove the greeting
 
 
 # ----- aliases -----
-alias proxy="export all_proxy=http://127.0.0.1:7890 && echo 代理成功"
+alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 && echo 代理成功"
 alias ydl="youtube-dl"
 alias dw="download_wallpaper"
 alias c="clear"
