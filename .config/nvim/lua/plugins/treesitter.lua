@@ -20,6 +20,7 @@ return {
 				"scss",
 				"sql",
 				"svelte",
+        "python",
 			},
 
 			-- matchup = {
@@ -52,6 +53,14 @@ return {
 				},
 			},
 		},
+
+    textobjects = {
+      select = {
+        enable = true,
+        lookahead = true,
+      }
+    },
+
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
 
