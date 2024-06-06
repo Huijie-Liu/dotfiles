@@ -39,7 +39,7 @@ yabai -m rule --add app="^CleanMyMac X$" manage=off
 yabai -m rule --add app="^ChatGPT$" manage=off
 
 # leave space for sketchybar
-yabai -m config external_bar all:36:0
+yabai -m config external_bar all:39:0
 
 # sketchybar extra config
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
