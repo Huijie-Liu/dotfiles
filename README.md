@@ -288,6 +288,6 @@ cd dev-environment-files
 bash install.sh
 ```
 
-# License
+# Acknowledgements
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project currently does not have a license. This project is a fork of [josean-dev/dev-environment-files](https://github.com/josean-dev/dev-environment-files), and I extend my love and respect to the original author for their excellent work and sharing spirit.
