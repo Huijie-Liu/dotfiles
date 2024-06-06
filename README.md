@@ -256,30 +256,35 @@ Hyperextensible Vim-based text editor.
 
 - [LazyVim](https://www.lazyvim.org/)
 
-- a [Nerd Font](https://www.nerdfonts.com/)(v3.0 or greater) ***(optional, but needed to display some icons)\***
+- a [Nerd Font](https://www.nerdfonts.com/)(v3.0 or greater) **(optional, but needed to display some icons)**
 
-- [lazygit](https://github.com/jesseduffield/lazygit) ***(optional)\***
+- [lazygit](https://github.com/jesseduffield/lazygit) (optional)
 
 - a **C** compiler for `nvim-treesitter`. See [here](https://github.com/nvim-treesitter/nvim-treesitter#requirements)
 
-- for 
-
-  telescope.nvim
-
-  *(optional)*
+- for telescope.nvim **(optional)**
 
   - **live grep**: [ripgrep](https://github.com/BurntSushi/ripgrep)
   - **find files**: [fd](https://github.com/sharkdp/fd)
+  
+- a terminal that support true color and undercurl:
 
-- a terminal that support true color and 
-
-  undercurl:
-
-  - [kitty](https://github.com/kovidgoyal/kitty) ***(Linux & Macos)\***
-  - [wezterm](https://github.com/wez/wezterm) ***(Linux, Macos & Windows)\***
-  - [alacritty](https://github.com/alacritty/alacritty) ***(Linux, Macos & Windows)\***
-  - [iterm2](https://iterm2.com/) ***(Macos)\***
+  - [kitty](https://github.com/kovidgoyal/kitty) **(Linux & Macos)**
+  - [wezterm](https://github.com/wez/wezterm) **(Linux, Macos & Windows)**
+  - [alacritty](https://github.com/alacritty/alacritty) **(Linux, Macos & Windows)**
+  - [iterm2](https://iterm2.com/) **(Macos)**
 
 ## Relevant Files
 
 - [.config/nvim/](.config/nvim/)
+
+# Quick Setup
+
+I have created a Bash script to automatically install and configure all of my settings.
+
+```bash
+git clone https://github.com/Huijie-Liu/dev-environment-files.git
+cd dev-environment-files
+bash install.sh
+```
+
