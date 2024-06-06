@@ -40,16 +40,16 @@ spaces=(
 	background.drawing=on
 )
 
-# separator=(
-#   icon=􀆊
-#   icon.font="$FONT:Heavy:16.0"
-#   padding_left=15
-#   padding_right=15
-#   label.drawing=off
-#   associated_display=active
-#   click_script='yabai -m space --create && sketchybar --trigger space_change'
-#   icon.color=$WHITE
-# )
+separator=(
+	icon=􀆊
+	icon.font="$FONT:Heavy:16.0"
+	padding_left=15
+	padding_right=15
+	label.drawing=off
+	associated_display=active
+	click_script='yabai -m space --create && sketchybar --trigger space_change'
+	icon.color=$WHITE
+)
 
 sketchybar --add bracket spaces '/space\..*/' \
 	--set spaces "${spaces[@]}" \
