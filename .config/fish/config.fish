@@ -6,29 +6,12 @@ eval (/opt/homebrew/bin/brew shellenv)
 set fish_greeting # remove the greeting
 
 
-# ----- aliases -----
-alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 && echo 代理成功"
-alias ydl="youtube-dl"
-alias dw="download_wallpaper"
-alias c="clear"
-alias x="exit"
-alias python="python3"
-alias lg="lazygit"
-
-
-# ----- PATH -----
-export PATH="$HOME/.scripts:$PATH"
-
-
-# bind clear-screen shortcut from \cl to \el
-bind --preset \el clear-screen
-
-
 # ----- starship -----
 # starship init fish | source
 
 
 # ----- fzf -----
+fzf --fish | source
 fzf_configure_bindings --directory=\ct --git_status=\cgs --git_log=\cgl --history=\cr --processes=\cp
 set fzf_preview_dir_cmd eza --all --color=always
 set fzf_fd_opts --exclude .git --hidden --max-depth 5
@@ -56,3 +39,20 @@ else
     end
 end
 # <<< conda initialize <<<
+
+
+# ----- aliases -----
+alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 && echo 代理成功"
+alias ydl="youtube-dl"
+alias dw="download_wallpaper"
+alias c="clear"
+alias x="exit"
+alias python="python3"
+alias lg="lazygit"
+alias ta="tmux attach"
+alias tl="tmux list-session"
+alias ts="tmux new-session"
+
+
+# ----- PATH -----
+export PATH="$HOME/.scripts:$PATH"
