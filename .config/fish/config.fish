@@ -12,9 +12,7 @@ set fish_greeting # remove the greeting
 
 # ----- fzf -----
 fzf --fish | source
-fzf_configure_bindings --directory=\ct --git_status=\cgs --git_log=\cgl --history=\cr --processes=\cp
-set fzf_preview_dir_cmd eza --all --color=always
-set fzf_fd_opts --exclude .git --hidden --max-depth 5
+fzf_configure_bindings --directory=\ct --git_status=\cgs --git_log=\cgl --history=\cr
 
 
 # ----- Eza (better ls) -----
@@ -25,20 +23,6 @@ alias l="ls -la"
 # ----- Zoxide (better cd) -----
 zoxide init fish | source
 alias cd="z"
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /opt/miniconda3/bin/conda
-    status is-interactive && eval /opt/miniconda3/bin/conda "shell.fish" hook $argv | source
-else
-    if test -f "/opt/miniconda3/etc/fish/conf.d/conda.fish"
-        . "/opt/miniconda3/etc/fish/conf.d/conda.fish"
-    else
-        set -x PATH /opt/miniconda3/bin $PATH
-    end
-end
-# <<< conda initialize <<<
 
 
 # ----- aliases -----
@@ -64,3 +48,17 @@ end
 
 # ----- PATH -----
 export PATH="$HOME/.scripts:$PATH"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /opt/miniconda3/bin/conda
+    status is-interactive && eval /opt/miniconda3/bin/conda "shell.fish" hook $argv | source
+else
+    if test -f "/opt/miniconda3/etc/fish/conf.d/conda.fish"
+        . "/opt/miniconda3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH /opt/miniconda3/bin $PATH
+    end
+end
+# <<< conda initialize <<<
