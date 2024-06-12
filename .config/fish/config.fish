@@ -56,5 +56,11 @@ alias lg="lazygit"
 alias dw="download_wallpaper"
 
 
+# ----- Functions -----
+function mkcd
+    mkdir -p $argv; and cd $argv
+end
+
+
 # ----- PATH -----
 export PATH="$HOME/.scripts:$PATH"
