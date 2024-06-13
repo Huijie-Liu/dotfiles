@@ -44,6 +44,7 @@ alias ts="tmux new-session"
 alias python="python3"
 alias lg="lazygit"
 alias dw="download_wallpaper"
+alias ff="fastfetch"
 
 
 # ----- Functions -----

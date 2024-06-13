@@ -42,6 +42,12 @@ if prompt "需要安装 iTerm2(macOS) 吗?"; then
 	echo "================================================"
 fi
 
+if prompt "需要安装 alacritty 吗?"; then
+	echo "安装 alacritty..."
+	brew install --cask alacritty
+	echo "================================================"
+fi
+
 if prompt "需要安装 Bartender(macOS) 吗?"; then
 	echo "安装 Bartender..."
 	brew install --cask bartender
@@ -146,6 +152,9 @@ check_and_link zsh ".zshrc" ".zshrc"
 
 # 创建 .config/fish/config.fish 的软链接
 check_and_link fish ".config/fish/config.fish" ".config/fish/config.fish"
+
+# 创建 .config/alacritty/alacritty.toml 的软链接
+check_and_link alacritty ".config/alacritty" ".config/alacritty"
 
 # 创建 .config/starship.toml 的软链接
 check_and_link starship ".config/starship/starship-bracketed.toml" ".config/starship.toml"

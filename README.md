@@ -38,6 +38,18 @@ Here are some tips to improve your Mac settings for better effectiveness.
 
 My personal favorite shells: zsh & fish. With the starship theme.
 
+## Alacritty Setup
+
+Alacritty - A cross-platform, OpenGL terminal emulator
+
+### Setup Requires
+
+- [homebrew](https://docs.brew.sh/Installation) (optional) - package management
+
+### Relevant Files
+
+- [.config/alacritty/](.config/alacritty) - Alacritty Configuration
+
 ## Zsh Setup
 
 Zsh is a shell designed for interactive use, although it is also a powerful scripting language.
