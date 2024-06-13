@@ -1,5 +1,3 @@
-.git/
-
 # plugin version file
-lazy-lock.json
-lazyvim.json
+**/lazy-lock.json
+**/lazyvim.json
