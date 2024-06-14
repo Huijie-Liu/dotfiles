@@ -153,6 +153,14 @@ return {
         desc = "Lists Function names, variables, from Treesitter",
       },
       {
+        ";g",
+        function()
+          local builtin = require("telescope.builtin")
+          builtin.git_status()
+        end,
+        desc = "Lists git status for current dir",
+      },
+      {
         ";\\",
         function()
           local telescope = require("telescope")
