@@ -77,10 +77,35 @@ require("lazy").setup({
     },
   },
   ui = {
+    border = "rounded",
+
     custom_keys = {
       ["<localleader>d"] = function(plugin)
         dd(plugin)
       end,
+    },
+    custom_keys = {
+      -- You can define custom key maps here. If present, the description will
+      -- be shown in the help menu.
+      -- To disable one of the defaults, set it to false.
+
+      ["<localleader>l"] = {
+        function(plugin)
+          require("lazy.util").float_term({ "lazygit", "log" }, {
+            cwd = plugin.dir,
+          })
+        end,
+        desc = "Open lazygit log",
+      },
+
+      ["<localleader>t"] = {
+        function(plugin)
+          require("lazy.util").float_term(nil, {
+            cwd = plugin.dir,
+          })
+        end,
+        desc = "Open terminal in plugin dir",
+      },
     },
   },
   debug = false,
