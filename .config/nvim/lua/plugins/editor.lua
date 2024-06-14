@@ -1,4 +1,5 @@
 return {
+  -- tmux vim navigator
   {
     "christoomey/vim-tmux-navigator",
     cmd = {
@@ -16,6 +17,8 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+
+  -- flash
   {
     "folke/flash.nvim",
     event = "VeryLazy",
@@ -30,6 +33,8 @@ return {
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
+
+  -- hipatterns
   {
     "echasnovski/mini.hipatterns",
     event = "BufReadPre",
@@ -52,6 +57,7 @@ return {
     },
   },
 
+  -- git
   {
     "dinhhuy258/git.nvim",
     event = "BufReadPre",
@@ -65,6 +71,7 @@ return {
     },
   },
 
+  -- telescope
   {
     "telescope.nvim",
     dependencies = {
