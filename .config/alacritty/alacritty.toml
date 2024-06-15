@@ -3,6 +3,11 @@ import = ["~/.config/alacritty/themes/catppuccin_macchiato.toml"]
 [env]
 TERM = "xterm-256color"
 
+# To fix Neovim "Ctrl + /" does not work in Alacritty.
+# Origin issue link: https://github.com/alacritty/alacitty/issues/7608#issuecomment-1975006973
+[keyboard]
+bindings = [{ key = "Slash", mods = "Control", chars = "\u001f" }]
+
 [window]
 padding.x = 10
 padding.y = 10
@@ -15,5 +20,5 @@ blur = true
 option_as_alt = "Both"
 
 [font]
-normal.family = "MesloLGL Nerd Font Mono"
-size = 13.25
+normal.family = "MesloLGM Nerd Font Mono"
+size = 14
