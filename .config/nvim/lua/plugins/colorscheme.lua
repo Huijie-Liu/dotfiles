@@ -1,8 +1,8 @@
 return {
+  -- cyberdream theme
   {
     "scottmckendry/cyberdream.nvim",
-    lazy = false,
-    priority = 1000,
+    lazy = true,
     config = function()
       require("cyberdream").setup({
         -- Enable transparent background
@@ -12,7 +12,14 @@ return {
         -- Replace all fillchars with ' ' for the ultimate clean look
         hide_fillchars = true,
       })
-      vim.cmd("colorscheme cyberdream")
     end,
+  },
+
+  -- Configure LazyVim to load gruvbox
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "cyberdream",
+    },
   },
 }

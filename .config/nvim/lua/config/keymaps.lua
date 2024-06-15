@@ -30,36 +30,12 @@ keymap.set("v", "<A-up>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
 
--- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
-
 -- Disable continuations
 keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
 keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
-
--- Jumplist
-keymap.set("n", "<C-m>", "<C-i>", opts)
-
--- New tab
-keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
 -- Resize window
 keymap.set("n", "<C-w><left>", "<C-w><")
 keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
-
--- Diagnostics
-keymap.set("n", "<Leader>cj", function()
-  vim.diagnostic.goto_next()
-end, { desc = "Jump to next diagnostic issue" }, opts)
-
-keymap.set("n", "<leader>r", function()
-  require("jay.hsl").replaceHexWithHSL()
-end, { desc = "Replace hex color with HSL" })
-
-keymap.set("n", "<leader>i", function()
-  require("jay.lsp").toggleInlayHints()
-end, { desc = "Toggle LSP inlay hints" })

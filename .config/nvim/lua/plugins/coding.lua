@@ -1,19 +1,4 @@
 return {
-  -- Create annotations with one keybind, and jump your cursor in the inserted annotation
-  {
-    "danymat/neogen",
-    keys = {
-      {
-        "<leader>cc",
-        function()
-          require("neogen").generate({})
-        end,
-        desc = "Neogen Comment",
-      },
-    },
-    opts = { snippet_engine = "luasnip" },
-  },
-
   -- Incremental rename
   {
     "smjonas/inc-rename.nvim",
@@ -21,38 +6,20 @@ return {
     config = true,
   },
 
-  -- Refactoring tool
+  -- surroundings
   {
-    "ThePrimeagen/refactoring.nvim",
-    keys = {
-      {
-        "<leader>r",
-        function()
-          require("refactoring").select_refactor()
-        end,
-        mode = "v",
-        noremap = true,
-        silent = true,
-        expr = false,
+    "echasnovski/mini.surround",
+    opts = {
+      mappings = {
+        add = "gsa",
+        delete = "gsd",
+        find = "gsf",
+        find_left = "gsF",
+        highlight = "gsh",
+        replace = "gsr",
+        update_n_lines = "gsn",
       },
     },
-    opts = {},
-  },
-
-  -- Go forward/backward with square brackets
-  {
-    "echasnovski/mini.bracketed",
-    event = "BufReadPost",
-    config = function()
-      local bracketed = require("mini.bracketed")
-      bracketed.setup({
-        file = { suffix = "" },
-        window = { suffix = "" },
-        quickfix = { suffix = "" },
-        yank = { suffix = "" },
-        treesitter = { suffix = "n" },
-      })
-    end,
   },
 
   -- Better increase/descrease
