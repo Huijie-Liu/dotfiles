@@ -16,20 +16,14 @@ alt - 2: yabai -m display --focus 2
 alt - 3: yabai -m display --focus 3
 alt - 4: yabai -m display --focus 4
 
-# rotate layout clockwise
-shift + alt - r : yabai -m space --rotate 270
-
-# flip along y-axis
-shift + alt - y : yabai -m space --mirror y-axis
-
-# flip along x-axis
-shift + alt - x : yabai -m space --mirror x-axis
-
 # toggle window float
-shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+shift + alt - t : yabai -m window --toggle float --grid 8:8:1:1:6:6
 
 # maximize a window
 shift + alt - m : yabai -m window --toggle zoom-fullscreen
+
+# toggle split
+shift + alt - x : yabai -m window --toggle split
 
 # balance out tree of windows (resize to occupy same area)
 shift + alt - e : yabai -m space --balance
