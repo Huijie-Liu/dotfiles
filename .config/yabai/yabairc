@@ -41,6 +41,7 @@ yabai -m rule --add app="^CleanMyMac X$" manage=off
 yabai -m rule --add app="^ChatGPT$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^Keka$" manage=off
 
 # leave space for sketchybar
 yabai -m config external_bar main:40:0
