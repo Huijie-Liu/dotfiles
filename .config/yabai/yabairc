@@ -5,11 +5,11 @@ yabai -m config layout bsp
 yabai -m config window_placement second_child
 
 # padding set to 6px
-yabai -m config top_padding 6
-yabai -m config bottom_padding 6
-yabai -m config left_padding 6
-yabai -m config right_padding 6
-yabai -m config window_gap 6
+yabai -m config top_padding 36
+yabai -m config bottom_padding 36
+yabai -m config left_padding 36
+yabai -m config right_padding 36
+yabai -m config window_gap 36
 
 # on or off (default: off)
 yabai -m config auto_balance on
@@ -42,6 +42,7 @@ yabai -m rule --add app="^ChatGPT$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
 yabai -m rule --add app="^Keka$" manage=off
+yabai -m rule --add app="^图书$" manage=off
 
 # leave space for sketchybar
 yabai -m config external_bar main:40:0
