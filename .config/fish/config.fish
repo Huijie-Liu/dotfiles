@@ -32,15 +32,42 @@ alias cd="z"
 
 
 # ----- aliases -----
-alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 && echo 代理成功"
-alias ydl="youtube-dl"
+# terminal
 alias c="clear"
 alias x="exit"
+# history
+alias h="history -10" # last 10 history commands
+alias hc="history -c" # clear history
+alias hg="history | grep " # +command
+# system
+alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 && echo 代理成功"
+# file
 alias md="mkdir -p"
 alias rd="rmdir"
+# tmux
 alias ta="tmux attach"
 alias tl="tmux list-session"
 alias ts="tmux new-session"
+# git
+alias g="git"
+alias gc="git commit -m"
+alias ga='git add'
+alias gaa='git add --all'
+alias gst='git status'
+alias gss='git status --short'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glgm='git log --graph --max-count=10'
+alias glods='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset" --date=short'
+alias glod='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset"'
+alias glola='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --all'
+alias glols='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --stat'
+alias glol='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
+alias glo='git log --oneline --decorate'
+alias glog='git log --oneline --decorate --graph'
+alias gloga='git log --oneline --decorate --graph --all'
+# customization
+alias ydl="youtube-dl"
 alias python="python3"
 alias lg="lazygit"
 alias dw="download_wallpaper"
@@ -55,6 +82,7 @@ end
 
 # ----- PATH -----
 export PATH="$HOME/.scripts:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 
 # >>> conda initialize >>>
