@@ -197,6 +197,11 @@ for script in "$DOTFILES_DIR/.scripts/"*; do
   fi
 done
 
+# ======================================
+# 安装 tmux plugin manager (tpm)
+# ======================================
+clone_repo "https://github.com/tmux-plugins/tpm" "$HOME/.tmux/plugins/tpm" "tmux plugin manager (tpm)"
+
 echo -e "${GREEN}
 🎉 所有工具安装和配置完成！
 ===============================
