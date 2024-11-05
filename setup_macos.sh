@@ -1,176 +1,165 @@
 #!/bin/bash
 
-echo "欢迎使用Jay的开发环境配置脚本！🚀"
-echo "================================================"
+# 定义颜色
+RED='\033[31m'
+GREEN='\033[32m'
+BLUE='\033[34m'
+NC='\033[0m' # No Color
 
-# 获取当前项目的目录
-CURRENT_DIR=$(pwd)
-echo "请确保已进入项目目录，当前目录为$CURRENT_DIR"
-
-function prompt {
-	while true; do
-		read -p "$1 [y/n]: " yn
-		case $yn in
-		[Yy]*) return 0 ;;
-		[Nn]*) return 1 ;;
-		*) echo "请输入 y 或 n." ;;
-		esac
-	done
+# 输出函数
+info() {
+  echo -e "${BLUE}[ℹ️  信息]${NC} $1"
 }
 
-function check_and_link {
-	if command -v $1 >/dev/null 2>&1; then
-		ln -s -f -n $CURRENT_DIR/$2 $HOME/$3
-		echo "已创建 $HOME/$3 的软链接"
-	else
-		echo "$1 未安装，跳过 $HOME/$3 的软链接创建"
-	fi
+success() {
+  echo -e "${GREEN}[✅ 成功]${NC} $1"
 }
 
-echo "开始安装前，请确保已经备份了现有的配置文件。"
-echo "================================================"
+error_exit() {
+  echo -e "${RED}[❌ 错误]${NC} $1"
+  exit 1
+}
 
-if prompt "【必要】需要安装 Homebrew 吗?"; then
-	echo "安装 Homebrew..."
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	echo "================================================"
+# 检查命令是否存在
+command_exists() {
+  command -v "$1" &>/dev/null
+}
+
+# 提示函数
+prompt() {
+  while true; do
+    read -p "❓ $1 [y/n]: " yn
+    case $yn in
+      [Yy]*) return 0 ;;
+      [Nn]*) return 1 ;;
+      *) echo "请输入 y 或 n." ;;
+    esac
+  done
+}
+
+# 创建软链接函数
+create_symlink() {
+  local target=$1
+  local link_name=$2
+
+  if [ ! -e "$link_name" ]; then
+    ln -sf "$target" "$link_name"
+    success "创建软链接 $link_name -> $target"
+  else
+    success "$link_name 已存在，跳过..."
+  fi
+}
+
+# 使用 Homebrew 安装函数
+brew_install() {
+  local package=$1
+  local is_cask=$2
+
+  if ! command_exists "$package"; then
+    info "安装 $package..."
+    if [ "$is_cask" = "true" ]; then
+      brew install --cask "$package" || error_exit "安装 $package 失败"
+    else
+      brew install "$package" || error_exit "安装 $package 失败"
+    fi
+    success "$package 安装完成"
+  else
+    success "$package 已安装，跳过..."
+  fi
+}
+
+# ======================================
+# 开始脚本
+# ======================================
+echo -e "${GREEN}
+===============================
+✨ 开始安装和配置 macOS 环境
+===============================
+${NC}"
+
+# 安装 Homebrew
+if ! command_exists brew; then
+  info "安装 Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || error_exit "安装 Homebrew 失败"
+else
+  success "Homebrew 已安装，跳过..."
 fi
 
-if prompt "需要安装 iTerm2(macOS) 吗?"; then
-	echo "安装 iTerm2..."
-	brew install --cask iterm2
-	echo "================================================"
+# 可选的 GUI 应用安装
+GUI_APPS=("iterm2" "alacritty" "bartender" "bettertouchtool" "raycast" "1password" "typora")
+
+for app in "${GUI_APPS[@]}"; do
+  if prompt "是否安装 $app?"; then
+    brew_install "$app" "true"
+  fi
+done
+
+# 安装命令行工具
+CLI_TOOLS=("zsh" "fish" "starship" "git" "fzf" "fd" "bat" "eza" "delta" "zoxide" "lazygit" "tldr" "thefuck")
+
+for tool in "${CLI_TOOLS[@]}"; do
+  brew_install "$tool" "false"
+done
+
+# 配置 Zsh
+if prompt "是否配置 Zsh?"; then
+  info "配置 Zsh..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || error_exit "安装 Oh My Zsh 失败"
+  git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
 
-if prompt "需要安装 alacritty 吗?"; then
-	echo "安装 alacritty..."
-	brew install --cask alacritty
-	echo "================================================"
-fi
-
-if prompt "需要安装 Bartender(macOS) 吗?"; then
-	echo "安装 Bartender..."
-	brew install --cask bartender
-	echo "================================================"
-fi
-
-if prompt "需要安装 BetterTouchTool(macOS) 吗?"; then
-	echo "安装 BetterTouchTool..."
-	brew install --cask bettertouchtool
-	echo "================================================"
-fi
-
-if prompt "需要安装 Raycast 吗?"; then
-	echo "安装 Raycast..."
-	brew install --cask raycast
-	echo "================================================"
-fi
-
-if prompt "需要安装 1Password 吗?"; then
-	echo "安装 1Password..."
-	brew install --cask 1password
-	echo "================================================"
-fi
-
-if prompt "需要安装 Typora 吗?"; then
-	echo "安装 Typora..."
-	brew install --cask typora
-	echo "================================================"
-fi
-
-if prompt "需要安装并配置 Zsh 和 Fish 吗?"; then
-	echo "安装并配置 Zsh 和 Fish..."
-	brew install zsh fish starship
-	brew install git fzf fd bat eza delta zoxide lazygit tldr thefuck
-
-	echo "配置 Zsh..."
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-	echo 'source ~/.zshrc' >>~/.zshrc
-
-	echo "配置 Fish..."
-	curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-	fisher install IlanCosman/tide@v5
-	fisher install jorgebucaran/fzf.fish
-	fisher install jorgebucaran/autopair.fish
-	fisher install jhillyerd/plugin-git
-	echo "================================================"
-fi
-
-if prompt "需要安装并配置 Starship 吗?"; then
-	echo "安装并配置 Starship..."
-	echo 'eval "$(starship init zsh)"' >>~/.zshrc
-	echo 'eval "$(starship init fish)"' >>~/.config/fish/config.fish
-	curl -sS https://starship.rs/install.sh | sh
-	echo "================================================"
-fi
-
-if prompt "需要安装并配置 Yabai(macOS) 和 Skhd(macOS) 吗?"; then
-	echo "安装并配置 Yabai 和 Skhd..."
-	brew install koekeishiya/formulae/yabai
-	brew install koekeishiya/formulae/skhd
-	brew services start yabai
-	brew services start skhd
-	echo "================================================"
-fi
-
-if prompt "需要安装并配置 Sketchybar(macOS) 吗?"; then
-	echo "安装并配置 Sketchybar..."
-	brew tap FelixKratz/formulae
-	brew install sketchybar
-	brew install jq
-	brew tap homebrew/cask-fonts
-	brew install --cask font-sf-pro
-	brew install --cask sf-symbols
-	curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.16/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
-	git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/
-	echo "================================================"
-fi
-
-if prompt "需要安装并配置 Tmux 吗?"; then
-	echo "安装并配置 Tmux..."
-	brew install tmux
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	echo "================================================"
-fi
-
-if prompt "需要安装并配置 Neovim 吗?"; then
-	echo "安装并配置 Neovim..."
-	brew install neovim
-	git clone https://github.com/folke/lazy.nvim.git ~/.local/share/nvim/site/pack/lazy/start/lazy.nvim
-	echo "================================================"
+# 配置 Fish
+if prompt "是否配置 Fish?"; then
+  info "配置 Fish..."
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+  fisher install IlanCosman/tide@v5
+  fisher install jorgebucaran/fzf.fish
+  fisher install jorgebucaran/autopair.fish
+  fisher install jhillyerd/plugin-git
 fi
 
 # 创建配置目录
-mkdir -p ~/.config/{fish,yabai,skhd,sketchybar,nvim}
+create_directory() {
+  local dir=$1
+  if [ ! -d "$dir" ]; then
+    mkdir -p "$dir" && success "创建目录 $dir"
+  else
+    success "目录 $dir 已存在，跳过..."
+  fi
+}
 
-# 样例配置文件链接
-echo "创建样例配置文件链接..."
+create_directory "$HOME/.config"
+create_directory "$HOME/.config/fish"
+create_directory "$HOME/.config/yabai"
+create_directory "$HOME/.config/skhd"
+create_directory "$HOME/.config/sketchybar"
+create_directory "$HOME/.config/nvim"
 
-# 创建 .zshrc 的软链接
-check_and_link zsh ".zshrc_macos" ".zshrc"
+# 创建配置文件软链接
+DOTFILES_DIR="$HOME/.dotfiles"
+create_symlink "$DOTFILES_DIR/.zshrc_macos" "$HOME/.zshrc"
+create_symlink "$DOTFILES_DIR/.config/fish/config.fish" "$HOME/.config/fish/config.fish"
+create_symlink "$DOTFILES_DIR/.config/alacritty" "$HOME/.config/alacritty"
+create_symlink "$DOTFILES_DIR/.config/starship/starship-bracketed.toml" "$HOME/.config/starship.toml"
+create_symlink "$DOTFILES_DIR/.config/yabai/yabairc" "$HOME/.config/yabai/yabairc"
+create_symlink "$DOTFILES_DIR/.config/skhd/skhdrc" "$HOME/.config/skhd/skhdrc"
+create_symlink "$DOTFILES_DIR/.config/sketchybar" "$HOME/.config/sketchybar"
+create_symlink "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
+create_symlink "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
+# 创建 scripts 目录软链接
+create_directory "$HOME/.local/bin"
 
-# 创建 .config/fish/config.fish 的软链接
-check_and_link fish ".config/fish/config.fish" ".config/fish/config.fish"
+for script in "$DOTFILES_DIR/.scripts/"*; do
+  if [ -f "$script" ]; then
+    script_name=$(basename "$script")
+    create_symlink "$script" "$HOME/.local/bin/$script_name"
+  fi
+done
 
-# 创建 .config/alacritty/alacritty.toml 的软链接
-check_and_link alacritty ".config/alacritty" ".config/alacritty"
 
-# 创建 .config/starship.toml 的软链接
-check_and_link starship ".config/starship/starship-bracketed.toml" ".config/starship.toml"
-
-# 创建 .config/yabai/yabairc 的软链接
-check_and_link yabai ".config/yabai/yabairc" ".config/yabai/yabairc"
-
-# 创建 .config/skhd/skhdrc 的软链接
-check_and_link skhd ".config/skhd/skhdrc" ".config/skhd/skhdrc"
-
-# 创建 .tmux.conf 的软链接
-check_and_link tmux ".tmux.conf" ".tmux.conf"
-
-# 创建 .config/nvim 的软链接
-check_and_link nvim ".config/nvim" ".config/nvim"
-
-echo "================================================"
-echo "安装完成！请重新启动终端或 source 你的 shell 配置文件。"
-echo "================================================"
+echo -e "${GREEN}
+🎉 所有工具安装和配置完成！
+===============================
+🚀 环境已成功配置，享受你的开发之旅吧！
+===============================
+${NC}"
