@@ -170,7 +170,7 @@ fi
 # ======================================
 # 使用 cargo 安装工具
 # ======================================
-cargo_packages=("zoxide" "eza" "starship")
+cargo_packages=("zoxide" "eza" "starship" "bat")
 
 for pkg in "${cargo_packages[@]}"; do
   if ! command_exists "$pkg"; then
