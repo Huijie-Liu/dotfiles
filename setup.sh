@@ -187,6 +187,7 @@ done
 DOTFILES_DIR="$HOME/.dotfiles"
 create_symlink "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
 create_symlink "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
+create_symlink "$DOTFILES_DIR/.config/zsh" "$HOME/.config/zsh"
 
 create_directory "$HOME/.local/bin"
 

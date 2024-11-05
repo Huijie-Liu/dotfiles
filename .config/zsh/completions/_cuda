@@ -1,0 +1,30 @@
+#compdef cuda
+
+_cuda() {
+    local -a versions
+    
+    # 改进1：添加存在性检查
+    if ! command -v cuda >/dev/null 2>&1; then
+        return 1
+    fi
+    
+    # 改进2：优化路径查找，避免ls命令
+    local system_path="/usr/local/cuda-"
+    local user_path="$HOME/.local/cuda-"
+    
+    versions=(
+        ${(f)"$(
+            (
+                [[ -d /usr/local ]] && find /usr/local -maxdepth 1 -name 'cuda-*' 2>/dev/null
+                [[ -d ~/.local ]] && find ~/.local -maxdepth 1 -name 'cuda-*' 2>/dev/null
+            ) | sed 's/.*cuda-//' | sort -u
+        )"}
+    )
+    
+    # 改进3：如果没有找到版本，提供提示
+    [[ -n "$versions" ]] || _message 'no cuda versions found'
+    
+    _describe 'cuda versions' versions
+}
+
+_cuda "$@"

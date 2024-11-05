@@ -1,0 +1,40 @@
+cuda() {
+    version=${1:-"11.8"}
+    cuda_path=""
+    
+    # 1：添加帮助信息
+    if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+        echo "Usage: cuda [version]"
+        echo "Available versions:"
+        ls -1d /usr/local/cuda-* ~/.local/cuda-* 2>/dev/null | sed 's/.*cuda-//'
+        return 0
+    fi
+    
+    # 2：清理旧的PATH和LD_LIBRARY_PATH（避免累积）
+    if [ ! -z "$CUDA_HOME" ]; then
+        export PATH=$(echo $PATH | sed "s|$CUDA_HOME/bin:||g")
+        export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed "s|$CUDA_HOME/lib64:||g")
+    fi
+    
+    if [ -d "/usr/local/cuda-$version" ]; then
+        cuda_path="/usr/local/cuda-$version"
+    elif [ -d "$HOME/.local/cuda-$version" ]; then
+        cuda_path="$HOME/.local/cuda-$version"
+    else
+        echo "Warning: CUDA $version not found"
+        return 1  # 3：使用return 1表示错误
+    fi
+    
+    if [ ! -z "$cuda_path" ]; then
+        export CUDA_VERSION="$version"
+        export CUDA_HOME="$cuda_path"
+        export PATH="$cuda_path/bin:$PATH"
+        export LD_LIBRARY_PATH="$cuda_path/lib64:$LD_LIBRARY_PATH"
+        echo "CUDA $version 已设置: $cuda_path"
+        
+        # 4：显示验证信息
+        if command -v nvcc >/dev/null 2>&1; then
+            nvcc --version | grep "release"
+        fi
+    fi
+}
