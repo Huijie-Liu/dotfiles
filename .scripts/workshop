@@ -14,7 +14,7 @@ if [ "$SESSIONEXISTS" = "" ]; then
   tmux split-window -v -t $SESSION:0.1
 
   tmux send-keys -t $SESSION:0.0 'watch -c gpustat --color' C-m
-  tmux send-keys -t $SESSION:0.3 'htop -d 20 -u lhj' C-m
+  tmux send-keys -t $SESSION:0.3 'htop -d 20 -u $USER' C-m
 fi
 
 # Attach Session, on the Main window
