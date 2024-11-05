@@ -1,5 +1,16 @@
 # ===========================
-# 1. Shell 主题和界面配置
+# 1. 环境变量配置
+# ===========================
+# Homebrew 路径
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# NVM 配置
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# ===========================
+# 2. Shell 主题和界面配置
 # ===========================
 # Powerlevel10k 即时加载
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -12,17 +23,6 @@ source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # Starship prompt (备用)
 # eval "$(starship init zsh)"
-
-# ===========================
-# 2. 环境变量配置
-# ===========================
-# Homebrew 路径
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# NVM 配置
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # ===========================
 # 3. 历史记录配置

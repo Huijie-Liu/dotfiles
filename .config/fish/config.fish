@@ -1,21 +1,24 @@
 # ===========================
-# 1. Shell 主题和界面配置
+# 1. 环境变量配置
+# ===========================
+# Homebrew
+eval (/opt/homebrew/bin/brew shellenv)
+
+# PATH 配置
+set -gx PATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin $PATH
+set -gx PATH $HOME/.local/bin $PATH
+set -gx PATH $HOME/.cargo/bin $PATH
+set -gx PATH $HOME/.local/share/nvim/mason/bin $PATH
+set -gx PATH $HOME/.local/share/bob/nvim-bin $PATH
+
+# ===========================
+# 2. Shell 主题和界面配置
 # ===========================
 # 移除欢迎语
 set fish_greeting
 
 # Starship 主题
 starship init fish | source
-
-# ===========================
-# 2. 环境变量配置
-# ===========================
-# Homebrew
-eval (/opt/homebrew/bin/brew shellenv)
-
-# PATH 配置
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # ===========================
 # 3. FZF 配置
