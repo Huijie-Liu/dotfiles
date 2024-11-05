@@ -76,7 +76,6 @@ ${NC}"
 
 # 创建软链接
 create_symlink "$HOME/.dotfiles/.zshrc_linux" "$HOME/.zshrc"
-create_symlink "$HOME/.dotfiles/.condarc" "$HOME/.condarc"
 
 # 创建 ~/.config 目录
 create_directory "$HOME/.config"
@@ -182,12 +181,21 @@ for pkg in "${cargo_packages[@]}"; do
 done
 
 # ======================================
-# 创建软链接
+# 创建 .config 目录下所有文件的软链接
 # ======================================
 DOTFILES_DIR="$HOME/.dotfiles"
-create_symlink "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
+if [ -d "$DOTFILES_DIR/.config" ]; then
+  for config_item in "$DOTFILES_DIR/.config/"*; do
+    if [ -e "$config_item" ]; then
+      item_name=$(basename "$config_item")
+      create_symlink "$config_item" "$HOME/.config/$item_name"
+    fi
+  done
+fi
+
+# 创建根目录下的配置文件软链接
 create_symlink "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
-create_symlink "$DOTFILES_DIR/.config/zsh" "$HOME/.config/zsh"
+create_symlink "$DOTFILES_DIR/.condarc" "$HOME/.condarc"
 
 create_directory "$HOME/.local/bin"
 
