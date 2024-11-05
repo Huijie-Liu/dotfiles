@@ -148,7 +148,7 @@ mkdir -p ~/.config/{fish,yabai,skhd,sketchybar,nvim}
 echo "创建样例配置文件链接..."
 
 # 创建 .zshrc 的软链接
-check_and_link zsh ".zshrc" ".zshrc"
+check_and_link zsh ".zshrc_macos" ".zshrc"
 
 # 创建 .config/fish/config.fish 的软链接
 check_and_link fish ".config/fish/config.fish" ".config/fish/config.fish"

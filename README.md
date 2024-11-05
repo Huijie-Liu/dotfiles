@@ -71,7 +71,7 @@ Zsh is a shell designed for interactive use, although it is also a powerful scri
 
 ### Relevant Files
 
-- [.zshrc](.zshrc) - Zsh Shell Configuration
+- [.zshrc](.zshrc_macos) - Zsh Shell Configuration
 
 ## Fish Setup
 
