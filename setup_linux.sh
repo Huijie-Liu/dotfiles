@@ -94,7 +94,7 @@ if ! command_exists conda; then
   info "初始化 conda..."
   source "$HOME/.miniconda/etc/profile.d/conda.sh"
   conda init || error_exit "初始化 conda 失败"
-  source "$HOME/.bashrc"
+  source "$HOME/.zshrc"
 else
   success "Miniconda 已安装，跳过..."
   source "$HOME/.miniconda/etc/profile.d/conda.sh"
@@ -143,17 +143,6 @@ if ! command_exists fzf; then
 else
   success "fzf 已安装，跳过..."
 fi
-
-# ======================================
-# 创建 ~/.zsh 目录
-# ======================================
-create_directory "$HOME/.zsh"
-
-# ======================================
-# 安装 zsh 插件
-# ======================================
-clone_repo "https://github.com/zsh-users/zsh-autosuggestions" "$HOME/.zsh/zsh-autosuggestions" "zsh-autosuggestions"
-clone_repo "https://github.com/zsh-users/zsh-syntax-highlighting.git" "$HOME/.zsh/zsh-syntax-highlighting" "zsh-syntax-highlighting"
 
 # ======================================
 # 安装 Rust 工具链
