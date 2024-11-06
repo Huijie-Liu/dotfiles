@@ -118,44 +118,35 @@ if prompt "是否配置 Fish?"; then
   fisher install jhillyerd/plugin-git
 fi
 
-# 创建配置目录
-create_directory() {
-  local dir=$1
-  if [ ! -d "$dir" ]; then
-    mkdir -p "$dir" && success "创建目录 $dir"
-  else
-    success "目录 $dir 已存在，跳过..."
-  fi
-}
-
+# 创建基础配置目录
 create_directory "$HOME/.config"
-create_directory "$HOME/.config/fish"
-create_directory "$HOME/.config/yabai"
-create_directory "$HOME/.config/skhd"
-create_directory "$HOME/.config/sketchybar"
-create_directory "$HOME/.config/nvim"
+create_directory "$HOME/.local/bin"
 
 # 创建配置文件软链接
 DOTFILES_DIR="$HOME/.dotfiles"
-create_symlink "$DOTFILES_DIR/.zshrc_macos" "$HOME/.zshrc"
-create_symlink "$DOTFILES_DIR/.config/fish/config.fish" "$HOME/.config/fish/config.fish"
-create_symlink "$DOTFILES_DIR/.config/alacritty" "$HOME/.config/alacritty"
-create_symlink "$DOTFILES_DIR/.config/starship/starship-bracketed.toml" "$HOME/.config/starship.toml"
-create_symlink "$DOTFILES_DIR/.config/yabai/yabairc" "$HOME/.config/yabai/yabairc"
-create_symlink "$DOTFILES_DIR/.config/skhd/skhdrc" "$HOME/.config/skhd/skhdrc"
-create_symlink "$DOTFILES_DIR/.config/sketchybar" "$HOME/.config/sketchybar"
+
+# 处理 .config 目录下的第一层内容
+if [ -d "$DOTFILES_DIR/.config" ]; then
+    for item in "$DOTFILES_DIR/.config/"*; do
+        if [ -e "$item" ]; then
+            item_name=$(basename "$item")
+            create_symlink "$item" "$HOME/.config/$item_name"
+        fi
+    done
+fi
+
+# 创建根目录下的配置文件软链接
 create_symlink "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
-create_symlink "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
-# 创建 scripts 目录软链接
-create_directory "$HOME/.local/bin"
+create_symlink "$DOTFILES_DIR/.zshrc_macos" "$HOME/.zshrc"
+create_symlink "$DOTFILES_DIR/.condarc" "$HOME/.condarc"
 
+# 创建 scripts 目录下的脚本软链接
 for script in "$DOTFILES_DIR/.scripts/"*; do
-  if [ -f "$script" ]; then
-    script_name=$(basename "$script")
-    create_symlink "$script" "$HOME/.local/bin/$script_name"
-  fi
+    if [ -f "$script" ]; then
+        script_name=$(basename "$script")
+        create_symlink "$script" "$HOME/.local/bin/$script_name"
+    fi
 done
-
 
 echo -e "${GREEN}
 🎉 所有工具安装和配置完成！
