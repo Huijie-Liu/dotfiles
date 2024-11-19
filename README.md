@@ -9,7 +9,7 @@ This is my personal development environment configuration collection, including 
 ### Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/.dotfiles
+git clone https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
@@ -23,6 +23,9 @@ bash setup_macos.sh
 
 # Linux
 bash setup_linux.sh
+
+# Windows
+. setup_windows.ps1
 ```
 
 ## Features
@@ -39,6 +42,7 @@ bash setup_linux.sh
 ├── README.md                    # Project documentation
 ├── setup_linux.sh              # Linux environment setup script
 ├── setup_macos.sh              # macOS environment setup script
+├── setup_windows.ps1            # windows environment setup script
 ├── .scripts/                   # Utility scripts directory
 ├── .config/                    # Configuration files directory
 │   ├── alacritty/             # Alacritty terminal config
@@ -56,18 +60,19 @@ bash setup_linux.sh
 
 ### Terminal Tools
 
-- **Shell**: 
+- **Shell**:
   - Zsh (with Oh My Zsh)
   - Fish Shell
-- **Terminal Emulator**: 
+- **Terminal Emulator**:
   - Alacritty
   - iTerm2 (macOS only)
-- **Terminal Multiplexer**: 
+- **Terminal Multiplexer**:
   - Tmux
 
 ### Command Line Tools
 
 - **Basic Tools**:
+
   - fzf - Fuzzy finder
   - fd - Better find
   - bat - Better cat
@@ -84,6 +89,7 @@ bash setup_linux.sh
 ### macOS Specific
 
 - **Window Management**:
+
   - Yabai - Tiling window manager
   - SKHD - Hotkey daemon
   - Sketchybar - Custom menu bar
@@ -100,11 +106,13 @@ bash setup_linux.sh
 The Linux installation script will automatically configure:
 
 1. Basic Development Environment
+
    - Miniconda
    - Rust toolchain
    - Common command line tools
 
 2. Shell Environment
+
    - Zsh configuration
    - Shell plugins
 
@@ -118,11 +126,13 @@ The Linux installation script will automatically configure:
 The macOS installation script additionally includes:
 
 1. GUI Application Installation
+
    - iTerm2
    - Alacritty
    - Raycast, etc.
 
 2. Window Management
+
    - Yabai
    - SKHD
    - Sketchybar
@@ -134,6 +144,7 @@ The macOS installation script additionally includes:
 ## Customization
 
 1. Modify Configuration Files
+
    - Edit corresponding config files under `~/.config`
    - Adjust shell configuration as needed
 

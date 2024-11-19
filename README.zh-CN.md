@@ -9,7 +9,7 @@
 ### 克隆仓库
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/.dotfiles
+git clone https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
@@ -23,6 +23,9 @@ bash setup_macos.sh
 
 # Linux
 bash setup_linux.sh
+
+# Windows
+. setup_windows.ps
 ```
 
 ## 功能特性
@@ -37,7 +40,7 @@ bash setup_linux.sh
 ```
 .
 ├── README.md                    # 项目文档
-├── setup_linux.sh              # Linux 环境配置脚本  
+├── setup_linux.sh              # Linux 环境配置脚本
 ├── setup_macos.sh              # macOS 环境配置脚本
 ├── .scripts/                    # 实用脚本目录
 ├── .config/                    # 配置文件目录
@@ -56,18 +59,19 @@ bash setup_linux.sh
 
 ### 终端工具
 
-- **Shell**: 
+- **Shell**:
   - Zsh (带 Oh My Zsh)
   - Fish Shell
-- **终端模拟器**: 
+- **终端模拟器**:
   - Alacritty
   - iTerm2 (仅 macOS)
-- **终端复用器**: 
+- **终端复用器**:
   - Tmux
 
 ### 命令行工具
 
 - **基础工具**:
+
   - fzf - 模糊查找
   - fd - 更好的 find
   - bat - 更好的 cat
@@ -84,6 +88,7 @@ bash setup_linux.sh
 ### macOS 专属
 
 - **窗口管理**:
+
   - Yabai - 平铺式窗口管理器
   - SKHD - 快捷键守护程序
   - Sketchybar - 自定义菜单栏
@@ -100,11 +105,13 @@ bash setup_linux.sh
 Linux 安装脚本会自动配置：
 
 1. 基础开发环境
+
    - Miniconda
    - Rust 工具链
    - 常用命令行工具
 
 2. Shell 环境
+
    - Zsh 配置
    - Shell 插件
 
@@ -118,11 +125,13 @@ Linux 安装脚本会自动配置：
 macOS 安装脚本额外包含：
 
 1. GUI 应用安装
+
    - iTerm2
    - Alacritty
    - Raycast 等
 
 2. 窗口管理
+
    - Yabai
    - SKHD
    - Sketchybar
@@ -134,6 +143,7 @@ macOS 安装脚本额外包含：
 ## 自定义
 
 1. 修改配置文件
+
    - 编辑 `~/.config` 下对应的配置文件
    - 根据需要调整 Shell 配置
 
