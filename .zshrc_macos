@@ -13,16 +13,16 @@ export NVM_DIR="$HOME/.nvm"
 # 2. Shell 主题和界面配置
 # ===========================
 # Powerlevel10k 即时加载
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# 加载 Powerlevel10k 主题
-source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+#
+# # 加载 Powerlevel10k 主题
+# source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Starship prompt (备用)
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 
 # ===========================
 # 3. 历史记录配置
@@ -43,8 +43,8 @@ bindkey '^[[B' history-search-forward
 # 4. 常用别名
 # ===========================
 # 系统操作别名
-alias reload-zsh="source ~/.zshrc"
-alias edit-zsh="nvim ~/.zshrc"
+alias r="source ~/.zshrc"
+alias e="nvim ~/.zshrc"
 alias c="clear"
 alias x="exit"
 
