@@ -137,7 +137,7 @@ fi
 
 # 创建根目录下的配置文件软链接
 create_symlink "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
-create_symlink "$DOTFILES_DIR/.zshrc_macos" "$HOME/.zshrc"
+create_symlink "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 create_symlink "$DOTFILES_DIR/.condarc" "$HOME/.condarc"
 
 # 创建 scripts 目录下的脚本软链接

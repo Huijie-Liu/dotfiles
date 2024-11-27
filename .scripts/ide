@@ -4,10 +4,10 @@
 # 1. 首先垂直分割，底部窗格占30%高度
 # 2. 然后在底部水平分割成三等份
 tmux split-window -v -l 30%
-tmux select-pane -t 2
+tmux select-pane -t 1
 tmux split-window -h -p 66
 tmux select-pane -t 2
 tmux split-window -h -p 50
 
 # 回到第一个窗格
-tmux select-pane -t 1
+tmux select-pane -t 0

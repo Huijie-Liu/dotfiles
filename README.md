@@ -9,7 +9,7 @@ This is my personal development environment configuration collection, including 
 ### Clone Repository
 
 ```bash
-git clone https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
+git clone --branch macos https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
@@ -19,18 +19,12 @@ Choose the installation script according to your operating system:
 
 ```bash
 # macOS
-bash setup_macos.sh
-
-# Linux
-bash setup_linux.sh
-
-# Windows
-. setup_windows.ps1
+bash setup.sh
 ```
 
 ## Features
 
-- Support for macOS and Linux systems
+- Support for macOS systems
 - Automatic installation and configuration of common development tools
 - Modular configuration file organization
 - Unified theme style
@@ -40,12 +34,11 @@ bash setup_linux.sh
 ```
 .
 ├── README.md                    # Project documentation
-├── setup_linux.sh              # Linux environment setup script
-├── setup_macos.sh              # macOS environment setup script
-├── setup_windows.ps1            # windows environment setup script
+├── setup.sh                   # macOS environment setup script
 ├── .scripts/                   # Utility scripts directory
 ├── .config/                    # Configuration files directory
 │   ├── alacritty/             # Alacritty terminal config
+│   ├── wezterm/               # Wezterm terminal config
 │   ├── fish/                  # Fish shell config
 │   ├── nvim/                  # Neovim config
 │   ├── sketchybar/           # Sketchybar config (macOS)
