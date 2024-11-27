@@ -9,7 +9,7 @@ This is my personal development environment configuration collection, including 
 ### Clone Repository
 
 ```bash
-git clone https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
+git clone --branch linux https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
@@ -18,14 +18,8 @@ cd ~/.dotfiles
 Choose the installation script according to your operating system:
 
 ```bash
-# macOS
-bash setup_macos.sh
-
 # Linux
 bash setup_linux.sh
-
-# Windows
-. setup_windows.ps1
 ```
 
 ## Features
@@ -40,18 +34,12 @@ bash setup_linux.sh
 ```
 .
 ├── README.md                    # Project documentation
-├── setup_linux.sh              # Linux environment setup script
-├── setup_macos.sh              # macOS environment setup script
-├── setup_windows.ps1            # windows environment setup script
+├── setup.sh                     # Linux environment setup script
 ├── .scripts/                   # Utility scripts directory
 ├── .config/                    # Configuration files directory
-│   ├── alacritty/             # Alacritty terminal config
 │   ├── fish/                  # Fish shell config
 │   ├── nvim/                  # Neovim config
-│   ├── sketchybar/           # Sketchybar config (macOS)
 │   ├── starship/             # Starship theme config
-│   ├── yabai/                # Yabai window management config (macOS)
-│   ├── skhd/                 # SKHD shortcut config (macOS)
 │   └── zsh/                  # Zsh config
 └── .gitignore                 # Git ignore file
 ```
@@ -61,11 +49,8 @@ bash setup_linux.sh
 ### Terminal Tools
 
 - **Shell**:
-  - Zsh (with Oh My Zsh)
+  - Zsh (with zinit)
   - Fish Shell
-- **Terminal Emulator**:
-  - Alacritty
-  - iTerm2 (macOS only)
 - **Terminal Multiplexer**:
   - Tmux
 
@@ -85,19 +70,6 @@ bash setup_linux.sh
   - lazygit - Git TUI interface
   - neovim - Modern vim editor
   - tmux - Terminal multiplexer
-
-### macOS Specific
-
-- **Window Management**:
-
-  - Yabai - Tiling window manager
-  - SKHD - Hotkey daemon
-  - Sketchybar - Custom menu bar
-
-- **Productivity Tools**:
-  - Raycast - Launcher
-  - BetterTouchTool - Trackpad enhancement
-  - Bartender - Menu bar management
 
 ## Installation Guide
 
@@ -120,26 +92,6 @@ The Linux installation script will automatically configure:
    - Neovim
    - Tmux
    - lazygit
-
-### macOS Environment
-
-The macOS installation script additionally includes:
-
-1. GUI Application Installation
-
-   - iTerm2
-   - Alacritty
-   - Raycast, etc.
-
-2. Window Management
-
-   - Yabai
-   - SKHD
-   - Sketchybar
-
-3. Shell Environment
-   - Fish Shell configuration
-   - Starship theme
 
 ## Customization
 

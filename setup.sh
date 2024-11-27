@@ -75,7 +75,7 @@ echo -e "${GREEN}
 ${NC}"
 
 # 创建软链接
-create_symlink "$HOME/.dotfiles/.zshrc_linux" "$HOME/.zshrc"
+create_symlink "$HOME/.dotfiles/.zshrc" "$HOME/.zshrc"
 
 # 创建 ~/.config 目录
 create_directory "$HOME/.config"
