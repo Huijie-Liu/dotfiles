@@ -9,7 +9,7 @@ This is my personal development environment configuration collection, including 
 ### Clone Repository
 
 ```bash
-git clone https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
+git clone --branch windows https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
@@ -18,19 +18,13 @@ cd ~/.dotfiles
 Choose the installation script according to your operating system:
 
 ```bash
-# macOS
-bash setup_macos.sh
-
-# Linux
-bash setup_linux.sh
-
 # Windows
-. setup_windows.ps1
+. setup.ps1
 ```
 
 ## Features
 
-- Support for macOS and Linux systems
+- Support for windows systems
 - Automatic installation and configuration of common development tools
 - Modular configuration file organization
 - Unified theme style
@@ -40,18 +34,14 @@ bash setup_linux.sh
 ```
 .
 ├── README.md                    # Project documentation
-├── setup_linux.sh              # Linux environment setup script
-├── setup_macos.sh              # macOS environment setup script
-├── setup_windows.ps1            # windows environment setup script
+├── .PSprofile.ps1               # powershell env file
+├── setup.ps1                    # windows environment setup script
 ├── .scripts/                   # Utility scripts directory
 ├── .config/                    # Configuration files directory
-│   ├── alacritty/             # Alacritty terminal config
 │   ├── fish/                  # Fish shell config
 │   ├── nvim/                  # Neovim config
-│   ├── sketchybar/           # Sketchybar config (macOS)
-│   ├── starship/             # Starship theme config
-│   ├── yabai/                # Yabai window management config (macOS)
-│   ├── skhd/                 # SKHD shortcut config (macOS)
+│   ├── starship             # Starship theme config
+│   ├── wezterm/             # Terminal Emulator
 │   └── zsh/                  # Zsh config
 └── .gitignore                 # Git ignore file
 ```
@@ -61,85 +51,44 @@ bash setup_linux.sh
 ### Terminal Tools
 
 - **Shell**:
-  - Zsh (with Oh My Zsh)
-  - Fish Shell
+  - PowerShell
+  - Zsh (via Windows Subsystem for Linux - WSL)
+  - Fish (via Windows Subsystem for Linux - WSL)
 - **Terminal Emulator**:
+  - Windows Terminal
   - Alacritty
-  - iTerm2 (macOS only)
-- **Terminal Multiplexer**:
-  - Tmux
+  - WezTerm
 
 ### Command Line Tools
 
 - **Basic Tools**:
 
-  - fzf - Fuzzy finder
-  - fd - Better find
-  - bat - Better cat
-  - eza - Better ls
-  - delta - Better git diff
-  - zoxide - Smarter cd
-  - starship - Cross-platform shell prompt
+  - Git
+  - curl
+  - wget
+  - tar
+  - 7-Zip (via `7z` CLI)
+  - Chocolatey (Windows package manager)
 
 - **Development Tools**:
-  - lazygit - Git TUI interface
-  - neovim - Modern vim editor
-  - tmux - Terminal multiplexer
+  - Miniconda (Python environment management)
+  - Rust (Rust toolchain via `rustup`)
+  - Node.js (via `nvm-windows` or Chocolatey)
+  - Neovim (for modern text editing)
+  - lazygit (Git TUI)
+  - Tmux (via WSL)
 
-### macOS Specific
+### Windows Specific
 
 - **Window Management**:
 
-  - Yabai - Tiling window manager
-  - SKHD - Hotkey daemon
-  - Sketchybar - Custom menu bar
+  - PowerToys (Windows productivity enhancements)
+  - FancyZones (window tiling manager via PowerToys)
 
 - **Productivity Tools**:
-  - Raycast - Launcher
-  - BetterTouchTool - Trackpad enhancement
-  - Bartender - Menu bar management
-
-## Installation Guide
-
-### Linux Environment
-
-The Linux installation script will automatically configure:
-
-1. Basic Development Environment
-
-   - Miniconda
-   - Rust toolchain
-   - Common command line tools
-
-2. Shell Environment
-
-   - Zsh configuration
-   - Shell plugins
-
-3. Development Tools
-   - Neovim
-   - Tmux
-   - lazygit
-
-### macOS Environment
-
-The macOS installation script additionally includes:
-
-1. GUI Application Installation
-
-   - iTerm2
-   - Alacritty
-   - Raycast, etc.
-
-2. Window Management
-
-   - Yabai
-   - SKHD
-   - Sketchybar
-
-3. Shell Environment
-   - Fish Shell configuration
-   - Starship theme
+  - Windows Terminal Cascadia Code (font customization and themes)
+  - AutoHotkey (hotkey and scripting automation)
+  - Microsoft Power Automate Desktop (workflow automation)
 
 ## Customization
 
