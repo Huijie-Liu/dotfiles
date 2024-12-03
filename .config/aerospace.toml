@@ -167,5 +167,5 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'notion|访达|邮件|系统设置|bettertouchtool|ChatGPT|App Store|1Password|微信'
+if.app-name-regex-substring = 'notion|访达|邮件|系统设置|bettertouchtool|ChatGPT|App Store|1Password|微信|Wechat|腾讯会议|meeting'
 run = ['layout floating']  # The callback itself

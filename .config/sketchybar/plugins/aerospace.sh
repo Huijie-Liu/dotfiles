@@ -42,7 +42,7 @@ update() {
     label="$LABEL" \
     label.width=$WIDTH \
     label.font="sketchybar-app-font:Regular:16.0" \
-    label.padding_right=20 \
+    label.padding_right=16 \
     label.background.height=26 \
     label.background.drawing=on \
     label.background.color=$BACKGROUND_2 \
