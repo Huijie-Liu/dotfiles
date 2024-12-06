@@ -36,6 +36,10 @@ export HF_ENDPOINT="https://hf-mirror.com"
 export TMPDIR="$HOME/.tmp"
 [[ ! -d $TMPDIR ]] && mkdir -p $TMPDIR
 
+export http_proxy="http://127.0.0.1:17890"
+export https_proxy="http://127.0.0.1:17890"
+ 
+
 # 目录相关选项
 setopt AUTO_CD              # 输入目录名直接切换
 setopt AUTO_PUSHD          # 自动将目录添加到堆栈
