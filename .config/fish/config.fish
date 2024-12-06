@@ -1,16 +1,6 @@
 function fish_greeting
 end
 
-# 历史记录配置
-set -x HISTFILE "$HOME/.histfile"
-set -x HISTSIZE 50000
-set -x SAVEHIST $HISTSIZE
-set -g fish_history inc_append_history
-set -g fish_history share_history
-set -g fish_history hist_expire_dups_first
-set -g fish_history hist_ignore_dups
-set -g fish_history hist_verify
-set -g fish_history hist_ignore_space
 
 # PATH 配置
 set -U fish_user_paths $HOME/.local/bin $HOME/.local/usr/bin $HOME/.cargo/bin $fish_user_paths
@@ -34,9 +24,3 @@ set -x TMPDIR "$HOME/.tmp"
 if not test -d $TMPDIR
     mkdir -p $TMPDIR
 end
-
-# 目录相关选项
-set -g fish_auto_cd
-set -g fish_pushd_auto
-set -g fish_pushd_ignore_dups
-set -g fish_pushd_silent
