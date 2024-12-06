@@ -1,4 +1,3 @@
-# 解压缩函数
 function extract
     if test -f $argv[1]
         switch $argv[1]
