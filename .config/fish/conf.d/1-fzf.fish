@@ -28,3 +28,4 @@ function _fzf_uninstall --on-event fzf_uninstall
 end
 
 fzf_configure_bindings --directory=\ct --variables=\e\cv
+
