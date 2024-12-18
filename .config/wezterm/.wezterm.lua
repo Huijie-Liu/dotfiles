@@ -8,7 +8,12 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "Dracula"
 
-config.font = wezterm.font("MesloLGS Nerd Font Mono")
+-- config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font_with_fallback({
+	"Hack Nerd Font",
+	"Meslo Nerd Font Mono",
+	"SF Pro",
+})
 config.font_size = 14
 
 config.enable_tab_bar = false
@@ -31,12 +36,12 @@ config.keys = {
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		key = "LeftArrow",
+		key = "[",
 		mods = "CMD",
 		action = wezterm.action.ActivatePaneDirection("Left"),
 	},
 	{
-		key = "RightArrow",
+		key = "]",
 		mods = "CMD",
 		action = wezterm.action.ActivatePaneDirection("Right"),
 	},

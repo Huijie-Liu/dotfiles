@@ -8,7 +8,7 @@ SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12" "13" "14" "15")
 sketchybar --add event aerospace_workspace_change
 
 for sid in $(aerospace list-workspaces --all); do
-	space=(
+  space=(
     background.color=$BACKGROUND_2
     background.corner_radius=8
     background.height=20
@@ -21,7 +21,7 @@ for sid in $(aerospace list-workspaces --all); do
     padding_right=2
     click_script="aerospace workspace $sid"
     script="$PLUGIN_DIR/aerospace.sh $sid"
-	)
+  )
   sketchybar --add item space.$sid left \
     --set space.$sid "${space[@]}" \
     --subscribe space.$sid aerospace_workspace_change

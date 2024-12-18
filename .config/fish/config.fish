@@ -5,11 +5,10 @@
 eval (/opt/homebrew/bin/brew shellenv)
 
 # PATH 配置
-set -gx PATH /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin $PATH
-set -gx PATH $HOME/.local/bin $PATH
-set -gx PATH $HOME/.cargo/bin $PATH
-set -gx PATH $HOME/.local/share/nvim/mason/bin $PATH
-set -gx PATH $HOME/.local/share/bob/nvim-bin $PATH
+set -x fish_user_paths $HOME/.local/bin $fish_user_paths
+set -x fish_user_paths $HOME/.cargo/bin $fish_user_paths
+
+set -x EDITOR "nvim"
 
 # ===========================
 # 2. Shell 主题和界面配置
@@ -32,10 +31,10 @@ set fzf_preview_dir_cmd eza --all --color=always
 set fzf_fd_opts --hidden --max-depth 5
 
 # FZF 选项
-export FZF_DEFAULT_OPTS="--layout=reverse"
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+set -x FZF_DEFAULT_OPTS "--layout=reverse"
+set -x FZF_DEFAULT_COMMAND "fd --hidden --strip-cwd-prefix --exclude .git"
+set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+set -x FZF_ALT_C_COMMAND "fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 # ===========================
 # 4. 常用别名
@@ -63,7 +62,7 @@ alias tl="tmux list-session"
 alias ts="tmux new-session"
 
 # 系统工具
-alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 && echo 代理成功"
+alias proxy="set -x https_proxy http://127.0.0.1:7890; set -x http_proxy http://127.0.0.1:7890; set -x all_proxy socks5://127.0.0.1:7890; echo 代理成功"
 
 # 开发工具
 alias python="python3"
@@ -79,6 +78,15 @@ alias ff="fastfetch"
 # ===========================
 function mkcd
     mkdir -p $argv; and cd $argv
+end
+
+function y
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
 end
 
 # ===========================

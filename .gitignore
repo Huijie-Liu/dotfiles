@@ -4,3 +4,4 @@
 # Lazyvim plugin version file
 .config/nvim/lazy-lock.json
 .config/nvim/lazyvim.json
+.config/fish/fish_variables
