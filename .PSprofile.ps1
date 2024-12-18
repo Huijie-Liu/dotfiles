@@ -1,44 +1,52 @@
-# ------------------------------- Initialization BEGIN -------------------------------
-
+# ------------------------------- 初始化 BEGIN -------------------------------
 # 初始化 Starship 提示符
 Invoke-Expression (&starship init powershell)
 
 # 初始化 zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
-# 引入 PSReadLine 模块
+# 引入 PSReadLine 模块并设置 Emacs 风格快捷键
 Import-Module PSReadLine
-
-# 设置 Emacs 风格快捷键
 Set-PSReadLineOption -EditMode Emacs
 
-# ------------------------------- Initialization END   -------------------------------
+# 配置 fnm (Fast Node Manager)
+fnm env --use-on-cd | Out-String | Invoke-Expression
 
-
-# ------------------------------- PSReadLine Configuration BEGIN -------------------------------
-
+# ------------------------------- PSReadLine 配置 BEGIN -------------------------------
 # 设置历史记录为预测文本来源
 Set-PSReadLineOption -PredictionSource History
 
-# 每次回溯历史时，将光标移到输入内容末尾
+# 设置历史回溯时光标移动至输入末尾
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 
-# 设置 Tab 为菜单补全和 Intellisense
+# 设置 Tab 键为菜单补全与 Intellisense
 Set-PSReadLineKeyHandler -Key "Tab" -Function MenuComplete
 
-# ------------------------------- PSReadLine Configuration END   -------------------------------
+# ------------------------------- 自定义函数配置 BEGIN -------------------------------
+# 终端操作
+Function c { Clear }
 
+# 编辑 PowerShell 配置文件
+Function e { nvim $env:USERPROFILE\.dotfiles\.PSprofile.ps1 }
 
-# ------------------------------- Alias Configuration BEGIN -------------------------------
+# 替换默认 ls 命令为 eza
+Remove-Item Alias:\ls
+Function ls { eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions $args }
+Function l { eza -la --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions $args }
+Function ll { eza --long --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions $args }
+Function la { eza -la --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions $args }
+Function lla { eza --long -la --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions $args }
 
-# 设置 Python3 的别名
-Set-Alias python3 python
+# 使用 Python 3
+Function python { python3 $args }
 
-# ------------------------------- Alias Configuration END   -------------------------------
+# 使用 Lazygit
+Function lg { lazygit $args }
 
+# 显示系统信息
+Function ff { fastfetch $args }
 
-# ------------------------------- Fuzzy Finder Configuration BEGIN -------------------------------
-
+# ------------------------------- Fuzzy Finder 配置 BEGIN -------------------------------
 # 设置 fzf 默认参数
 $env:FZF_DEFAULT_OPTS = "--height 40% --layout=reverse --border"
 
@@ -54,7 +62,7 @@ function Invoke-FuzzySearch {
     }
 }
 
-# 为 Ctrl+t 和 Ctrl+r 设置 fzf 快捷键
+# 设置 fzf 快捷键
 Set-PSReadLineKeyHandler -Key Ctrl+t -ScriptBlock { Invoke-FuzzySearch }
 Set-PSReadLineKeyHandler -Key Ctrl+r -ScriptBlock {
     $historyPath = (Get-PSReadlineOption).HistorySavePath
@@ -64,14 +72,8 @@ Set-PSReadLineKeyHandler -Key Ctrl+r -ScriptBlock {
     }
 }
 
-# ------------------------------- Fuzzy Finder Configuration END   -------------------------------
-
-
-# ------------------------------- Conda Initialization BEGIN -------------------------------
-
-# Conda 初始化
+# ------------------------------- Conda 初始化 BEGIN -------------------------------
 If (Test-Path "D:\App\anaconda\Scripts\conda.exe") {
     (& "D:\App\anaconda\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
 }
 
-# ------------------------------- Conda Initialization END   -------------------------------
