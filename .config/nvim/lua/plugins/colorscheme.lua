@@ -1,25 +1,21 @@
 return {
-  -- cyberdream theme
+  -- tokyonight
   {
-    "scottmckendry/cyberdream.nvim",
-    lazy = true,
-    config = function()
-      require("cyberdream").setup({
-        -- Enable transparent background
-        transparent = true,
-        -- Enable italics comments
-        italic_comments = true,
-        -- Replace all fillchars with ' ' for the ultimate clean look
-        hide_fillchars = true,
-      })
-    end,
+    "folke/tokyonight.nvim",
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
   },
 
-  -- Configure LazyVim to load gruvbox
+  -- Configure LazyVim to load theme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "cyberdream",
+      colorscheme = "tokyonight",
     },
   },
 }
