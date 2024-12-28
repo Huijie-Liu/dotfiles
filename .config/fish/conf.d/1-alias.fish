@@ -3,6 +3,8 @@ alias c="clear"
 alias x="exit"
 alias e="nvim ~/.config/fish/config.fish"
 alias r="source ~/.config/fish/config.fish"
+alias v="nvim"
+alias zj="zellij"
 
 # 文件管理
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
@@ -21,7 +23,7 @@ alias tl="tmux list-session"
 alias ts="tmux new-session"
 
 # 系统工具
-alias proxy="set -x https_proxy http://127.0.0.1:7890; set -x http_proxy http://127.0.0.1:7890; set -x all_proxy socks5://127.0.0.1:7890; echo 代理成功"
+alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
 
 # 开发工具
 alias python="python3"

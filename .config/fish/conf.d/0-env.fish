@@ -6,3 +6,4 @@ set -x fish_user_paths $HOME/.local/bin
 set -x fish_user_paths $HOME/.cargo/bin
 
 set -x EDITOR nvim
+set -x VISUAL nvim
