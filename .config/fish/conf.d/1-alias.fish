@@ -1,44 +1,45 @@
-# 终端操作
-alias c="clear"
-alias x="exit"
-alias e="nvim ~/.config/fish/config.fish"
-alias r="source ~/.config/fish/config.fish"
-alias v="nvim"
+# 基本别名
+abbr --add c clear
+abbr --add x exit
+abbr --add e "nvim ~/.config/fish/config.fish"
+abbr --add r "source ~/.config/fish/config.fish"
+abbr --add v nvim
 
 # 文件管理
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-alias la="eza --color=always --long --git --icons=always"
-alias laa="eza --color=always --long --git --icons=always -la"
-alias l="ls -la"
-alias lt="ls --tree --level 2"
-alias cd="z"
-alias md="mkdir -p"
-alias rd="rmdir"
+abbr --add ls "eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+abbr --add l "eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions -la"
+abbr --add la "eza --color=always --long --git --icons=always"
+abbr --add laa "eza --color=always --long --git --icons=always -la"
+abbr --add lt "eza --tree --level 2"
+abbr --add cd z
+abbr --add md "mkdir -p"
+abbr --add rd rmdir
 
 # 历史记录
-alias h="history -10" # 最近10条历史记录
-alias hg="history | grep " # 搜索历史记录
+abbr --add h "history -10" # 最近10条历史记录
+abbr --add hg "history | grep " # 搜索历史记录
 
 # Tmux
-alias ta="tmux attach"
-alias tl="tmux list-session"
-alias ts="tmux new-session"
+abbr --add ta "tmux attach"
+abbr --add tl "tmux list-session"
+abbr --add ts "tmux new-session"
 
-# zellij
-alias zj="zellij"
-alias za="zellij attach"
-alias zl="zellij list-sessions"
-alias zs="zellij --session"
-alias zk="zellij kill-session"
-alias zka="zellij kill-all-sessions"
+# Zellij
+abbr --add zj zellij
+abbr --add za "zellij attach"
+abbr --add zl "zellij list-sessions"
+abbr --add zs "zellij --session"
+abbr --add zk "zellij kill-session"
+abbr --add zka "zellij kill-all-sessions"
+abbr --add zjl "zellij --layout"
 
 # 系统工具
-alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
+abbr --add proxy "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
 
 # 开发工具
-alias python="python3"
-alias lg="lazygit"
+abbr --add python python3
+abbr --add lg lazygit
 
 # 其他工具
-alias dw="download_wallpaper"
-alias ff="fastfetch"
+abbr --add dw download_wallpaper
+abbr --add ff fastfetch
