@@ -1,38 +1,52 @@
-# 文件管理别名
-alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-alias l="ls -la"
-alias ll="ls -l"
-alias la="ls -a"
-alias d='dirs -v'
-alias ..="cd .."
-alias ...="cd ../.."
+# 文件管理
+abbr --add ls "eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+abbr --add l "eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions --all"
+abbr --add ll "eza --color=always --long --git --icons=always --all --no-filesize --no-time --no-user --no-permissions"
+abbr --add la "eza --color=always --git --no-filesize --icons=always --all"
+abbr --add d "dirs -v"
+abbr --add .. "cd .."
+abbr --add ... "cd ../.."
 
-# 历史记录别名
-alias h="history -10"
-alias hc="history -c"
-alias hg="history | grep "
+# 历史记录
+abbr --add h "history -10"
+abbr --add hc "history -c"
+abbr --add hg "history | grep"
 
-# 文件操作别名
-alias md="mkdir -p"
-alias rd="rmdir"
+# 文件操作
+abbr --add md "mkdir -p"
+abbr --add rd rmdir
 
-# Tmux 控制别名
-alias ta="tmux attach"
-alias tl="tmux list-session"
-alias ts="tmux new-session"
+# Tmux 控制
+abbr --add ta "tmux attach"
+abbr --add tl "tmux list-session"
+abbr --add ts "tmux new-session"
 
-# 终端控制别名
-alias c="clear"
-alias x="exit"
-alias r="source ~/.config/fish/config.fish"
-alias e="nvim ~/.config/fish/config.fish"
-alias f="find . -name"
-alias dud="du -h -d 1"
-alias duds="du -h -d 1 | sort -h"
+# Zellij
+abbr --add zj zellij
+abbr --add za "zellij attach"
+abbr --add zl "zellij list-sessions"
+abbr --add zs "zellij --session"
+abbr --add zk "zellij kill-session"
+abbr --add zka "zellij kill-all-sessions"
+abbr --add zjl "zellij --layout"
 
-# 自定义别名
-alias nvs="nvidia-smi"
-alias lg="lazygit"
-alias clash="bash ~/.app/clash-for-linux/start.sh"
-alias ff="fastfetch"
-alias ne="nix-env"
+# 终端控制
+abbr --add c clear
+abbr --add x exit
+abbr --add r "source ~/.config/fish/config.fish"
+abbr --add e "nvim ~/.config/fish/config.fish"
+abbr --add f "find . -name"
+abbr --add v nvim
+abbr --add dud "du -h -d 1"
+abbr --add duds "du -h -d 1 | sort -h"
+
+# 自定义
+abbr --add nvs nvidia-smi
+abbr --add lg lazygit
+abbr --add clash "bash ~/.app/clash-for-linux/start.sh"
+abbr --add ff fastfetch
+abbr --add ne nix-env
+
+# 全局快捷键
+abbr --add L --position anywhere --set-cursor "% | less"
+abbr --add G --position anywhere --set-cursor "| grep"
