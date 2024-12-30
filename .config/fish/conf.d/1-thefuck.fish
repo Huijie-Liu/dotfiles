@@ -1,2 +1,2 @@
 thefuck --alias | source
-alias fk="fuck"
+abbr --add fk fuck
