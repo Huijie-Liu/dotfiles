@@ -1,17 +1,26 @@
-# Theme config
+# Appearance config
 theme = "Dracula"
-font-family = "Hack Nerd Font Mono"
-font-size = 14
+font-family = "JetBrainsMono Nerd Font"
+font-size = 15
 macos-titlebar-style = hidden
-macos-window-shadow = false
+macos-titlebar-style = tabs
+# macos-window-shadow = false
 background-opacity = 0.8
 background-blur-radius = 20
+unfocused-split-opacity = 0.6
+window-padding-x = 8
+window-padding-y = 8
+window-padding-balance = true
+window-colorspace = display-p3
+window-decoration = true
+mouse-hide-while-typing = true
 
-# Shell config
+# tty config
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = true
 macos-option-as-alt = true
+confirm-close-surface = false
 
 # Keybindings
 keybind = alt+left=unbind

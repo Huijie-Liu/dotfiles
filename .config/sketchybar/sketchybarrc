@@ -27,7 +27,7 @@ bar=(
 	sticky=on
 	padding_right=10
 	padding_left=10
-	corner_radius=9
+	corner_radius=10
 	y_offset=4
 	margin=10
 	blur_radius=20
@@ -66,6 +66,9 @@ source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/front_app.sh"
 
+# Center
+source "$ITEM_DIR/spotify.sh"
+
 # Right
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/brew.sh"
@@ -73,7 +76,6 @@ source "$ITEM_DIR/github.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/cpu.sh"
-source "$ITEM_DIR/spotify.sh"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update

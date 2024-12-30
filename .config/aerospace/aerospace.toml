@@ -175,10 +175,13 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'notion|访达|邮件|系统设置|bettertouchtool|ChatGPT|App Store|1Password|微信|Wechat|腾讯会议|meeting|Gopeed|QQ'
+if.app-name-regex-substring = "notion|访达|finder|邮件|系统设置|bettertouchtool|ChatGPT|App Store|微信|Wechat|腾讯会议|meeting|QQ|clash|telegram|ghostty"
 run = ['layout floating']
 
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'main'
 3 = 'main'
+4 = 'built-in'
+5 = 'built-in'
+6 = 'built-in'

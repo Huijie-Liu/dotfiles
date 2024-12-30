@@ -38,9 +38,10 @@ abbr --add zjl "zellij --layout"
 # Homebrew
 abbr --add b brew
 abbr --add bi "brew install"
-abbr --add bu "brew upgrade"
+abbr --add bu "brew uninstall"
+abbr --add bU "brew upgrade"
 abbr --add ba "brew abv"
-abbr --add bd "brew doctor"
+abbr --add bd "brew desc"
 abbr --add bo "brew outdated"
 
 # 系统工具

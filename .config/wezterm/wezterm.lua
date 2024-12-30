@@ -10,11 +10,11 @@ config.color_scheme = "Dracula"
 
 -- config.font = wezterm.font("Hack Nerd Font")
 config.font = wezterm.font_with_fallback({
+	"JetbrainsMono Nerd Font",
 	"Hack Nerd Font",
-	"Meslo Nerd Font Mono",
 	"SF Pro",
 })
-config.font_size = 14
+config.font_size = 15
 
 config.enable_tab_bar = false
 
@@ -22,7 +22,7 @@ config.window_decorations = "RESIZE"
 config.window_close_confirmation = "NeverPrompt"
 
 config.window_background_opacity = 0.8
-config.macos_window_background_blur = 20
+config.macos_window_background_blur = 25
 
 -- key bindings configuration
 config.keys = {

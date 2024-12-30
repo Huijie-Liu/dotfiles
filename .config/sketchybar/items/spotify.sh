@@ -146,7 +146,7 @@ spotify_controls=(
 )
 
 sketchybar --add event spotify_change $SPOTIFY_EVENT             \
-           --add item spotify.anchor right                      \
+           --add item spotify.anchor center                      \
            --set spotify.anchor "${spotify_anchor[@]}"           \
            --subscribe spotify.anchor mouse.entered mouse.exited \
                                       mouse.exited.global        \
