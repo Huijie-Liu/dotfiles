@@ -1,5 +1,5 @@
 # PATH 配置
-set -x PATH $HOME/.local/bin $HOME/.cargo/bin $HOME/.fzf/bin $PATH
+set -x PATH $HOME/.local/bin $PATH
 
 # PKG_CONFIG_PATH
 set -x PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig $PKG_CONFIG_PATH

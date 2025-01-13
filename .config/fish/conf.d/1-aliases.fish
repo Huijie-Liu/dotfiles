@@ -37,15 +37,23 @@ abbr --add r "source ~/.config/fish/config.fish"
 abbr --add e "nvim ~/.config/fish/config.fish"
 abbr --add f "find . -name"
 abbr --add v nvim
+abbr --add pd prevd
+abbr --add nd nextd
 abbr --add dud "du -h -d 1"
 abbr --add duds "du -h -d 1 | sort -h"
+
+# Nix
+set NIX "~/.nix-portable/nix-portable nix"
+abbr --add nix $NIX
+abbr --add ns --set-cursor $NIX" shell nixpkgs#%"
+abbr --add nr --set-cursor $NIX" run nixpkgs#%"
+abbr --add nf --set-cursor $NIX" flake"
 
 # 自定义
 abbr --add nvs nvidia-smi
 abbr --add lg lazygit
 abbr --add clash "bash ~/.app/clash-for-linux/start.sh"
 abbr --add ff fastfetch
-abbr --add ne nix-env
 
 # 全局快捷键
 abbr --add L --position anywhere --set-cursor "% | less"
