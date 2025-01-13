@@ -41,5 +41,5 @@ keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Tab movement
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+-- keymap.set("n", "<tab>", ":tabnext<Return>", opts)
+-- keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)

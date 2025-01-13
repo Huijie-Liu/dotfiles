@@ -4,7 +4,7 @@
 
 keybinds clear-defaults=true {
     locked {
-        bind "Ctrl a" { SwitchToMode "normal"; }
+        bind "Ctrl g" { SwitchToMode "normal"; }
     }
     pane {
         bind "left" { MoveFocus "left"; }
@@ -152,7 +152,7 @@ keybinds clear-defaults=true {
         bind "Alt o" { MoveTab "right"; }
     }
     shared_except "locked" "renametab" "renamepane" {
-        bind "Ctrl a" { SwitchToMode "locked"; }
+        bind "Ctrl g" { SwitchToMode "locked"; }
         bind "Ctrl q" { Quit; }
     }
     shared_except "locked" "entersearch" {
@@ -256,7 +256,8 @@ default_mode "locked"
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 // 
-default_shell "/data/liuhuijie/.nix-profile/bin/fish"
+default_shell "bash"
+// default_shell "/nix/store/hgpny1fdshhc1y3nnsjxdaiwm96frb51-fish-3.7.1/bin/fish"
  
 // Choose the path to override cwd that zellij will use for opening new panes
 // 
