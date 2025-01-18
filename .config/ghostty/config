@@ -1,5 +1,6 @@
 # Appearance config
 theme = "Dracula"
+# theme = "ayu"
 font-family = "JetBrainsMono Nerd Font"
 font-size = 15
 macos-titlebar-style = hidden

@@ -45,7 +45,7 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focused-monitor-changed = []
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
@@ -65,12 +65,17 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 10
-inner.vertical = 10
-outer.left = 10
-outer.bottom = 10
-outer.top = [{ monitor.built-in = 20 }, { monitor.main = 45 }, 10]
-outer.right = 10
+inner.horizontal = [{ monitor.secondary = 0 }, 10]
+inner.vertical = [{ monitor.secondary = 0 }, 10]
+outer.left = [{ monitor.secondary = 0 }, 10]
+outer.bottom = [{ monitor.secondary = 0 }, 10]
+outer.right = [{ monitor.secondary = 0 }, 10]
+outer.top = [
+  { monitor.built-in = 20 },
+  { monitor.main = 45 },
+  { monitor.secondary = 0 },
+  10,
+]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -129,9 +134,9 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
-# alt-7 = 'workspace 7'
-# alt-8 = 'workspace 8'
-# alt-9 = 'workspace 9'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -140,6 +145,9 @@ alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-5 = 'move-node-to-workspace 5'
 alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
 
 alt-shift-n = 'move-workspace-to-monitor next'
 alt-shift-p = 'move-workspace-to-monitor prev'
@@ -177,6 +185,22 @@ alt-shift-l = ['join-with right', 'mode main']
 [[on-window-detected]]
 if.app-name-regex-substring = "notion|访达|finder|邮件|系统设置|bettertouchtool|ChatGPT|App Store|微信|Wechat|腾讯会议|meeting|QQ|clash|telegram|ghostty"
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty|com.github.wez.wezterm'
+run = ['move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = ['move-node-to-workspace 4']
 
 [workspace-to-monitor-force-assignment]
 1 = 'main'
