@@ -8,11 +8,11 @@ abbr --add L --position anywhere --set-cursor "% | less"
 abbr --add G --position anywhere --set-cursor "| grep"
 
 # 文件管理
-abbr --add ls "eza --color=always"
-abbr --add l "eza --color=always --oneline --icons=always"
-abbr --add la "eza --color=always --all --git --icons=always"
-abbr --add ll "eza --color=always --long --git --icons=always --all --no-filesize --no-time --no-user --no-permissions"
-abbr --add lt "eza --tree --level 2"
+abbr --add ls eza
+abbr --add l "eza -A -1 --icons=always"
+abbr --add la "eza -Al --git --icons=always"
+abbr --add ll "eza -A --icons=always"
+abbr --add lt "eza -T -L 2 --icons=always"
 abbr --add cd z
 abbr --add md "mkdir -p"
 abbr --add rd rmdir
@@ -42,7 +42,10 @@ abbr --add bu "brew uninstall"
 abbr --add bU "brew upgrade"
 abbr --add ba "brew abv"
 abbr --add bd "brew desc"
+abbr --add bD "brew doctor"
 abbr --add bo "brew outdated"
+abbr --add bl "brew list"
+abbr --add bI "brew info"
 
 # 系统工具
 abbr --add proxy "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
