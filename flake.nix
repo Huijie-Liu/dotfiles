@@ -17,9 +17,14 @@
           # Shell
           pkgs.fish
           pkgs.starship
+          pkgs.eza
+          pkgs.bat
+          pkgs.fzf
+          pkgs.fd
+          pkgs.ripgrep
+          pkgs.yazi
           pkgs.atuin
           pkgs.zoxide
-          pkgs.starship
 
           # Terminal
           pkgs.tmux
@@ -27,14 +32,6 @@
 
           # Editor
           pkgs.neovim
-          pkgs.eza
-          pkgs.bat
-          pkgs.fzf
-          pkgs.fd
-          pkgs.yazi
-          pkgs.duf
-          pkgs.ncdu
-          pkgs.dust
 
           # VCS
           pkgs.git
@@ -47,11 +44,15 @@
           pkgs.btop
 
           # MISC
+          pkgs.duf
+          pkgs.ncdu
+          pkgs.dust
           pkgs.fastfetch
           pkgs.tlrc
-          pkgs.go
           pkgs.clash-meta
           pkgs.metacubexd
+          pkgs.scc
+          pkgs.tokei
         ];
 
         shellHook = ''

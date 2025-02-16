@@ -1,9 +1,11 @@
 # 文件管理
-abbr --add ls "eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-abbr --add l "eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions --all"
-abbr --add ll "eza --color=always --long --git --icons=always --all --no-filesize --no-time --no-user --no-permissions"
-abbr --add la "eza --color=always --git --no-filesize --icons=always --all"
-abbr --add d "dirs -v"
+abbr --add ls eza
+abbr --add l "eza -A -1 --icons=always"
+abbr --add la "eza -Al --git --icons=always"
+abbr --add ll "eza -A --icons=always"
+abbr --add lt "eza -T -L 2 --icons=always"
+abbr --add pd prevd
+abbr --add nd nextd
 abbr --add .. "cd .."
 abbr --add ... "cd ../.."
 

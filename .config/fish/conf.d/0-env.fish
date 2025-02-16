@@ -13,3 +13,7 @@ set -x TMPDIR "$HOME/.tmp"
 if not test -d $TMPDIR
     mkdir -p $TMPDIR
 end
+
+# CUDA
+set -x PATH /usr/local/cuda-11.8/bin $PATH
+set -x LD_LIBRARY_PATH /usr/local/cuda-11.8/lib64 $LD_LIBRARY_PATH
