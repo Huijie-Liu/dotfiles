@@ -1,63 +1,45 @@
 {
-  description = "My Nix develop environment";
+  description = "Nix Development Environment";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, ... }:
+  outputs = { self, nixpkgs, ... } @inputs:
     let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-    in {
-      devShell.${system} = pkgs.mkShell {
-        buildInputs = [
-          # Shell
-          pkgs.fish
-          pkgs.starship
-          pkgs.eza
-          pkgs.bat
-          pkgs.fzf
-          pkgs.fd
-          pkgs.ripgrep
-          pkgs.yazi
-          pkgs.atuin
-          pkgs.zoxide
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+      forEachSystem = f: nixpkgs.lib.genAttrs systems (system: f {
+        pkgs = import nixpkgs { inherit system; };
+      });
+    in
+    {
+      devShells = forEachSystem ({ pkgs }: {
+        default = pkgs.mkShellNoCC {
 
-          # Terminal
-          pkgs.tmux
-          pkgs.zellij
+          buildInputs = with pkgs; [
+            # Shell增强
+            fish starship eza bat fzf fd ripgrep yazi atuin zoxide
+            # 终端工具
+            tmux zellij
+            # 编辑器
+            neovim
+            # VCS工具
+            git lazygit delta gitmoji-cli
+            # 网络工具
+            curl wget
+            # 系统监控
+            htop btop
+            # 其他工具
+            duf ncdu dust tlrc fastfetch scc tokei
+            # Proxy
+            clash-meta metacubexd
+          ];
 
-          # Editor
-          pkgs.neovim
-
-          # VCS
-          pkgs.git
-          pkgs.delta
-          pkgs.lazygit
-          pkgs.gitmoji-cli
-
-          # Monitor
-          pkgs.htop
-          pkgs.btop
-
-          # MISC
-          pkgs.duf
-          pkgs.ncdu
-          pkgs.dust
-          pkgs.fastfetch
-          pkgs.tlrc
-          pkgs.clash-meta
-          pkgs.metacubexd
-          pkgs.scc
-          pkgs.tokei
-        ];
-
-        shellHook = ''
-          exec fish
-        '';
-      };
+          # 环境初始化
+          shellHook = ''
+            exec fish
+          '';
+        };
+      });
     };
 }
