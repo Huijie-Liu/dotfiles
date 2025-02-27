@@ -1,12 +1,12 @@
 # Appearance config
-theme = "Dracula"
-# theme = "ayu"
+# theme = "Dracula"
+theme = "ayu"
 font-family = "JetBrainsMono Nerd Font"
 font-size = 15
 macos-titlebar-style = hidden
 macos-titlebar-style = tabs
-# macos-window-shadow = false
-background-opacity = 0.8
+macos-titlebar-proxy-icon = hidden
+background-opacity = 0.90
 background-blur-radius = 20
 unfocused-split-opacity = 0.6
 window-padding-x = 8
@@ -14,16 +14,17 @@ window-padding-y = 8
 window-padding-balance = true
 window-colorspace = display-p3
 window-decoration = true
-mouse-hide-while-typing = true
 
 # tty config
 shell-integration-features = no-cursor
-cursor-style = block
-cursor-style-blink = true
+# cursor-style = block
+# cursor-style-blink = true
 macos-option-as-alt = true
 confirm-close-surface = false
+mouse-hide-while-typing = true
 
 # Keybindings
 keybind = alt+left=unbind
 keybind = alt+right=unbind
 keybind = super+comma=text:nvim ~/.config/ghostty/config\x0D
+keybind = global:cmd+escape=toggle_quick_terminal
