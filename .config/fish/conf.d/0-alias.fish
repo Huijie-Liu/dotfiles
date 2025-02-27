@@ -59,3 +59,4 @@ abbr --add lg lazygit
 # 其他工具
 abbr --add dw download_wallpaper
 abbr --add ff fastfetch
+abbr --add mm micromamba
