@@ -30,13 +30,14 @@
             # 系统监控
             htop btop
             # 其他工具
-            duf ncdu dust tlrc fastfetch scc tokei
+            duf ncdu dust tlrc fastfetch scc tokei micromamba
             # Proxy
             clash-meta metacubexd
           ];
 
           # 环境初始化
           shellHook = ''
+            export SHELL=$(which fish)
             exec fish
           '';
         };

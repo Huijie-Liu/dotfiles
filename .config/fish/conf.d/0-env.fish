@@ -15,5 +15,5 @@ if not test -d $TMPDIR
 end
 
 # CUDA
-set -x PATH /usr/local/cuda-11.8/bin $PATH
-set -x LD_LIBRARY_PATH /usr/local/cuda-11.8/lib64 $LD_LIBRARY_PATH
+#set -x PATH /usr/local/cuda-11.8/bin $PATH
+#set -x LD_LIBRARY_PATH /usr/local/cuda-11.8/lib64 $LD_LIBRARY_PATH

@@ -256,8 +256,7 @@ default_mode "locked"
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 // 
-default_shell "bash"
-// default_shell "/nix/store/hgpny1fdshhc1y3nnsjxdaiwm96frb51-fish-3.7.1/bin/fish"
+// default_shell "bash"
  
 // Choose the path to override cwd that zellij will use for opening new panes
 // 

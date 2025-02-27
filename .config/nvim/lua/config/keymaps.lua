@@ -15,6 +15,18 @@ keymap.set("n", "<Leader>D", '"_D')
 keymap.set("v", "<Leader>d", '"_d')
 keymap.set("v", "<Leader>D", '"_D')
 
+-- Basic keymaps
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
+keymap.set("n", "<C-f>", "<C-f>zz")
+keymap.set("n", "<C-b>", "<C-b>zz")
+keymap.set("i", "<C-b>", "<Left>", opts)
+keymap.set("i", "<C-f>", "<Right>", opts)
+keymap.set("i", "<C-p>", "<Up>", opts)
+keymap.set("i", "<C-n>", "<Down>", opts)
+keymap.set("i", "<C-a>", "<Esc>I", opts)
+keymap.set("i", "<C-e>", "<Esc>A", opts)
+
 -- Exit insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
@@ -39,7 +51,3 @@ keymap.set("n", "<C-w><left>", "<C-w><")
 keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
-
--- Tab movement
--- keymap.set("n", "<tab>", ":tabnext<Return>", opts)
--- keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)

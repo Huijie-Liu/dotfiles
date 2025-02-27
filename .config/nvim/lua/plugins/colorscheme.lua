@@ -11,11 +11,19 @@ return {
     },
   },
 
+  -- Dracula
+  {
+    "Mofiqul/dracula.nvim",
+    opts = {
+      transparent_bg = true,
+    },
+  },
+
   -- Configure LazyVim to load theme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "dracula",
     },
   },
 }

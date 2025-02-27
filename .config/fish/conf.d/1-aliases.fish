@@ -56,6 +56,7 @@ abbr --add nvs nvidia-smi
 abbr --add lg lazygit
 abbr --add clash "bash ~/.app/clash-for-linux/start.sh"
 abbr --add ff fastfetch
+abbr --add mm micromamba
 
 # 全局快捷键
 abbr --add L --position anywhere --set-cursor "% | less"
