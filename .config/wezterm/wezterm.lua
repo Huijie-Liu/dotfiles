@@ -11,7 +11,7 @@ config.font = wezterm.font_with_fallback({
 	"Hack Nerd Font",
 	"SF Pro",
 })
-config.font_size = 15
+config.font_size = 14
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "NeverPrompt"

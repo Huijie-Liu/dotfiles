@@ -4,6 +4,7 @@ abbr --add x exit
 abbr --add e "nvim ~/.config/fish/config.fish"
 abbr --add r "source ~/.config/fish/config.fish"
 abbr --add v nvim
+abbr --add g git
 abbr --add L --position anywhere --set-cursor "% | less"
 abbr --add G --position anywhere --set-cursor "| grep"
 
@@ -39,6 +40,8 @@ abbr --add zjl "zellij --layout"
 abbr --add b brew
 abbr --add bi "brew install"
 abbr --add bu "brew uninstall"
+abbr --add bc "brew cleanup --prune=all"
+abbr --add bs "brew search"
 abbr --add bU "brew upgrade"
 abbr --add ba "brew abv"
 abbr --add bd "brew desc"
@@ -51,7 +54,6 @@ abbr --add bI "brew info"
 abbr --add proxy "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
 
 # 开发工具
-abbr --add python python3
 abbr --add lg lazygit
 
 # 其他工具

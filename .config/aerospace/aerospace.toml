@@ -136,7 +136,7 @@ alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
+# alt-9 = 'workspace 9'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -147,14 +147,11 @@ alt-shift-5 = 'move-node-to-workspace 5'
 alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
+# alt-shift-9 = 'move-node-to-workspace 9'
 
 alt-shift-n = 'move-workspace-to-monitor next'
 alt-shift-p = 'move-workspace-to-monitor prev'
 
-# alt-shift-7 = 'move-node-to-workspace 7'
-# alt-shift-8 = 'move-node-to-workspace 8'
-# alt-shift-9 = 'move-node-to-workspace 9'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
@@ -183,7 +180,7 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-name-regex-substring = "notion|访达|finder|邮件|系统设置|bettertouchtool|ChatGPT|App Store|微信|Wechat|腾讯会议|meeting|QQ|clash|telegram|ghostty"
+if.app-name-regex-substring = "notion|访达|finder|邮件|系统设置|bettertouchtool|ChatGPT|App Store|微信|Wechat|腾讯会议|meeting|QQ|clash|telegram|ghostty|qbittorrent|karabiner-Elements|阿里云盘|IINA|keka"
 run = ['layout floating']
 
 [[on-window-detected]]
@@ -195,7 +192,7 @@ if.app-id = 'com.microsoft.VSCode'
 run = ['move-node-to-workspace 2']
 
 [[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty|com.github.wez.wezterm'
+if.app-name-regex-substring = 'ghostty|wezterm'
 run = ['move-node-to-workspace 3']
 
 [[on-window-detected]]
@@ -209,3 +206,5 @@ run = ['move-node-to-workspace 4']
 4 = 'built-in'
 5 = 'built-in'
 6 = 'built-in'
+7 = 'secondary'
+8 = 'secondary'

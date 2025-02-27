@@ -16,8 +16,8 @@ for sid in $(aerospace list-workspaces --all); do
     icon.padding_left=8
     icon.padding_right=8
     icon.highlight_color=$RED
-    padding_left=5
-    padding_right=2
+    padding_left=4
+    padding_right=4
     click_script="aerospace workspace $sid"
     script="$PLUGIN_DIR/aerospace.sh $sid"
   )
