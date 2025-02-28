@@ -234,6 +234,7 @@ plugins {
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
+  https://github.com/dj95/zjstatus/releases/download/v0.20.2/zjstatus.wasm
 }
  
 // Use a simplified UI without special fonts (arrow glyphs)
@@ -241,7 +242,7 @@ load_plugins {
 //   - true
 //   - false (Default)
 // 
-simplified_ui true
+// simplified_ui true
  
 // Choose the theme that is specified in the themes section.
 // Default: default
@@ -265,6 +266,7 @@ default_mode "locked"
 // The name of the default layout to load on startup
 // Default: "default"
 // 
+// default_layout "compact"
 default_layout "zjstatus"
  
 // The folder in which Zellij will look for layouts
@@ -291,7 +293,7 @@ default_layout "zjstatus"
 //   - true (default, enabled)
 //   - false
 // 
-// pane_frames false
+pane_frames false
  
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
@@ -394,7 +396,7 @@ default_layout "zjstatus"
 // (Requires restart)
 // Default: true
 // 
-// styled_underlines false
+styled_underlines false
  
 // How often in seconds sessions are serialized
 // 
