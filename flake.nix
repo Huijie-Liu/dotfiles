@@ -30,7 +30,7 @@
             # 系统监控
             htop btop
             # 其他工具
-            duf ncdu dust tlrc fastfetch scc tokei micromamba
+            duf ncdu dust tealdeer fastfetch scc tokei micromamba
             # Proxy
             clash-meta metacubexd
           ];
