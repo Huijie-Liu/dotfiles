@@ -17,8 +17,8 @@ window-decoration = true
 
 # tty config
 shell-integration-features = no-cursor
-# cursor-style = block
-# cursor-style-blink = true
+cursor-style = block
+cursor-style-blink = true
 macos-option-as-alt = true
 confirm-close-surface = false
 mouse-hide-while-typing = true
