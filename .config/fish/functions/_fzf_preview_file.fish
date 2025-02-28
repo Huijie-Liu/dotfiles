@@ -24,6 +24,8 @@ function _fzf_preview_file --description "Print a preview for the given file bas
         if set --query fzf_preview_dir_cmd
             # see above
             eval "$fzf_preview_dir_cmd '$file_path'"
+        else if command -v eza > /dev/null
+            eza -T -L 2 --color=always "$file_path"
         else
             # -A list hidden files as well, except for . and ..
             # -F helps classify files by appending symbols after the file name
