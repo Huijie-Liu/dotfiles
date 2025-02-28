@@ -45,11 +45,11 @@ abbr --add dud "du -h -d 1"
 abbr --add duds "du -h -d 1 | sort -h"
 
 # Nix
-set NIX "~/.nix-portable/nix-portable nix"
-abbr --add nix $NIX
-abbr --add ns --set-cursor $NIX" shell nixpkgs#%"
-abbr --add nr --set-cursor $NIX" run nixpkgs#%"
-abbr --add nf --set-cursor $NIX" flake"
+#set NIX "~/.nix-portable/nix-portable nix"
+#abbr --add nix $NIX
+#abbr --add ns --set-cursor $NIX" shell nixpkgs#%"
+#abbr --add nr --set-cursor $NIX" run nixpkgs#%"
+#abbr --add nf --set-cursor $NIX" flake"
 
 # 自定义
 abbr --add nvs nvidia-smi
