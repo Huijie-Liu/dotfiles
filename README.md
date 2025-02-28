@@ -1,10 +1,21 @@
 # Development Environment Configuration 🚀
 
-This is my personal development environment configuration collection, including terminal, shell, editor, and various tools configurations.
+![Shell Integration](https://img.shields.io/badge/Shell-Zsh%20%7C%20Fish-blueviolet)
+![Editor](https://img.shields.io/badge/Editor-Neovim-brightgreen)
+![Package Manager](https://img.shields.io/badge/Package-Nix-orange)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Note:** These configurations are mainly for reference. It's recommended to selectively use them based on your personal needs. Please proceed with caution!
+This repository contains my cross-platform development environment configurations for terminal, shell, editors, and various productivity tools. Ideal for developers working across Linux/macOS systems.
 
-## Quick Start
+**Disclaimer**: These configurations are opinionated and tailored to my workflow. Use them as a reference and adapt carefully to your needs.
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Git 2.0+
+- Bash 4.0+
+- curl/wget
 
 ### Clone Repository
 
@@ -13,105 +24,140 @@ git clone --branch linux https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
-### Automatic Installation
-
-Choose the installation script according to your operating system:
+### Automated Setup (Linux)
 
 ```bash
-# Linux
-bash setup_linux.sh
+bash setup.sh
 ```
 
-## Features
+## ✨ Features
 
-- Support for macOS and Linux systems
-- Automatic installation and configuration of common development tools
-- Modular configuration file organization
-- Unified theme style
+- **Cross-Platform Support**: Optimized for both Linux and macOS
+- **Modern Toolchain**: Pre-configured development essentials
+- **Modular Design**: Easy to enable/disable components
+- **Unified UI**: Consistent theming across all tools
+- **Reproducible**: Nix flake support for environment consistency
 
-## Directory Structure
+## 📂 Directory Structure
 
-```
+```text
 .
-├── README.md                    # Project documentation
-├── setup.sh                     # Linux environment setup script
-├── .scripts/                   # Utility scripts directory
-├── .config/                    # Configuration files directory
-│   ├── fish/                  # Fish shell config
-│   ├── nvim/                  # Neovim config
-│   ├── starship/             # Starship theme config
-│   └── zsh/                  # Zsh config
-└── .gitignore                 # Git ignore file
+├── .condarc                    # Conda configuration
+├── .config/                    # XDG config directory
+│   ├── fish/                   # Fish shell configs
+│   ├── lazygit/                # Git TUI configuration
+│   ├── nix/                    # Nix package manager configs
+│   ├── nvim/                   # Neovim IDE configuration
+│   ├── starship.toml           # Cross-shell prompt
+│   ├── zellij/                 # Terminal workspace config
+│   └── zsh/                    # Zsh configuration
+├── .git/                       # Git version control
+├── .scripts/                   # Custom utility scripts
+│   ├── ide                     # IDE launcher
+│   ├── replace_latex          # Text processing script
+│   └── workshop                # Development setup helper
+├── .tmux.conf                  # Tmux configuration
+├── .zshrc                      # Zsh entrypoint
+├── flake.*                     # Nix flake configurations
+├── LICENSE                     # MIT License
+├── README.*                    # Documentation
+└── setup.sh                    # Linux bootstrap script
 ```
 
-## Included Tools
+## 🛠️ Featured Tools
 
-### Terminal Tools
+### Terminal Environment
 
-- **Shell**:
-  - Zsh (with zinit)
-  - Fish Shell
-- **Terminal Multiplexer**:
-  - Tmux
+| Category        | Tools                            |
+| --------------- | -------------------------------- |
+| **Shell**       | Zsh (zinit plugin manager), Fish |
+| **Multiplexer** | Tmux, Zellij                     |
+| **Prompt**      | Starship                         |
 
-### Command Line Tools
+### Core Utilities
 
-- **Basic Tools**:
+| Tool     | Description                                  |
+| -------- | -------------------------------------------- |
+| `eza`    | Modern `ls` replacement with git integration |
+| `bat`    | Syntax-highlighting `cat`                    |
+| `fzf`    | Fuzzy finder                                 |
+| `zoxide` | Smart directory jumper                       |
+| `delta`  | Git diff viewer                              |
 
-  - fzf - Fuzzy finder
-  - fd - Better find
-  - bat - Better cat
-  - eza - Better ls
-  - delta - Better git diff
-  - zoxide - Smarter cd
-  - starship - Cross-platform shell prompt
+### Development Essentials
 
-- **Development Tools**:
-  - lazygit - Git TUI interface
-  - neovim - Modern vim editor
-  - tmux - Terminal multiplexer
+| Tool           | Highlights                                |
+| -------------- | ----------------------------------------- |
+| Neovim         | Lazy.nvim plugin manager, LSP zero-config |
+| Lazygit        | Keyboard-driven Git interface             |
+| Miniconda      | Python environment management             |
+| Rust Toolchain | Rustup + essential cargo packages         |
 
-## Installation Guide
+## 🔧 Installation Details
 
-### Linux Environment
+### Linux Environment Setup
 
-The Linux installation script will automatically configure:
+The installation script performs:
 
-1. Basic Development Environment
+1. **Base System Setup**
 
-   - Miniconda
-   - Rust toolchain
-   - Common command line tools
+   - Install system dependencies
+   - Setup Miniconda environments
+   - Configure Rust toolchain
 
-2. Shell Environment
+2. **Shell Configuration**
 
-   - Zsh configuration
-   - Shell plugins
+   - Zsh with zinit plugin manager
+   - Pre-configured Powerlevel10k theme
+   - Syntax highlighting & auto-suggestions
 
-3. Development Tools
-   - Neovim
-   - Tmux
-   - lazygit
+3. **Developer Tools**
+   - Neovim (NvChad-based config)
+   - Tmux with resurrect/continuum
+   - Lazygit with custom keybinds
 
-## Customization
+## 🎨 Customization Guide
 
-1. Modify Configuration Files
+### Modify Configurations
 
-   - Edit corresponding config files under `~/.config`
-   - Adjust shell configuration as needed
+1. Edit files in `~/.config/`:
 
-2. Add New Tools
-   - Edit installation scripts to add new packages
-   - Add configuration files in the `.config` directory
+   - Neovim: `nvim/lua/custom/`
+   - Shells: `zsh/.zshrc` or `fish/config.fish`
+   - Theme: `.config/starship.toml`
 
-## Contributing
+2. Add new tools:
 
-Issues and Pull Requests are welcome!
+```bash
+# 1. Add package to setup.sh
+# 2. Create config in .config/
+# 3. Update documentation
+```
 
-## License
+### Nix Flake Usage
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+For reproducible environments:
 
-## Acknowledgments
+```bash
+nix develop  # Enter dev shell
+nix run .#neovim  # Run specific package
+```
 
-Thanks to all the authors of the open source tools!
+## 🤝 Contributing
+
+PRs and issues are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feat/amazing-feature`)
+3. Commit changes with descriptive messages
+4. Push to branch
+5. Open Pull Request
+
+## 📜 License
+
+Distributed under MIT License. See `LICENSE` for details.
+
+## 🙏 Acknowledgments
+
+- [LazyVim](https://www.lazyvim.org/) for Neovim configuration base
+- All open-source tool maintainers

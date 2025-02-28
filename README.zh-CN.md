@@ -1,164 +1,163 @@
 # 开发环境配置 🚀
 
-这是我的个人开发环境配置文件集合，包含了终端、Shell、编辑器等各种工具的配置。
+![Shell Integration](https://img.shields.io/badge/Shell-Zsh%20%7C%20Fish-blueviolet)
+![Editor](https://img.shields.io/badge/Editor-Neovim-brightgreen)
+![Package Manager](https://img.shields.io/badge/Package-Nix-orange)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**注意：** 这些配置主要用于参考。建议根据个人需求选择性使用。请谨慎操作！
+本仓库包含我跨平台的开发环境配置，涵盖终端、Shell、编辑器及各类生产力工具，适用于 Linux/macOS 系统开发者。
 
-## 快速开始
+**免责声明**：这些配置具有个人偏好性，请根据实际需求谨慎使用。
+
+## 🚀 快速开始
+
+### 环境要求
+
+- Git 2.0+
+- Bash 4.0+
+- curl/wget
 
 ### 克隆仓库
 
 ```bash
-git clone https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
+git clone --branch linux https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
-### 自动安装
-
-根据你的操作系统选择对应的安装脚本：
+### 自动化安装 (Linux)
 
 ```bash
-# macOS
-bash setup_macos.sh
-
-# Linux
-bash setup_linux.sh
-
-# Windows
-. setup_windows.ps
+bash setup.sh
 ```
 
-## 功能特性
+## ✨ 特性
 
-- 支持 macOS 和 Linux 系统
-- 自动安装和配置常用开发工具
-- 模块化的配置文件组织
-- 统一的主题风格
+- **跨平台支持**：优化适配 Linux/macOS 双系统
+- **现代工具链**：预置开发核心组件
+- **模块化设计**：组件可自由启用/禁用
+- **统一风格**：全工具链一致主题
+- **可复现性**：支持 Nix flake 环境配置
 
-## 目录结构
+## 📂 目录结构
 
-```
+```text
 .
-├── README.md                    # 项目文档
-├── setup_linux.sh              # Linux 环境配置脚本
-├── setup_macos.sh              # macOS 环境配置脚本
-├── .scripts/                    # 实用脚本目录
-├── .config/                    # 配置文件目录
-│   ├── alacritty/             # Alacritty 终端配置
-│   ├── fish/                  # Fish shell 配置
-│   ├── nvim/                  # Neovim 配置
-│   ├── sketchybar/           # Sketchybar 配置(macOS)
-│   ├── starship/             # Starship 主题配置
-│   ├── yabai/                # Yabai 窗口管理配置(macOS)
-│   ├── skhd/                 # SKHD 快捷键配置(macOS)
-│   └── zsh/                  # Zsh 配置
-└── .gitignore                 # Git 忽略文件
+├── .condarc                    # Conda 配置
+├── .config/                    # XDG 配置目录
+│   ├── fish/                   # Fish Shell 配置
+│   ├── lazygit/                # Git 终端界面配置
+│   ├── nix/                    # Nix 包管理器配置
+│   ├── nvim/                   # Neovim IDE 配置
+│   ├── starship.toml           # 跨 Shell 提示符
+│   ├── zellij/                 # 终端工作区配置
+│   └── zsh/                    # Zsh 配置
+├── .git/                       # 版本控制数据
+├── .scripts/                   # 实用脚本集
+│   ├── ide                     # IDE 启动器
+│   ├── replace_latex           # 文本处理脚本
+│   └── workshop                # 开发环境助手
+├── .tmux.conf                  # Tmux 配置
+├── .zshrc                      # Zsh 入口配置
+├── flake.*                     # Nix flake 配置
+├── LICENSE                     # MIT 许可证
+├── README.*                    # 项目文档
+└── setup.sh                    # Linux 环境引导脚本
 ```
 
-## 包含的工具
+## 🛠️ 核心工具
 
-### 终端工具
+### 终端环境
 
-- **Shell**:
-  - Zsh (带 Oh My Zsh)
-  - Fish Shell
-- **终端模拟器**:
-  - Alacritty
-  - iTerm2 (仅 macOS)
-- **终端复用器**:
-  - Tmux
+| 类别         | 工具                       |
+| ------------ | -------------------------- |
+| **Shell**    | Zsh (zinit 插件管理), Fish |
+| **多路复用** | Tmux, Zellij               |
+| **提示符**   | Starship                   |
 
-### 命令行工具
+### 核心工具
 
-- **基础工具**:
+| 工具     | 描述                        |
+| -------- | --------------------------- |
+| `eza`    | 增强版 `ls` (支持 git 集成) |
+| `bat`    | 语法高亮 `cat`              |
+| `fzf`    | 模糊搜索工具                |
+| `zoxide` | 智能目录跳转                |
+| `delta`  | 增强版 git diff             |
 
-  - fzf - 模糊查找
-  - fd - 更好的 find
-  - bat - 更好的 cat
-  - eza - 更好的 ls
-  - delta - 更好的 git diff
-  - zoxide - 更智能的 cd
-  - starship - 跨平台 Shell 提示符
+### 开发工具链
 
-- **开发工具**:
-  - lazygit - Git TUI 界面
-  - neovim - 现代化的 vim 编辑器
-  - tmux - 终端复用器
+| 工具        | 亮点                      |
+| ----------- | ------------------------- |
+| Neovim      | 基于 Lazy.nvim 的插件系统 |
+| Lazygit     | 键盘驱动的 Git 界面       |
+| Miniconda   | Python 环境管理           |
+| Rust 工具链 | Rustup + 核心 cargo 包    |
 
-### macOS 专属
+## 🔧 安装详情
 
-- **窗口管理**:
+### Linux 环境配置
 
-  - Yabai - 平铺式窗口管理器
-  - SKHD - 快捷键守护程序
-  - Sketchybar - 自定义菜单栏
+安装脚本将自动完成：
 
-- **效率工具**:
-  - Raycast - 启动器
-  - BetterTouchTool - 触控板增强
-  - Bartender - 菜单栏管理
+1. **基础环境搭建**
 
-## 安装说明
+   - 系统依赖安装
+   - Miniconda 环境配置
+   - Rust 工具链设置
 
-### Linux 环境
+2. **Shell 环境配置**
 
-Linux 安装脚本会自动配置：
+   - Zsh + zinit 插件管理器
+   - Powerlevel10k 主题预配置
+   - 语法高亮与自动建议
 
-1. 基础开发环境
+3. **开发工具部署**
+   - Neovim (基于 NvChad 配置)
+   - Tmux 会话持久化配置
+   - Lazygit 自定义快捷键
 
-   - Miniconda
-   - Rust 工具链
-   - 常用命令行工具
+## 🎨 自定义指南
 
-2. Shell 环境
+### 修改配置
 
-   - Zsh 配置
-   - Shell 插件
+1. 编辑 `~/.config/` 下文件：
 
-3. 开发工具
-   - Neovim
-   - Tmux
-   - lazygit
+   - Neovim: `nvim/lua/custom/`
+   - Shell: `zsh/.zshrc` 或 `fish/config.fish`
+   - 主题: `.config/starship.toml`
 
-### macOS 环境
+2. 添加新工具：
 
-macOS 安装脚本额外包含：
+```bash
+# 1. 在 setup.sh 中添加安装包
+# 2. 在 .config/ 创建对应配置
+# 3. 更新文档说明
+```
 
-1. GUI 应用安装
+### Nix Flake 使用
 
-   - iTerm2
-   - Alacritty
-   - Raycast 等
+创建可复现的开发环境：
 
-2. 窗口管理
+```bash
+nix develop   # 进入开发环境
+nix run .#neovim  # 运行指定工具
+```
 
-   - Yabai
-   - SKHD
-   - Sketchybar
+## 🤝 贡献指南
 
-3. Shell 环境
-   - Fish Shell 配置
-   - Starship 主题
+欢迎提交改进建议！请按以下流程操作：
 
-## 自定义
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feat/新特性`)
+3. 提交描述清晰的 commit
+4. 推送至分支
+5. 发起 Pull Request
 
-1. 修改配置文件
+## 📜 许可证
 
-   - 编辑 `~/.config` 下对应的配置文件
-   - 根据需要调整 Shell 配置
+本项目采用 MIT 许可证，详见 [LICENSE](LICENSE) 文件。
 
-2. 添加新工具
-   - 编辑安装脚本添加新的软件包
-   - 在 `.config` 目录添加配置文件
+## 🙏 致谢
 
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-## 许可
-
-本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
-
-## 致谢
-
-感谢所有开源工具的作者们！
+- [LazyVim](https://www.lazyvim.org/) Neovim 配置基础
+- 所有开源工具维护者
