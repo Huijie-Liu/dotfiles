@@ -1,8 +1,8 @@
 # Development Environment Configuration 🚀
 
-This is my personal development environment configuration collection, including terminal, shell, editor, and various tools configurations.
+This repository contains my personal development environment setup for macOS systems, featuring terminal configurations, shell customizations, editor setups, and productivity tools.
 
-**Note:** These configurations are mainly for reference. It's recommended to selectively use them based on your personal needs. Please proceed with caution!
+**Note:** These configurations are tailored to my workflow. Use selectively and with caution!
 
 ## Quick Start
 
@@ -15,8 +15,6 @@ cd ~/.dotfiles
 
 ### Automatic Installation
 
-Choose the installation script according to your operating system:
-
 ```bash
 # macOS
 bash setup.sh
@@ -24,135 +22,126 @@ bash setup.sh
 
 ## Features
 
-- Support for macOS systems
-- Automatic installation and configuration of common development tools
-- Modular configuration file organization
-- Unified theme style
+- **macOS Optimization**: Custom configurations for Apple Silicon devices
+- **One-Click Setup**: Automated installation of essential development tools
+- **Modular Design**: Organized configuration files for easy customization
+- **Unified Theme**: Consistent visual style across all tools
 
 ## Directory Structure
 
 ```
 .
-├── README.md                    # Project documentation
-├── setup.sh                   # macOS environment setup script
-├── .scripts/                   # Utility scripts directory
-├── .config/                    # Configuration files directory
-│   ├── alacritty/             # Alacritty terminal config
-│   ├── wezterm/               # Wezterm terminal config
-│   ├── fish/                  # Fish shell config
-│   ├── nvim/                  # Neovim config
-│   ├── sketchybar/           # Sketchybar config (macOS)
-│   ├── starship/             # Starship theme config
-│   ├── yabai/                # Yabai window management config (macOS)
-│   ├── skhd/                 # SKHD shortcut config (macOS)
-│   └── zsh/                  # Zsh config
-└── .gitignore                 # Git ignore file
+├── README.md                   # Main documentation
+├── setup.sh                    # macOS automation script
+├── .scripts/                   # Custom utility scripts
+├── .config/                    # Application configurations
+│   ├── aerospace/              # Window manager config
+│   ├── alacritty/              # Alacritty terminal config
+│   ├── fish/                   # Fish shell config
+│   ├── ghostty/                # Ghostty terminal config
+│   ├── nvim/                   # Neovim IDE config
+│   ├── sketchybar/             # macOS status bar config
+│   ├── skhd/                   # Hotkey daemon config
+│   ├── starship.toml           # Shell prompt config
+│   ├── wezterm/                # Wezterm terminal config
+│   ├── yabai/                  # Tiling WM config
+│   ├── zellij/                 # Terminal multiplexer config
+│   └── zsh/                    # Zsh shell config
+├── .tmux.conf                  # Tmux configuration
+├── .zshrc                      # Zsh configuration
+└── LICENSE                     # MIT License
 ```
 
-## Included Tools
+## Core Components
 
-### Terminal Tools
+### Terminal Ecosystem
 
-- **Shell**:
-  - Zsh (with Oh My Zsh)
-  - Fish Shell
-- **Terminal Emulator**:
+- **Shells**:
+  - Zsh with Oh My Zsh & Powerlevel10k
+  - Fish with Tide prompt
+- **Terminal Emulators**:
   - Alacritty
-  - iTerm2 (macOS only)
-- **Terminal Multiplexer**:
+  - Wezterm
+  - iTerm2
+- **Multiplexers**:
   - Tmux
+  - Zellij
 
-### Command Line Tools
+### CLI Toolchain
 
-- **Basic Tools**:
+- **Productivity Boosters**:
+  - `fzf` (fuzzy finder)
+  - `bat` (syntax highlighting)
+  - `eza` (modern ls)
+  - `zoxide` (smart cd)
+- **Git Enhancements**:
+  - `lazygit` (TUI interface)
+  - `delta` (diff viewer)
 
-  - fzf - Fuzzy finder
-  - fd - Better find
-  - bat - Better cat
-  - eza - Better ls
-  - delta - Better git diff
-  - zoxide - Smarter cd
-  - starship - Cross-platform shell prompt
-
-- **Development Tools**:
-  - lazygit - Git TUI interface
-  - neovim - Modern vim editor
-  - tmux - Terminal multiplexer
-
-### macOS Specific
+### macOS Exclusive
 
 - **Window Management**:
-
-  - Yabai - Tiling window manager
-  - SKHD - Hotkey daemon
-  - Sketchybar - Custom menu bar
-
-- **Productivity Tools**:
-  - Raycast - Launcher
-  - BetterTouchTool - Trackpad enhancement
-  - Bartender - Menu bar management
+  - Yabai (tiling WM)
+  - SKHD (hotkey daemon)
+  - Sketchybar (custom menu bar)
+- **System Enhancements**:
+  - Raycast (launcher)
+  - BetterTouchTool (input customization)
+  - Bartender (menu bar management)
 
 ## Installation Guide
 
-### Linux Environment
+### macOS Setup
 
-The Linux installation script will automatically configure:
+The installation script (`setup.sh`) handles:
 
-1. Basic Development Environment
+1. **Essential Packages**:
 
-   - Miniconda
-   - Rust toolchain
-   - Common command line tools
+   - Homebrew package manager
+   - Core development tools
 
-2. Shell Environment
+2. **GUI Applications**:
 
-   - Zsh configuration
-   - Shell plugins
+   - iTerm2/Alacritty terminals
+   - Productivity utilities
 
-3. Development Tools
-   - Neovim
-   - Tmux
-   - lazygit
+3. **Shell Environments**:
 
-### macOS Environment
+   - Zsh/Fish configurations
+   - Starship cross-shell prompt
 
-The macOS installation script additionally includes:
+4. **Window Management**:
+   - Yabai/SKHD/Sketchybar trio
+   - Auto-configured key bindings
 
-1. GUI Application Installation
+## Customization Guide
 
-   - iTerm2
-   - Alacritty
-   - Raycast, etc.
+1. **Modify Configurations**:
 
-2. Window Management
+   - Edit files in `~/.config/`
+   - Adjust shell configs (`~/.zshrc`, `~/.config/fish`)
 
-   - Yabai
-   - SKHD
-   - Sketchybar
+2. **Add New Tools**:
 
-3. Shell Environment
-   - Fish Shell configuration
-   - Starship theme
+   - Extend `setup.sh` with new packages
+   - Create corresponding config directories
 
-## Customization
+3. **Theme Adjustments**:
+   - Modify `starship.toml` for prompt
+   - Edit terminal color schemes in `alacritty/` or `wezterm/`
 
-1. Modify Configuration Files
+## Contribution
 
-   - Edit corresponding config files under `~/.config`
-   - Adjust shell configuration as needed
+Contributions are welcome! Please:
 
-2. Add New Tools
-   - Edit installation scripts to add new packages
-   - Add configuration files in the `.config` directory
-
-## Contributing
-
-Issues and Pull Requests are welcome!
+1. Open an issue for discussion
+2. Keep configurations modular
+3. Maintain cross-version compatibility
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+Distributed under MIT License. See [LICENSE](LICENSE) for details.
 
-## Acknowledgments
+---
 
-Thanks to all the authors of the open source tools!
+**Acknowledgments**: This setup stands on the shoulders of open-source giants. Special thanks to all tool maintainers and community contributors.

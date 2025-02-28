@@ -1,164 +1,140 @@
 # 开发环境配置 🚀
 
-这是我的个人开发环境配置文件集合，包含了终端、Shell、编辑器等各种工具的配置。
+本仓库包含为 macOS 系统定制的个人开发环境配置，涵盖终端设置、Shell 定制、编辑器配置及效率工具集成。
 
-**注意：** 这些配置主要用于参考。建议根据个人需求选择性使用。请谨慎操作！
+**注意：** 本配置根据个人工作流定制，请按需选择使用！
 
 ## 快速开始
 
 ### 克隆仓库
-
 ```bash
-git clone https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
+git clone --branch macos https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
 ### 自动安装
-
-根据你的操作系统选择对应的安装脚本：
-
 ```bash
 # macOS
-bash setup_macos.sh
-
-# Linux
-bash setup_linux.sh
-
-# Windows
-. setup_windows.ps
+bash setup.sh
 ```
 
 ## 功能特性
 
-- 支持 macOS 和 Linux 系统
-- 自动安装和配置常用开发工具
-- 模块化的配置文件组织
-- 统一的主题风格
+- **macOS 优化**：专为 Apple Silicon 设备优化
+- **一键式安装**：自动化部署开发工具链
+- **模块化设计**：配置结构清晰易扩展
+- **统一主题**：跨工具视觉风格一致
 
 ## 目录结构
 
 ```
 .
-├── README.md                    # 项目文档
-├── setup_linux.sh              # Linux 环境配置脚本
-├── setup_macos.sh              # macOS 环境配置脚本
-├── .scripts/                    # 实用脚本目录
-├── .config/                    # 配置文件目录
-│   ├── alacritty/             # Alacritty 终端配置
-│   ├── fish/                  # Fish shell 配置
-│   ├── nvim/                  # Neovim 配置
-│   ├── sketchybar/           # Sketchybar 配置(macOS)
-│   ├── starship/             # Starship 主题配置
-│   ├── yabai/                # Yabai 窗口管理配置(macOS)
-│   ├── skhd/                 # SKHD 快捷键配置(macOS)
-│   └── zsh/                  # Zsh 配置
-└── .gitignore                 # Git 忽略文件
+├── README.md                   # 主文档
+├── setup.sh                    # macOS 自动化脚本
+├── .scripts/                   # 自定义工具脚本
+├── .config/                    # 应用配置目录
+│   ├── aerospace/              # 窗口管理器配置
+│   ├── alacritty/              # Alacritty 终端配置
+│   ├── fish/                   # Fish Shell 配置
+│   ├── ghostty/                # Ghostty 终端配置
+│   ├── nvim/                   # Neovim IDE 配置
+│   ├── sketchybar/             # macOS 状态栏配置
+│   ├── skhd/                   # 快捷键守护进程配置
+│   ├── starship.toml           # Shell 提示符配置
+│   ├── wezterm/                # Wezterm 终端配置
+│   ├── yabai/                  # 平铺窗口管理器配置
+│   ├── zellij/                 # 终端复用器配置
+│   └── zsh/                    # Zsh 配置
+├── .tmux.conf                  # Tmux 配置文件
+├── .zshrc                      # Zsh 配置文件
+└── LICENSE                     # MIT 许可证
 ```
 
-## 包含的工具
+## 核心组件
 
-### 终端工具
+### 终端生态
 
-- **Shell**:
-  - Zsh (带 Oh My Zsh)
-  - Fish Shell
-- **终端模拟器**:
+- **Shell 环境**：
+  - Zsh + Oh My Zsh & Powerlevel10k
+  - Fish + Tide 提示符
+- **终端模拟器**：
   - Alacritty
-  - iTerm2 (仅 macOS)
-- **终端复用器**:
+  - Wezterm
+  - iTerm2
+- **多路复用器**：
   - Tmux
+  - Zellij
 
-### 命令行工具
+### 命令行工具链
 
-- **基础工具**:
+- **效率工具**：
+  - `fzf` (模糊搜索)
+  - `bat` (语法高亮)
+  - `eza` (现代化 ls)
+  - `zoxide` (智能路径跳转)
+- **Git 增强**：
+  - `lazygit` (终端界面)
+  - `delta` (差异对比工具)
 
-  - fzf - 模糊查找
-  - fd - 更好的 find
-  - bat - 更好的 cat
-  - eza - 更好的 ls
-  - delta - 更好的 git diff
-  - zoxide - 更智能的 cd
-  - starship - 跨平台 Shell 提示符
+### macOS 专属组件
 
-- **开发工具**:
-  - lazygit - Git TUI 界面
-  - neovim - 现代化的 vim 编辑器
-  - tmux - 终端复用器
+- **窗口管理**：
+  - Yabai (平铺窗口管理器)
+  - SKHD (快捷键守护进程)
+  - Sketchybar (自定义菜单栏)
+- **系统增强**：
+  - Raycast (快速启动器)
+  - BetterTouchTool (输入定制)
+  - Bartender (菜单栏管理)
 
-### macOS 专属
-
-- **窗口管理**:
-
-  - Yabai - 平铺式窗口管理器
-  - SKHD - 快捷键守护程序
-  - Sketchybar - 自定义菜单栏
-
-- **效率工具**:
-  - Raycast - 启动器
-  - BetterTouchTool - 触控板增强
-  - Bartender - 菜单栏管理
-
-## 安装说明
-
-### Linux 环境
-
-Linux 安装脚本会自动配置：
-
-1. 基础开发环境
-
-   - Miniconda
-   - Rust 工具链
-   - 常用命令行工具
-
-2. Shell 环境
-
-   - Zsh 配置
-   - Shell 插件
-
-3. 开发工具
-   - Neovim
-   - Tmux
-   - lazygit
+## 安装指南
 
 ### macOS 环境
 
-macOS 安装脚本额外包含：
+安装脚本 (`setup.sh`) 自动完成：
 
-1. GUI 应用安装
+1. **基础组件**：
+   - Homebrew 包管理器
+   - 核心开发工具链
 
-   - iTerm2
-   - Alacritty
-   - Raycast 等
+2. **图形应用**：
+   - iTerm2/Alacritty 终端
+   - 效率工具套件
 
-2. 窗口管理
+3. **Shell 环境**：
+   - Zsh/Fish 配置
+   - Starship 跨平台提示符
 
-   - Yabai
-   - SKHD
-   - Sketchybar
+4. **窗口管理**：
+   - Yabai/SKHD/Sketchybar 组合
+   - 预配置快捷键绑定
 
-3. Shell 环境
-   - Fish Shell 配置
-   - Starship 主题
+## 定制指南
 
-## 自定义
+1. **修改配置**：
+   - 编辑 `~/.config/` 下文件
+   - 调整 Shell 配置 (`~/.zshrc`, `~/.config/fish`)
 
-1. 修改配置文件
+2. **添加工具**：
+   - 扩展 `setup.sh` 安装脚本
+   - 创建对应配置目录
 
-   - 编辑 `~/.config` 下对应的配置文件
-   - 根据需要调整 Shell 配置
+3. **主题调整**：
+   - 修改 `starship.toml` 提示符配置
+   - 调整终端配色方案 (位于 `alacritty/` 或 `wezterm/`)
 
-2. 添加新工具
-   - 编辑安装脚本添加新的软件包
-   - 在 `.config` 目录添加配置文件
+## 贡献说明
 
-## 贡献
+欢迎贡献！请遵循：
 
-欢迎提交 Issue 和 Pull Request！
+1. 提交 issue 讨论
+2. 保持配置模块化
+3. 维护多版本兼容性
 
-## 许可
+## 许可证
 
-本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+MIT 许可证，详见 [LICENSE](LICENSE) 文件。
 
-## 致谢
+---
 
-感谢所有开源工具的作者们！
+**致谢**：本配置基于众多开源项目构建，特别感谢所有工具维护者和社区贡献者。
