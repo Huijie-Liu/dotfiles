@@ -27,7 +27,7 @@ readonly CLI_TOOLS=(
 # 路径配置
 readonly DOTFILES_DIR="${HOME}/.dotfiles"
 readonly CONFIG_DIR="${HOME}/.config"
-readlocal BIN_DIR="${HOME}/.local/bin"
+readonly BIN_DIR="${HOME}/.local/bin"
 
 # ========================
 # 功能函数
@@ -62,7 +62,8 @@ user_confirmation() {
     while true; do
         read -rp "${prompt_msg} [Y/n] " response
         response=${response:-${default_choice}}
-        case "${response,,}" in
+        # 修改后的兼容性处理 ↓
+        case "$(echo "$response" | tr '[:upper:]' '[:lower:]')" in
             y|yes) return 0 ;;
             n|no)  return 1 ;;
             *)     echo "请输入 y 或 n"
