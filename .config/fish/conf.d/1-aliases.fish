@@ -1,9 +1,17 @@
 # 文件管理
-abbr --add ls eza
-abbr --add l "eza -A -1 --icons=always"
-abbr --add la "eza -Al --git --icons=always"
-abbr --add ll "eza -A --icons=always"
-abbr --add lt "eza -T -L 2 --icons=always"
+#abbr --add ls eza
+#abbr --add l "eza -A -1 --icons=always"
+#abbr --add la "eza -Al --git --icons=always"
+#abbr --add ll "eza -A --icons=always"
+#abbr --add lt "eza -T -L 2 --icons=always"
+abbr --add ls lsd
+abbr --add l 'lsd -l'
+abbr --add ll 'lsd -lh'
+abbr --add la 'lsd -A'
+abbr --add lla 'lsd -lA'
+abbr --add llg 'lsd -lAg'
+abbr --add lt 'lsd --tree --depth 2'
+abbr --add lta 'lsd --tree --depth 2 -a'
 abbr --add pd prevd
 abbr --add nd nextd
 abbr --add .. "cd .."

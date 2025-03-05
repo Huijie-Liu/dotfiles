@@ -11,3 +11,4 @@ if [ -d ~/.config/zsh ]; then
         fi
     done
 fi
+if [ -e /data/liuhuijie/.nix-profile/etc/profile.d/nix.sh ]; then . /data/liuhuijie/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

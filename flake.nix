@@ -18,7 +18,7 @@
 
           buildInputs = with pkgs; [
             # Shell增强
-            fish starship eza bat fzf fd ripgrep yazi atuin zoxide
+            fish starship eza bat fzf fd ripgrep yazi atuin zoxide lsd
             # 终端工具
             tmux zellij
             # 编辑器
@@ -37,7 +37,7 @@
 
           # 环境初始化
           shellHook = ''
-            export SHELL=$(which fish)
+            export SHELL="${pkgs.fish}/bin/fish"
             exec fish
           '';
         };
