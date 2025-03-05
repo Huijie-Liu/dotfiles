@@ -6,6 +6,7 @@ font-size = 15
 macos-titlebar-style = hidden
 macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
+macos-icon = "holographic"
 background-opacity = 0.90
 background-blur-radius = 20
 unfocused-split-opacity = 0.6

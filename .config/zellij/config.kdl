@@ -234,7 +234,6 @@ plugins {
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
-  https://github.com/dj95/zjstatus/releases/download/v0.20.2/zjstatus.wasm
 }
  
 // Use a simplified UI without special fonts (arrow glyphs)

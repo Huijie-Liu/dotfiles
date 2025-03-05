@@ -180,7 +180,7 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-name-regex-substring = "notion|访达|finder|邮件|系统设置|bettertouchtool|ChatGPT|App Store|微信|Wechat|腾讯会议|meeting|QQ|clash|telegram|ghostty|qbittorrent|karabiner-Elements|阿里云盘|IINA|keka"
+if.app-name-regex-substring = "notion|访达|finder|邮件|系统设置|bettertouchtool|ChatGPT|App Store|微信|Wechat|腾讯会议|meeting|QQ|clash|telegram|ghostty|qbittorrent|karabiner-Elements|阿里云盘|IINA|keka|滴答清单"
 run = ['layout floating']
 
 [[on-window-detected]]
