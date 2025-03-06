@@ -42,7 +42,7 @@ abbr --add bi "brew install"
 abbr --add bu "brew uninstall"
 abbr --add bc "brew cleanup --prune=all"
 abbr --add bs "brew search"
-abbr --add bU "brew upgrade"
+abbr --add bU "brew update && brew upgrade && brew cleanup --prune=all"
 abbr --add ba "brew abv"
 abbr --add bd "brew desc"
 abbr --add bD "brew doctor"
@@ -57,6 +57,5 @@ abbr --add proxy "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127
 abbr --add lg lazygit
 
 # 其他工具
-abbr --add dw download_wallpaper
 abbr --add ff fastfetch
 abbr --add mm micromamba

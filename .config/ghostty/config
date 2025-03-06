@@ -4,10 +4,10 @@ theme = "ayu"
 font-family = "JetBrainsMono Nerd Font"
 font-size = 15
 macos-titlebar-style = hidden
-macos-titlebar-style = tabs
+# macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
 macos-icon = "holographic"
-background-opacity = 0.90
+background-opacity = 0.75
 background-blur-radius = 20
 unfocused-split-opacity = 0.6
 window-padding-x = 8
@@ -15,6 +15,11 @@ window-padding-y = 8
 window-padding-balance = true
 window-colorspace = display-p3
 window-decoration = true
+# custom-shader = shaders/bloom.glsl
+# custom-shader = shaders/glitchy.glsl
+custom-shader = shaders/in-game-crt.glsl
+# custom-shader = shaders/retro-terminal.glsl
+# custom-shader = shaders/drunkard.glsl
 
 # tty config
 shell-integration-features = no-cursor
