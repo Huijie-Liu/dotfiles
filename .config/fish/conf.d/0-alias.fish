@@ -1,26 +1,23 @@
 # 基本别名
 abbr --add c clear
-abbr --add x exit
-abbr --add e "nvim ~/.config/fish/config.fish"
-abbr --add r "source ~/.config/fish/config.fish"
+abbr --add e "nvim ~/.config/fish"
 abbr --add v nvim
 abbr --add g git
 abbr --add L --position anywhere --set-cursor "% | less"
 abbr --add G --position anywhere --set-cursor "| grep"
 
 # 文件管理
-abbr --add ls eza
-abbr --add l "eza -A -1 --icons=always"
-abbr --add la "eza -Al --git --icons=always"
-abbr --add ll "eza -A --icons=always"
-abbr --add lt "eza -T -L 2 --icons=always"
+abbr --add ls lsd
+abbr --add l 'lsd -l'
+abbr --add ll 'lsd -la'
+abbr --add la 'lsd -A'
+abbr --add lla 'lsd -lA'
+abbr --add llg 'lsd -lAg'
+abbr --add lt 'lsd --tree --depth 2'
+abbr --add lta 'lsd --tree --depth 2 -a'
 abbr --add cd z
 abbr --add md "mkdir -p"
 abbr --add rd rmdir
-
-# 历史记录
-abbr --add h "history -10" # 最近10条历史记录
-abbr --add hg "history | grep " # 搜索历史记录
 
 # Tmux
 abbr --add ta "tmux attach"
@@ -55,7 +52,8 @@ abbr --add proxy "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127
 
 # 开发工具
 abbr --add lg lazygit
-
-# 其他工具
 abbr --add ff fastfetch
+abbr --add one onefetch
 abbr --add mm micromamba
+abbr --add 7z 7zz
+abbr --add tldr --set-cursor "curl cheat.sh/%"
