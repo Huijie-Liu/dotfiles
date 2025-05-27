@@ -1,6 +1,7 @@
 channels:
-  - conda-forge
   - defaults
+  - conda-forge
+  - nodefaults
 show_channel_urls: true
 default_channels:
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
@@ -10,3 +11,4 @@ custom_channels:
   conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 changeps1: false
+channel_priority: strict

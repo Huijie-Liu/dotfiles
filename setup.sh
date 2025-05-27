@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
 
 # ---------- 工具函数 ----------
@@ -23,8 +22,12 @@ install_pkg() {
   fi
 }
 
+# 确保 ~/.local/bin 存在并在 PATH 中
+mkdir -p "$HOME/.local/bin"
+[[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && export PATH="$HOME/.local/bin:$PATH"
+
 # ---------- 依赖检查 ----------
-for cmd in curl git; do
+for cmd in curl git wget; do
   if ! command -v "$cmd" >/dev/null 2>&1; then
     info "检测到未安装 $cmd，尝试安装..."
     install_pkg "$cmd"
@@ -66,7 +69,31 @@ else
   info "Micromamba 已存在，跳过安装"
 fi
 
-# ---------- 后续提示 ----------
+# ---------- 安装 Neovim ----------
+info "安装 Neovim（nvim AppImage）..."
+if ! command -v nvim >/dev/null 2>&1; then
+  wget -q https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage \
+    -O "$HOME/.local/bin/nvim"
+  chmod +x "$HOME/.local/bin/nvim"
+else
+  info "Neovim 已存在，跳过安装"
+fi
+
+# ---------- 安装 Zellij ----------
+info "安装 Zellij（终端复用器）..."
+if ! command -v zellij >/dev/null 2>&1; then
+  tmp_dir=$(mktemp -d)
+  wget -q https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz \
+    -O "$tmp_dir/zellij.tar.gz"
+  tar -xzf "$tmp_dir/zellij.tar.gz" -C "$tmp_dir"
+  mv "$tmp_dir/zellij" "$HOME/.local/bin/"
+  chmod +x "$HOME/.local/bin/zellij"
+  rm -rf "$tmp_dir"
+else
+  info "Zellij 已存在，跳过安装"
+fi
+
+# ---------- 完成提示 ----------
 cat <<'EOF'
 
 ==============================================
@@ -74,6 +101,6 @@ cat <<'EOF'
 👉  请重启终端，或执行：
     source ~/.bashrc     # Bash 用户
     source ~/.zshrc      # Zsh  用户
-然后你就可以开始愉快地编码啦 🚀
+然后就可以开始愉快地编码啦 🚀
 ==============================================
 EOF
