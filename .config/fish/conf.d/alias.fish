@@ -1,18 +1,29 @@
-# 基本别名
+# Basic
 abbr --add c clear
-abbr --add e "nvim ~/.config/fish"
 abbr --add v nvim
-abbr --add g git
 abbr --add L --position anywhere --set-cursor "% | less"
 abbr --add G --position anywhere --set-cursor "| grep"
 
-# 文件管理
+# Git
+abbr --add g git
+abbr --add gs "git status"
+abbr --add ga "git add ."
+abbr --add gc "git commit -m"
+abbr --add gp "git push"
+abbr --add gl "git pull"
+abbr --add gco "git checkout"
+abbr --add gcb "git checkout -b"
+abbr --add gd "git diff"
+abbr --add gr "git restore"
+abbr --add grs "git restore --staged"
+abbr --add gb "git branch"
+abbr --add gam "git commit --amend"
+
+# File system
 abbr --add ls lsd
 abbr --add l 'lsd -l'
-abbr --add ll 'lsd -la'
+abbr --add ll 'lsd -lA'
 abbr --add la 'lsd -A'
-abbr --add lla 'lsd -lA'
-abbr --add llg 'lsd -lAg'
 abbr --add lt 'lsd --tree --depth 2'
 abbr --add lta 'lsd --tree --depth 2 -a'
 abbr --add cd z
@@ -47,13 +58,9 @@ abbr --add bo "brew outdated"
 abbr --add bl "brew list"
 abbr --add bI "brew info"
 
-# 系统工具
-abbr --add proxy "export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
-
-# 开发工具
+# Tool
 abbr --add lg lazygit
 abbr --add ff fastfetch
 abbr --add one onefetch
 abbr --add mm micromamba
 abbr --add 7z 7zz
-abbr --add tldr --set-cursor "curl cheat.sh/%"

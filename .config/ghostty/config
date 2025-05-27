@@ -1,11 +1,7 @@
 # Appearance
 theme = "ayu"
 font-family = "JetBrainsMono Nerd Font"
-font-size = 13
-# macos-titlebar-style = hidden
-macos-titlebar-style = tabs
-macos-titlebar-proxy-icon = hidden
-macos-icon = "holographic"
+font-size = 14
 background-opacity = 0.95
 background-blur-radius = 20
 unfocused-split-opacity = 0.6
@@ -14,6 +10,25 @@ window-padding-y = 8
 window-padding-balance = true
 window-colorspace = display-p3
 window-decoration = true
+# macos-titlebar-style = hidden
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
+macos-icon = "holographic"
+quick-terminal-position = bottom
+quick-terminal-animation-duration = 0
+window-width = 176
+window-height = 60
+
+# tty config
+confirm-close-surface = false
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = true
+macos-option-as-alt = true
+mouse-hide-while-typing = true
+
+# Keybindings
+keybind = global:cmd+escape=toggle_quick_terminal
 
 # Shaders
 # custom-shader = shaders/bloom.glsl
@@ -21,17 +36,3 @@ window-decoration = true
 # custom-shader = shaders/in-game-crt.glsl
 # custom-shader = shaders/retro-terminal.glsl
 # custom-shader = shaders/drunkard.glsl
-
-# tty config
-shell-integration-features = no-cursor
-cursor-style = block
-cursor-style-blink = true
-macos-option-as-alt = true
-confirm-close-surface = false
-mouse-hide-while-typing = true
-
-# Keybindings
-keybind = alt+left=unbind
-keybind = alt+right=unbind
-keybind = super+comma=text:nvim ~/.config/ghostty/config\x0D
-keybind = global:cmd+escape=toggle_quick_terminal

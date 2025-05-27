@@ -12,7 +12,7 @@ function fzf_configure_bindings --description "Installs the default key bindings
 
         for mode in default insert
             bind --mode $mode $key_sequences[1] _fzf_search_directory
-            # bind --mode $mode $key_sequences[2] _fzf_search_history
+            bind --mode $mode $key_sequences[2] _fzf_search_history
             bind --mode $mode $key_sequences[3] _fzf_search_processes
             bind --mode $mode $key_sequences[4] "$_fzf_search_vars_command"
             bind --mode $mode $key_sequences[5] _fzf_ripgrep

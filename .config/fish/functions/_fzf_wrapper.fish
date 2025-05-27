@@ -4,7 +4,12 @@ function _fzf_wrapper --description "Prepares some environment variables before 
 
     set --query FZF_DEFAULT_OPTS FZF_DEFAULT_OPTS_FILE
     if test $status -eq 2
-        set --export FZF_DEFAULT_OPTS '--cycle --layout=reverse --border --height=90% --preview-window=wrap --marker="*"'
+        set --export FZF_DEFAULT_OPTS '
+          --style default --cycle --layout=reverse --height=~90%
+          --border="rounded" --border-label="" --preview-window="border-rounded"
+          --prompt="> " --marker=">" --pointer="◆" --scrollbar="│"
+          --bind "tab:down,shift-tab:up,space:toggle+down"
+        '
     end
 
     fzf $argv
