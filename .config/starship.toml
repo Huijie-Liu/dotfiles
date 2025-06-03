@@ -107,8 +107,8 @@ format = '\[[$symbol$project]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [nix_shell]
-# format = '\[[$symbol$state( \($name\))]($style)\]'
-format = ''
+format = '\[[$symbol$state( \($name\))]($style)\]'
+# format = ''
 
 [nodejs]
 format = '\[[$symbol($version)]($style)\]'

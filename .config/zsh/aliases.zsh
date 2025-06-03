@@ -1,20 +1,21 @@
 # 文件管理
-alias ls='eza'
-alias l='eza -A -1 --icons=always'
-alias la='eza -Al --git --icons=always'
-alias ll='eza -A --icons=always'
-alias lt='eza -T -L 2 --icons=always'
+# alias ls='eza'
+# alias l='eza -A -1 --icons=always'
+# alias la='eza -Al --git --icons=always'
+# alias ll='eza -A --icons=always'
+# alias lt='eza -T -L 2 --icons=always'
+alias ls=lsd
+alias l='lsd -l'
+alias ll='lsd -lh'
+alias la='lsd -A'
+alias lla='lsd -lA'
+alias llg='lsd -lAg'
+alias lt='lsd --tree --depth 2'
+alias lta='lsd --tree --depth 2 -a'
 
 # 目录导航
 alias ..='cd ..'
 alias ...='cd ../..'
-alias pd='prevd'
-alias nd='nextd'
-
-# 历史记录
-alias h='history -10'
-alias hc='history -c'
-alias hg='history | grep'
 
 # 文件操作
 alias md='mkdir -p'
@@ -36,12 +37,9 @@ alias zjl='zellij --layout'
 
 # 终端控制 
 alias c='clear'
-alias x='exit'
 alias r='source ~/.zshrc'
 alias e='nvim ~/.zshrc'
 alias v='nvim'
-alias dud='du -h -d 1'
-alias duds='du -h -d 1 | sort -h'
 
 # Nix 命令 
 local NIX_CMD=~/.nix-portable/nix-portable\ nix
@@ -53,11 +51,5 @@ alias nf="$NIX_CMD flake"
 # 自定义命令 
 alias nvs='nvidia-smi'
 alias lg='lazygit'
-alias clash='bash ~/.app/clash-for-linux/start.sh'
 alias ff='fastfetch'
 alias mm='micromamba'
-
-# 增强型全局别名 
-alias -g L='| less'
-alias -g G='| grep'
-alias -g F='| fzf'
