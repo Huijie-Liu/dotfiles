@@ -1,16 +1,3 @@
-# 代理控制函数
-function proxy_on() {
-    export http_proxy="http://127.0.0.1:17890"
-    export https_proxy="http://127.0.0.1:17890"
-    echo "代理已开启"
-}
-
-function proxy_off() {
-    unset http_proxy
-    unset https_proxy
-    echo "代理已关闭"
-}
-
 # 创建目录并进入
 function mkcd() {
     mkdir -p "$@" && cd "$1"
@@ -101,3 +88,13 @@ function _cuda() {
 
 # 注册补全
 compdef _cuda cuda
+
+# Yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
