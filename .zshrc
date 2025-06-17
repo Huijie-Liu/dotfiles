@@ -12,5 +12,5 @@ if [ -d ~/.config/zsh ]; then
     done
 fi
 
-# if [ -e /data/liuhuijie/.nix-profile/etc/profile.d/nix.sh ]; then . /data/liuhuijie/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
+micromamba activate

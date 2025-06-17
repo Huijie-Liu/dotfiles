@@ -58,5 +58,3 @@ export https_proxy="http://127.0.0.1:17890"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
-
-micromamba activate
