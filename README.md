@@ -16,9 +16,33 @@ cd ~/.dotfiles
 ### Automatic Installation
 
 ```bash
-# macOS
-bash setup.sh
+# Install Homebrew (if not already installed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install all packages and applications via Brewfile
+brew bundle install
 ```
+
+<details>
+<summary>🌏 Installation without proxy</summary>
+
+If you're in China and experiencing slow download speeds, use these mirror sources:
+
+```bash
+# Set Homebrew mirror sources
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
+
+# Install Homebrew with mirror
+/bin/bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
+
+# Install all packages and applications via Brewfile
+brew bundle install
+```
+
+</details>
 
 ## Features
 
@@ -35,7 +59,7 @@ bash setup.sh
 .
 ├── README.md                   # Main documentation
 ├── README.zh-CN.md             # Chinese documentation
-├── setup.sh                    # macOS automation script
+├── Brewfile                    # Homebrew package definitions
 ├── .scripts/                   # Custom utility scripts
 ├── .config/                    # Application configurations
 │   ├── aerospace/              # Window manager config
@@ -96,64 +120,28 @@ bash setup.sh
   - BetterTouchTool (input customization)
   - Bartender (menu bar management)
 
-## Installation Guide
-
-### macOS Setup
-
-The installation script (`setup.sh`) handles:
-
-1. **Essential Packages**:
-   - Homebrew package manager
-   - Core development tools
-
-2. **GUI Applications**:
-   - Terminal emulators (iTerm2, Alacritty, Wezterm, Ghostty)
-   - Productivity utilities
-
-3. **Shell Environments**:
-   - Zsh/Fish configurations
-   - Starship cross-shell prompt
-
-4. **Window Management**:
-   - Aerospace/SKHD/Sketchybar trio
-   - Auto-configured key bindings
-
 ## Customization Guide
 
 1. **Modify Configurations**:
+
    - Edit files in `~/.config/`
    - Adjust shell configs (`~/.zshrc`, `~/.config/fish`)
 
 2. **Add New Tools**:
-   - Extend `setup.sh` with new packages
+
+   - Add packages to `Brewfile`
+   - Run `brew bundle install` to install new packages
    - Create corresponding config directories
 
 3. **Theme Adjustments**:
+
    - Modify `starship.toml` for prompt
    - Edit terminal color schemes in respective config directories
 
-## Troubleshooting
-
-If you encounter issues during installation:
-
-1. Check the terminal output for specific error messages
-2. Ensure you have proper permissions
-3. For macOS-specific tools, verify your system version compatibility
-4. Open an issue on GitHub with detailed information
-
-## Contribution
-
-Contributions are welcome! Please:
-
-1. Open an issue for discussion
-2. Keep configurations modular
-3. Maintain cross-version compatibility
-4. Test changes thoroughly before submitting PRs
+4. **Package Management**:
+   - Use `brew bundle dump --force` to update Brewfile with current packages
+   - Use `brew bundle cleanup` to remove packages not in Brewfile
 
 ## License
 
 Distributed under MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-**Acknowledgments**: This setup stands on the shoulders of open-source giants. Special thanks to all tool maintainers and community contributors.
