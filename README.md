@@ -14,21 +14,6 @@ Clone the repository and select the branch according to your operating system:
 
 After cloning, navigate to the directory: `cd ~/.dotfiles`.
 
-### Automatic Installation
-
-Choose the installation script according to your operating system:
-
-```bash
-# macOS
-bash setup.sh
-
-# Linux
-bash setup.sh
-
-# Windows
-. setup.ps1
-```
-
 ## Features
 
 - Support for macOS, Windows and Linux systems
@@ -36,14 +21,6 @@ bash setup.sh
 - Modular configuration file organization
 - Unified theme style
 
-## Contributing
-
-Issues and Pull Requests are welcome!
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
-## Acknowledgments
-
-Thanks to all the authors of the open source tools!
