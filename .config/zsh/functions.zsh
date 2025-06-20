@@ -89,6 +89,16 @@ function _cuda() {
 # 注册补全
 compdef _cuda cuda
 
+setcuda() {
+  if [ $# -ne 1 ]; then
+    echo "用法: setcuda <GPU编号>"
+    echo "示例: setcuda 0,1"
+    return 1
+  fi
+  export CUDA_VISIBLE_DEVICES="$1"
+  echo "已设置 CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
+}
+
 # Yazi
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

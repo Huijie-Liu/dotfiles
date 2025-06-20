@@ -48,13 +48,20 @@ setopt hist_ignore_dups         # 忽略连续重复的命令
 setopt hist_verify              # 编辑历史命令前的确认
 setopt hist_ignore_space        # 忽略以空格开头的命令
 
+bindkey -e
+
 # 其他环境变量
 export HF_ENDPOINT="https://hf-mirror.com"
 export TMPDIR="$HOME/.tmp"
 [[ ! -d $TMPDIR ]] && mkdir -p $TMPDIR
 
-export http_proxy="http://127.0.0.1:17890"
-export https_proxy="http://127.0.0.1:17890"
-
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+

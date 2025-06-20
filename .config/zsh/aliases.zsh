@@ -1,10 +1,8 @@
 # 文件管理
 alias ls=lsd
 alias l='lsd -l'
-alias ll='lsd -lh'
+alias ll='lsd -lA'
 alias la='lsd -A'
-alias lla='lsd -lA'
-alias llg='lsd -lAg'
 alias lt='lsd --tree --depth 2'
 alias lta='lsd --tree --depth 2 -a'
 
@@ -42,3 +40,4 @@ alias lg='lazygit'
 alias ff='fastfetch'
 alias mm='micromamba'
 alias one='onefetch'
+alias nix='export IN_NIX_USER_CHROOT=1; export NP_RUNTIME=bwrap; ~/.nix-portable/nix-portable nix develop ~/.dotfiles'
