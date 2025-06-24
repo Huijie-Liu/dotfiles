@@ -24,5 +24,6 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
 # 其他工具加载
+eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"

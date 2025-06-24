@@ -1,40 +1,22 @@
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # PATH 配置
 typeset -U PATH
 path=(
     $HOME/.local/bin
-    $HOME/.local/usr/bin
-    $HOME/.cargo/bin
     $path
 )
 
-# CUDA 配置
-export CUDA_VERSION="11.8"
-export CUDA_HOME="/usr/local/cuda-$CUDA_VERSION"
-export PATH="$CUDA_HOME/bin:$PATH"
+# 编辑器设置
+export EDITOR=nvim
+export VISUAL=nvim
 
-# PKG_CONFIG_PATH
-typeset -U PKG_CONFIG_PATH
-pkg_config_path=(
-    $HOME/.local/lib/pkgconfig
-    $PKG_CONFIG_PATH
-)
-export PKG_CONFIG_PATH=${(j/:/)pkg_config_path}
-
-# LD_LIBRARY_PATH
-typeset -U LD_LIBRARY_PATH
-library_path=(
-    /usr/local/cuda-$CUDA_VERSION/lib64
-    $HOME/.local/lib
-    $HOME/.local/usr/lib
-    $HOME/.local/usr/lib/x86_64-linux-gnu
-    $LD_LIBRARY_PATH
-)
-export LD_LIBRARY_PATH=${(j/:/)library_path}
-
-# 其他环境变量
-export HF_ENDPOINT="https://hf-mirror.com"
-export TMPDIR="$HOME/.tmp"
-[[ ! -d $TMPDIR ]] && mkdir -p $TMPDIR
+# Homebrew 镜像设置
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 
 # 目录相关选项
 setopt AUTO_CD              # 输入目录名直接切换

@@ -5,10 +5,11 @@ setopt ALWAYS_TO_END       # 补全后将光标移到末尾
 unsetopt BASH_AUTO_LIST    # 禁用 Bash 风格的双 Tab 补全
 
 # 补全系统初始化
-if [ ! -f ~/.zcompdump ] || [ $(date +'%j') != $(stat -c '%y' ~/.zcompdump 2>/dev/null | date +'%j' -f -) ]; then
-    autoload -Uz compinit && compinit
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+    compinit
 else
-    autoload -Uz compinit && compinit -C
+    compinit -C
 fi
 
 # 补全设置
