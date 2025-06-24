@@ -96,6 +96,7 @@
                     },
                     {
                         "description": "Launch apps by right shift+letters.",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
