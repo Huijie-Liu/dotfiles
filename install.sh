@@ -1,121 +1,174 @@
 #!/bin/bash
 
-# Dotfiles installation script
+# =============================================================================
+# Dotfiles Installation Script
 # Creates symlinks for all configuration files in ~/.dotfiles to appropriate locations
+# =============================================================================
 
-set -e
+set -euo pipefail
+
+# =============================================================================
+# Configuration
+# =============================================================================
 
 # Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+readonly RED='\033[0;31m'
+readonly GREEN='\033[0;32m'
+readonly YELLOW='\033[1;33m'
+readonly BLUE='\033[0;34m'
+readonly NC='\033[0m' # No Color
 
-# Get the directory where this script is located
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-HOME_DIR="$HOME"
+# Directories
+readonly DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly HOME_DIR="$HOME"
 
-echo -e "${BLUE}🔗 Dotfiles Installation Script${NC}"
-echo -e "${BLUE}Dotfiles directory: ${DOTFILES_DIR}${NC}"
-echo -e "${BLUE}Home directory: ${HOME_DIR}${NC}"
-echo ""
+# Dotfiles to link (excluding .config and .git)
+readonly ROOT_DOTFILES=(
+  ".zshrc"
+  ".tmux.conf"
+  ".condarc"
+)
 
-# Function to create symlink with backup
+# =============================================================================
+# Utility Functions
+# =============================================================================
+
+# Print colored message
+print_message() {
+  local color="$1"
+  local message="$2"
+  echo -e "${color}${message}${NC}"
+}
+
+# Print section header
+print_header() {
+  print_message "$BLUE" "\n$1"
+  print_message "$BLUE" "$(printf '=%.0s' {1..50})"
+}
+
+# Print info message
+print_info() {
+  print_message "$BLUE" "$1"
+}
+
+# Print success message
+print_success() {
+  print_message "$GREEN" "$1"
+}
+
+# Print warning message
+print_warning() {
+  print_message "$YELLOW" "$1"
+}
+
+# Print error message
+print_error() {
+  print_message "$RED" "$1"
+}
+
+# =============================================================================
+# Core Functions
+# =============================================================================
+
+# Create symlink with backup and directory creation
 create_symlink() {
-    local source="$1"
-    local target="$2"
+  local -r src_path="$1"
+  local -r target_path="$2"
+  local -r target_dir="$(dirname "$target_path")"
 
-    # Create target directory if it doesn't exist
-    local target_dir="$(dirname "$target")"
-    if [[ ! -d "$target_dir" ]]; then
-        echo -e "${YELLOW}📁 Creating directory: $target_dir${NC}"
-        mkdir -p "$target_dir"
-    fi
+  # Create target directory if it doesn't exist
+  if [[ ! -d "$target_dir" ]]; then
+    print_info "📁 Creating directory: $target_dir"
+    mkdir -p "$target_dir"
+  fi
 
-    # If target already exists
-    if [[ -e "$target" || -L "$target" ]]; then
-        if [[ -L "$target" ]]; then
-            local current_link="$(readlink "$target")"
-            if [[ "$current_link" == "$source" ]]; then
-                echo -e "${GREEN}✅ Already linked: $target${NC}"
-                return 0
-            else
-                echo -e "${YELLOW}🔄 Updating symlink: $target${NC}"
-                rm "$target"
-            fi
-        else
-            echo -e "${YELLOW}💾 Backing up existing file: $target${NC}"
-            mv "$target" "${target}.backup.$(date +%Y%m%d_%H%M%S)"
-        fi
-    fi
-
-    # Create the symlink
-    ln -s "$source" "$target"
-    echo -e "${GREEN}🔗 Created symlink: $target -> $source${NC}"
-}
-
-# Function to link .config directory contents
-link_config_files() {
-    local config_source="$DOTFILES_DIR/.config"
-    local config_target="$HOME_DIR/.config"
-
-    if [[ ! -d "$config_source" ]]; then
-        echo -e "${YELLOW}⚠️  No .config directory found in dotfiles${NC}"
+  # Handle existing target
+  if [[ -e "$target_path" || -L "$target_path" ]]; then
+    if [[ -L "$target_path" ]]; then
+      local current_link
+      current_link="$(readlink "$target_path")"
+      if [[ "$current_link" == "$src_path" ]]; then
+        print_success "✅ Already linked: $(basename "$target_path")"
         return 0
+      else
+        print_warning "🔄 Updating symlink: $(basename "$target_path")"
+        rm "$target_path"
+      fi
+    else
+      local backup_file="${target_path}.backup.$(date +%Y%m%d_%H%M%S)"
+      print_warning "💾 Backing up: $(basename "$target_path") -> $(basename "$backup_file")"
+      mv "$target_path" "$backup_file"
     fi
+  fi
 
-    echo -e "${BLUE}📂 Linking .config files...${NC}"
-
-    # Find all files and directories in .config (excluding .git and other hidden dirs)
-    find "$config_source" -mindepth 1 -maxdepth 1 -not -name '.*' | while read -r item; do
-        local basename="$(basename "$item")"
-        local source="$item"
-        local target="$config_target/$basename"
-
-        create_symlink "$source" "$target"
-    done
+  # Create the symlink
+  ln -s "$src_path" "$target_path"
+  print_success "🔗 Linked: $(basename "$target_path") -> $src_path"
 }
 
-# Function to link root dotfiles
+# Link .config directory contents
+link_config_files() {
+  local -r config_source="$DOTFILES_DIR/.config"
+  local -r config_target="$HOME_DIR/.config"
+
+  if [[ ! -d "$config_source" ]]; then
+    print_warning "⚠️  No .config directory found in dotfiles"
+    return 0
+  fi
+
+  print_header "📂 Linking .config files"
+
+  # Find all items in .config (excluding hidden directories)
+  while IFS= read -r -d '' item; do
+    local basename
+    basename="$(basename "$item")"
+    create_symlink "$item" "$config_target/$basename"
+  done < <(find "$config_source" -mindepth 1 -maxdepth 1 -not -name '.*' -print0)
+}
+
+# Link root dotfiles
 link_root_dotfiles() {
-    echo -e "${BLUE}📄 Linking root dotfiles...${NC}"
+  print_header "📄 Linking root dotfiles"
 
-    # List of dotfiles to link (excluding .config and .git)
-    local dotfiles=(
-        ".zshrc"
-        ".tmux.conf"
-        ".condarc"
-    )
+  for dotfile in "${ROOT_DOTFILES[@]}"; do
+    local src_file="$DOTFILES_DIR/$dotfile"
+    local target_file="$HOME_DIR/$dotfile"
 
-    for dotfile in "${dotfiles[@]}"; do
-        local source="$DOTFILES_DIR/$dotfile"
-        local target="$HOME_DIR/$dotfile"
-
-        if [[ -f "$source" ]]; then
-            create_symlink "$source" "$target"
-        else
-            echo -e "${YELLOW}⚠️  File not found: $source${NC}"
-        fi
-    done
+    if [[ -f "$src_file" ]]; then
+      create_symlink "$src_file" "$target_file"
+    else
+      print_warning "⚠️  File not found: $src_file"
+    fi
+  done
 }
 
-# Main execution
+# =============================================================================
+# Main Function
+# =============================================================================
+
 main() {
-    echo -e "${BLUE}🚀 Starting dotfiles installation...${NC}"
-    echo ""
+  print_header "🚀 Dotfiles Installation Script"
+  print_info "Dotfiles directory: $DOTFILES_DIR"
+  print_info "Home directory: $HOME_DIR"
 
-    # Link .config files
-    link_config_files
-    echo ""
+  # Link configuration files
+  link_config_files
+  link_root_dotfiles
 
-    # Link root dotfiles
-    link_root_dotfiles
-    echo ""
-
-    echo -e "${GREEN}✨ Dotfiles installation completed!${NC}"
-    echo -e "${BLUE}💡 Note: Backup files are created with timestamp suffix if originals existed${NC}"
+  # Success message
+  print_header "✨ Installation completed successfully!"
+  print_info "💡 Note: Original files are backed up with timestamp suffix"
+  print_info "🔧 Restart your shell to apply changes"
 }
 
-# Run main function
-main "$@"
+# =============================================================================
+# Script Entry Point
+# =============================================================================
+
+# Ensure script is not being sourced
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+else
+  echo "This script should be executed, not sourced." >&2
+  exit 1
+fi
