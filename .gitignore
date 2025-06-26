@@ -1,13 +1,8 @@
 # macOS
 **/.DS_Store
 
-# Neovim
-.config/nvim/lazy-lock.json
-.config/nvim/lazyvim.json
-
 # Fish shell
 .config/fish/fish_variables
 
 # Backup files
 *.bak
-*~
