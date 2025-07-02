@@ -1,4 +1,4 @@
-function extract
+function extract --description "Extracts compressed files"
     if test -f $argv[1]
         switch $argv[1]
             case '*.tar.bz2'
@@ -24,9 +24,9 @@ function extract
             case '*.7z'
                 7z x $argv[1]
             case '*'
-                echo "'$argv[1]' 无法识别的文件类型"
+                echo "'$argv[1]' cannot be extracted via extract()"
         end
     else
-        echo "'$argv[1]' 不是有效的文件"
+        echo "'$argv[1]' is not a valid file"
     end
 end

@@ -12,4 +12,3 @@ if [ -d ~/.config/zsh ]; then
     done
 fi
 
-micromamba activate

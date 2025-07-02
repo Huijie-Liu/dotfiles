@@ -1,7 +1,7 @@
 function _fzf_zoxide --description "Zoxide database + fzf fuzzy directory jump"
     # 使用 zoxide 原生命令避免别名干扰
     set -f zoxide_cmd (command -v zoxide)
-    set -f fzf_arguments --ansi --reverse --height 40% $fzf_directory_opts
+    set -f fzf_arguments --ansi --reverse $fzf_directory_opts
 
     # 获取当前命令行标记并解析路径
     set -f token (commandline --current-token)
@@ -32,3 +32,4 @@ function _fzf_zoxide --description "Zoxide database + fzf fuzzy directory jump"
         commandline -f repaint
     end
 end
+

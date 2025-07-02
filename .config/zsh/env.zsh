@@ -3,9 +3,8 @@ typeset -U PATH
 
 path=(
     $HOME/.local/bin
-    $HOME/.local/usr/bin
-    $HOME/.cargo/bin
-    $path
+    $HOME/.pixi/bin
+    $PATH
 )
 
 export CUDA_VERSION="11.8"
@@ -25,8 +24,6 @@ typeset -U LD_LIBRARY_PATH
 library_path=(
     /usr/local/cuda-$CUDA_VERSION/lib64
     $HOME/.local/lib
-    $HOME/.local/usr/lib
-    $HOME/.local/usr/lib/x86_64-linux-gnu
     $LD_LIBRARY_PATH
 )
 export LD_LIBRARY_PATH=${(j/:/)library_path}
@@ -50,18 +47,5 @@ setopt hist_ignore_space        # 忽略以空格开头的命令
 
 bindkey -e
 
-# 其他环境变量
-export HF_ENDPOINT="https://hf-mirror.com"
-export TMPDIR="$HOME/.tmp"
-[[ ! -d $TMPDIR ]] && mkdir -p $TMPDIR
-
 export EDITOR="nvim"
 export VISUAL="nvim"
-
-# pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
