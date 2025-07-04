@@ -1,0 +1,21 @@
+[[input.prepend_keymap]]
+on = "<Esc>"
+run = "close"
+desc = "Cancel input"
+
+[[mgr.prepend_keymap]]
+on = ";"
+for = "unix"
+run = 'shell "$SHELL" --block'
+desc = "Open $SHELL here"
+
+[[mgr.prepend_keymap]]
+on = ["c", "m"]
+run = "plugin chmod"
+desc = "Chmod on selected files"
+
+# keymap.toml
+[[mgr.prepend_keymap]]
+on = ["g", "G"]
+run = "plugin vcs-files"
+desc = "Show Git file changes"
