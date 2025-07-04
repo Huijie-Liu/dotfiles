@@ -1,8 +1,8 @@
 # Appearance
-theme = "ayu"
+theme = "dracula"
 font-family = "JetBrainsMono Nerd Font"
 font-size = 14
-background-opacity = 0.95
+background-opacity = 0.85
 background-blur-radius = 20
 unfocused-split-opacity = 0.6
 window-padding-x = 8
@@ -28,7 +28,7 @@ macos-option-as-alt = true
 mouse-hide-while-typing = true
 
 # Keybindings
-keybind = global:cmd+escape=toggle_quick_terminal
+keybind = global:option+space=toggle_quick_terminal
 
 # Shaders
 # custom-shader = shaders/bloom.glsl
