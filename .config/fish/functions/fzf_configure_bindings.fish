@@ -16,7 +16,7 @@ function fzf_configure_bindings --description "Installs the default key bindings
             bind --mode $mode $key_sequences[3] _fzf_search_processes
             bind --mode $mode $key_sequences[4] "$_fzf_search_vars_command"
             bind --mode $mode $key_sequences[5] _fzf_ripgrep
-            bind --mode $mode $key_sequences[6] _fzf_complete
+            # bind --mode $mode $key_sequences[6] _fzf_complete
             bind --mode $mode $key_sequences[7] _fzf_zoxide
         end
     end

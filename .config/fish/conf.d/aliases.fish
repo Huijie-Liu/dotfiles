@@ -1,42 +1,44 @@
 # 文件管理
-alias ls='lsd'
-alias l='lsd -l'
-alias ll='lsd -lA'
-alias la='lsd -A'
-alias lt='lsd --tree --depth 2'
-alias lta='lsd --tree --depth 2 -a'
+abbr --add ls lsd
+abbr --add l 'lsd -l'
+abbr --add ll 'lsd -lA'
+abbr --add la 'lsd -A'
+abbr --add lt 'lsd --tree --depth 2'
+abbr --add lta 'lsd --tree --depth 2 -a'
 
 # 目录导航
-alias ..='cd ..'
-alias ...='cd ../..'
+abbr --add .. 'cd ..'
+abbr --add ... 'cd ../..'
 
 # 文件操作
-alias md='mkdir -p'
-alias rd='rmdir'
+abbr --add md 'mkdir -p'
+abbr --add rd rmdir
 
 # Tmux 控制
-alias ta='tmux attach'
-alias tl='tmux list-session'
-alias ts='tmux new-session'
+abbr --add ta 'tmux attach'
+abbr --add tl 'tmux list-session'
+abbr --add ts 'tmux new-session'
 
 # Zellij 控制
-alias zj='zellij'
-alias za='zellij attach'
-alias zl='zellij list-sessions'
-alias zs='zellij --session'
-alias zk='zellij kill-session'
-alias zka='zellij kill-all-sessions'
-alias zjl='zellij --layout'
+abbr --add zj zellij
+abbr --add za 'zellij attach'
+abbr --add zl 'zellij list-sessions'
+abbr --add zs 'zellij --session'
+abbr --add zk 'zellij kill-session'
+abbr --add zka 'zellij kill-all-sessions'
+abbr --add zjl 'zellij --layout'
 
 # 终端控制
-alias c='clear'
-alias r='source ~/.config/fish/config.fish'
-alias e='nvim ~/.config/fish/config.fish'
-alias v='nvim'
+abbr --add c clear
+abbr --add r 'source ~/.config/fish/config.fish'
+abbr --add e 'nvim ~/.config/fish/config.fish'
+abbr --add v nvim
 
 # 自定义命令
-alias nvs='nvidia-smi'
-alias lg='lazygit'
-alias ff='fastfetch'
-alias mm='micromamba'
-alias one='onefetch'
+abbr --add nvs nvidia-smi
+abbr --add lg lazygit
+abbr --add ff fastfetch
+abbr --add mm micromamba
+abbr --add one onefetch
+abbr --add p pixi
+

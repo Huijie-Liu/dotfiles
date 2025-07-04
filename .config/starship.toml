@@ -1,3 +1,5 @@
+add_newline = false
+
 [character]
 success_symbol = "[>](bold green)"
 error_symbol = "[x](bold red)"
@@ -194,6 +196,7 @@ Windows = "win "
 
 [package]
 symbol = "pkg "
+disabled = true
 
 [perl]
 symbol = "pl "
@@ -206,6 +209,7 @@ symbol = "pijul "
 
 [pixi]
 symbol = "pixi "
+disabled = true
 
 [pulumi]
 symbol = "pulumi "
