@@ -6,3 +6,5 @@
 
 # Backup files
 *.bak
+.config/yazi/plugins
+.config/yazi/flavors/dracula.yazi
