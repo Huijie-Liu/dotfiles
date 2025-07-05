@@ -1,3 +1,4 @@
 .config/fish/fish_variables
 .config/yazi/flavors/dracula.yazi
 .config/yazi/plugins
+.config/nvim/lazy-lock.json
