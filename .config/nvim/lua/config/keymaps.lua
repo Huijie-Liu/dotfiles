@@ -16,6 +16,8 @@ keymap.set("v", "<Leader>d", '"_d')
 keymap.set("v", "<Leader>D", '"_D')
 
 -- Basic keymaps
+keymap.set("n", "<C-q>", "<cmd>close<CR>")
+keymap.set("n", "<C-[>", "<cmd>e #<CR>")
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "<C-f>", "<C-f>zz")
