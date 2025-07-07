@@ -34,3 +34,5 @@ setopt hist_expire_dups_first   # 删除重复的历史记录
 setopt hist_ignore_dups         # 忽略连续重复的命令
 setopt hist_verify              # 编辑历史命令前的确认
 setopt hist_ignore_space        # 忽略以空格开头的命令
+
+source ~/.env
