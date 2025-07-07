@@ -1,3 +1,3 @@
-set --global _fzf_search_vars_command '_fzf_search_variables (set --show | psub) (set --names | psub)'
+set --global _fzf_search_vars_command '_fzf_search_variables'
 
 fzf_configure_bindings
