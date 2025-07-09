@@ -20,10 +20,10 @@ abbr --add gb "git branch"
 abbr --add gam "git commit --amend"
 
 # File system
-abbr --add ls lsd
-abbr --add l 'lsd -l'
-abbr --add ll 'lsd -lA'
-abbr --add la 'lsd -A'
+abbr --add ls 'lsd --group-directories-first'
+abbr --add l 'lsd -l --group-directories-first'
+abbr --add ll 'lsd -lA --group-directories-first'
+abbr --add la 'lsd -A --group-directories-first'
 abbr --add lt 'lsd --tree --depth 2'
 abbr --add lta 'lsd --tree --depth 2 -a'
 abbr --add cd z
