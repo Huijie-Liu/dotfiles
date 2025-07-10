@@ -1,7 +1,3 @@
-umask 022
-
-[[ ! -d ~/.config/zsh ]] && mkdir -p ~/.config/zsh
-
 if [ -d ~/.config/zsh ]; then
     for conf in ~/.config/zsh/*.zsh; do
         if [[ -r $conf ]]; then
@@ -12,4 +8,3 @@ if [ -d ~/.config/zsh ]; then
     done
 fi
 
-source ~/.env
