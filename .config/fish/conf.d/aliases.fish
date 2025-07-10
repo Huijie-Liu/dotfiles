@@ -41,4 +41,5 @@ abbr --add ff fastfetch
 abbr --add mm micromamba
 abbr --add one onefetch
 abbr --add p pixi
-
+abbr --add pgi pixi g i
+abbr --add pgl pixi g ls
