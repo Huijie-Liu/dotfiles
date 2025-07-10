@@ -64,3 +64,4 @@ abbr --add ff fastfetch
 abbr --add one onefetch
 abbr --add mm micromamba
 abbr --add 7z 7zz
+abbr --add cl claude
