@@ -84,15 +84,15 @@ end
 
 # Key bindings
 function fzf_configure_bindings
-    bind \ct _fzf_search_directory
-    bind \ep _fzf_search_processes
-    bind \er _fzf_ripgrep
-    bind \ec _fzf_zoxide
+    bind ctrl-t _fzf_search_directory
+    bind alt-p _fzf_search_processes
+    bind alt-r _fzf_ripgrep
+    bind alt-c _fzf_zoxide
 
-    bind --mode insert \ct _fzf_search_directory
-    bind --mode insert \ep _fzf_search_processes
-    bind --mode insert \er _fzf_ripgrep
-    bind --mode insert \ec _fzf_zoxide
+    bind --mode insert ctrl-t _fzf_search_directory
+    bind --mode insert alt-p _fzf_search_processes
+    bind --mode insert alt-r _fzf_ripgrep
+    bind --mode insert alt-c _fzf_zoxide
 end
 
 # Auto-configure
