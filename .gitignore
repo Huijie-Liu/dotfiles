@@ -9,3 +9,4 @@
 .config/yazi/plugins
 .config/yazi/flavors/dracula.yazi
 .config/nvim/lazy-lock.json
+.config/zed/**/*.mdb
