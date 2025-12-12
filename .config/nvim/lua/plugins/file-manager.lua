@@ -20,7 +20,7 @@ return {
         },
       },
     },
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
     lazy = false,
   },
 
