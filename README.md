@@ -12,8 +12,11 @@ cd ~/.dotfiles
 # Install Homebrew (if needed)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Install all packages and applications
-brew bundle install
+# Install packages and applications if Brewfile is present
+[ -f Brewfile ] && brew bundle --file Brewfile
+
+# Link configs into $HOME and ~/.config
+./install.sh
 ```
 
 ### For China Users 🌏
@@ -27,7 +30,22 @@ export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
 export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 
 /bin/bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/HEAD/install.sh)"
-brew bundle install
+[ -f Brewfile ] && brew bundle --file Brewfile
+./install.sh
+```
+
+## Bootstrap
+
+`./install.sh` is the entrypoint for applying these dotfiles. It will:
+
+- link root dotfiles such as `.zshrc`, `.tmux.conf`, and `.condarc`
+- link every tracked entry under `.config/`
+- back up existing files as `*.bak.TIMESTAMP` before replacing them
+
+If you want Fish as the default shell after installing packages:
+
+```bash
+chsh -s /opt/homebrew/bin/fish
 ```
 
 ## What's Included
@@ -54,8 +72,8 @@ brew bundle install
 
 ## Customization
 
-- **Configurations**: Edit files in `~/.config/` and `~/.zshrc`
-- **Add Tools**: Update `Brewfile` and run `brew bundle install`
+- **Configurations**: Edit the tracked files in `~/.dotfiles/`; the symlinks in `~/.config/` and `$HOME` will point back to them
+- **Add Tools**: Update `Brewfile` and run `brew bundle --file Brewfile`
 - **Themes**: Modify `starship.toml` and terminal color schemes
 - **Package Management**: Use `brew bundle dump --force` to update Brewfile
 

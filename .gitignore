@@ -3,10 +3,13 @@
 
 # Fish shell
 .config/fish/fish_variables
+.config/fish/completions/
 
 # Backup files
 *.bak
+*.bak.*
 .config/yazi/plugins
 .config/yazi/flavors/dracula.yazi
 .config/nvim/lazy-lock.json
 .config/zed/**/*.mdb
+.config/karabiner/automatic_backups/
