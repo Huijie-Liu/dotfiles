@@ -38,9 +38,14 @@ export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 
 `./install.sh` is the entrypoint for applying these dotfiles. It will:
 
-- link root dotfiles such as `.zshrc`, `.tmux.conf`, and `.condarc`
 - link every tracked entry under `.config/`
 - back up existing files as `*.bak.TIMESTAMP` before replacing them
+
+Notes:
+
+- `tmux` can read `~/.config/tmux/tmux.conf`
+- `conda` can read `~/.config/conda/condarc`
+- `zsh` still needs `ZDOTDIR="$HOME/.config/zsh"` to be set outside of zsh if you want a pure `.config` layout
 
 If you want Fish as the default shell after installing packages:
 
@@ -72,7 +77,7 @@ chsh -s /opt/homebrew/bin/fish
 
 ## Customization
 
-- **Configurations**: Edit the tracked files in `~/.dotfiles/`; the symlinks in `~/.config/` and `$HOME` will point back to them
+- **Configurations**: Edit the tracked files in `~/.dotfiles/.config/`; the symlinks in `~/.config/` and `$HOME` will point back to them
 - **Add Tools**: Update `Brewfile` and run `brew bundle --file Brewfile`
 - **Themes**: Modify `starship.toml` and terminal color schemes
 - **Package Management**: Use `brew bundle dump --force` to update Brewfile

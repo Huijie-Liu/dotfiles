@@ -6,12 +6,6 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HOME_DIR="${HOME:?}"
 TIMESTAMP="$(date +%Y%m%d%H%M%S)"
 
-ROOT_LINKS=(
-  ".zshrc:.zshrc"
-  ".tmux.conf:.tmux.conf"
-  ".condarc:.condarc"
-)
-
 backup_path() {
   local dest="$1"
   local backup="${dest}.bak.${TIMESTAMP}"
@@ -50,15 +44,6 @@ link_path() {
   echo "Linked: $dest -> $src"
 }
 
-link_root_paths() {
-  local entry rel_src dest_rel
-
-  for entry in "${ROOT_LINKS[@]}"; do
-    IFS=":" read -r rel_src dest_rel <<<"$entry"
-    link_path "$rel_src" "$HOME_DIR/$dest_rel"
-  done
-}
-
 link_config_tree() {
   local path name
 
@@ -72,7 +57,6 @@ link_config_tree() {
 }
 
 main() {
-  link_root_paths
   link_config_tree
 
   echo "Bootstrap complete."
