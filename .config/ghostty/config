@@ -1,23 +1,13 @@
 # Appearance
 theme = "dracula"
-font-family = "JetBrainsMono Nerd Font"
 font-size = 14
 background-opacity = 0.85
 background-blur-radius = 20
 unfocused-split-opacity = 0.6
-window-padding-x = 8
-window-padding-y = 8
-window-padding-balance = true
-window-colorspace = display-p3
-window-decoration = true
-# macos-titlebar-style = hidden
 macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
-macos-icon = "holographic"
 quick-terminal-position = bottom
 quick-terminal-animation-duration = 0
-# window-width = 176
-# window-height = 60
 
 # tty config
 confirm-close-surface = false
