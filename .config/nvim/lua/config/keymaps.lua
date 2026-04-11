@@ -1,27 +1,8 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- Do things without affecting the registers
-map("n", "x", '"_x')
-map("n", "<Leader>p", '"0p')
-map("n", "<Leader>P", '"0P')
-map("v", "<Leader>p", '"0p')
-map("n", "<Leader>c", '"_c')
-map("n", "<Leader>C", '"_C')
-map("v", "<Leader>c", '"_c')
-map("v", "<Leader>C", '"_C')
-map("n", "<Leader>d", '"_d')
-map("n", "<Leader>D", '"_D')
-map("v", "<Leader>d", '"_d')
-map("v", "<Leader>D", '"_D')
-
 -- Basic keymaps
-map("n", "<C-q>", "<cmd>close<CR>")
-map("n", "<C-[>", "<cmd>e #<CR>")
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
-map("n", "<C-f>", "<C-f>zz")
-map("n", "<C-b>", "<C-b>zz")
+map("n", "<C-q>", "<cmd>q<CR>")
 map("i", "<C-b>", "<Left>", opts)
 map("i", "<C-f>", "<Right>", opts)
 map("i", "<C-p>", "<Up>", opts)
@@ -48,10 +29,6 @@ map("v", "<A-up>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 map("n", "+", "<C-a>")
 map("n", "-", "<Cmd>Oil<CR>", { desc = "Open parent directory" })
 
--- Disable continuations
-map("n", "<Leader>o", "o<Esc>^Da", opts)
-map("n", "<Leader>O", "O<Esc>^Da", opts)
-
 -- Resize window
 map("n", "<C-w><left>", "<C-w><")
 map("n", "<C-w><right>", "<C-w>>")
@@ -70,6 +47,9 @@ end, { desc = "Delete Buffer" })
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
 -- Find / pickers
+map("n", "<leader><leader>", function()
+  Snacks.picker.files()
+end, { desc = "Find Files" })
 map("n", "<leader>ff", function()
   Snacks.picker.files()
 end, { desc = "Find Files" })
@@ -97,6 +77,7 @@ map("n", "<leader>sD", function()
   Snacks.picker.diagnostics_buffer()
 end, { desc = "Buffer Diagnostics" })
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "<leader>cm", "<cmd>Mason<cr>", { desc = "Mason" })
 map("n", "]d", function()
   vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Next Diagnostic" })

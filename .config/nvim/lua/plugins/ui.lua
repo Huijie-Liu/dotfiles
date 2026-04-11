@@ -31,4 +31,38 @@ return {
       scroll = { enabled = false },
     },
   },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      preset = "modern",
+      win = {
+        no_overlap = false,
+        width = { min = 28, max = 38 },
+        height = { min = 4, max = 12 },
+        col = math.huge,
+        row = math.huge,
+        border = "single",
+        padding = { 0, 1 },
+        title = false,
+      },
+      spec = {
+        { "<leader>b", group = "buffer" },
+        { "<leader>c", group = "code" },
+        { "<leader>f", group = "find" },
+        { "<leader>g", group = "git" },
+        { "<leader>q", group = "quit" },
+        { "<leader>s", group = "search" },
+      },
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps",
+      },
+    },
+  },
 }

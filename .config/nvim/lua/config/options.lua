@@ -39,6 +39,6 @@ if vim.fn.executable("rg") == 1 then
   opt.grepprg = "rg --vimgrep"
 end
 
-vim.cmd.colorscheme("habamax")
+vim.cmd.colorscheme("default")
 
 vim.g.markdown_recommended_style = 0
