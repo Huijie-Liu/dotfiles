@@ -1,5 +1,7 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
--- Load VSCode specific configuration
-if vim.g.vscode then require("config.vscode") end
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+require("config.lazy")
