@@ -101,7 +101,7 @@ map("n", "gcO", "O<Esc>Vcx<Esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Commen
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 map({ "n", "x" }, "<leader>cf", function()
-  vim.lsp.buf.format({ async = true })
+  require("conform").format({ async = true })
 end, { desc = "Format" })
 
 if vim.fn.executable("lazygit") == 1 then

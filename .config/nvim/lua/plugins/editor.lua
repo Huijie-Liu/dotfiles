@@ -2,6 +2,24 @@ local show_oil_details = false
 
 return {
   {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "ruff_format" },
+        json = { "jq" },
+        yaml = { "prettier" },
+        markdown = { "prettier" },
+        fish = { "fish_indent" },
+      },
+      default_format_opts = {
+        lsp_format = "fallback",
+      },
+    },
+  },
+  {
     "stevearc/oil.nvim",
     lazy = false,
     ---@module "oil"
