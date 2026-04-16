@@ -10,8 +10,8 @@ map("i", "<C-n>", "<Down>", opts)
 map("i", "<C-a>", "<Esc>I", opts)
 map("i", "<C-e>", "<Esc>A", opts)
 map({ "i", "n", "s" }, "<Esc>", function()
-  vim.cmd("nohlsearch")
-  return "<Esc>"
+	vim.cmd("nohlsearch")
+	return "<Esc>"
 end, { expr = true, silent = true })
 
 -- Exit insert mode
@@ -35,12 +35,18 @@ map("n", "<C-w><right>", "<C-w>>")
 map("n", "<C-w><up>", "<C-w>+")
 map("n", "<C-w><down>", "<C-w>-")
 
+-- Window navigation
+map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window" })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window" })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window" })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window" })
+
 -- Buffer navigation
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>bd", function()
-  Snacks.bufdelete()
+	Snacks.bufdelete()
 end, { desc = "Delete Buffer" })
 
 -- Save file
@@ -48,41 +54,41 @@ map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
 -- Find / pickers
 map("n", "<leader><leader>", function()
-  Snacks.picker.files()
+	Snacks.picker.files()
 end, { desc = "Find Files" })
 map("n", "<leader>ff", function()
-  Snacks.picker.files()
+	Snacks.picker.files()
 end, { desc = "Find Files" })
 map("n", "<leader>fa", function()
-  Snacks.picker.files({ hidden = true, ignored = true })
+	Snacks.picker.files({ hidden = true, ignored = true })
 end, { desc = "Find All Files" })
 map("n", "<leader>fg", function()
-  Snacks.picker.grep()
+	Snacks.picker.grep()
 end, { desc = "Grep" })
 map("n", "<leader>fr", function()
-  Snacks.picker.recent()
+	Snacks.picker.recent()
 end, { desc = "Recent Files" })
 map("n", "<leader>fb", function()
-  Snacks.picker.buffers()
+	Snacks.picker.buffers()
 end, { desc = "Buffers" })
 map("n", "<leader>fc", function()
-  Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+	Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "Find Config File" })
 
 -- Diagnostics
 map("n", "<leader>sd", function()
-  Snacks.picker.diagnostics()
+	Snacks.picker.diagnostics()
 end, { desc = "Diagnostics" })
 map("n", "<leader>sD", function()
-  Snacks.picker.diagnostics_buffer()
+	Snacks.picker.diagnostics_buffer()
 end, { desc = "Buffer Diagnostics" })
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 map("n", "<leader>cm", "<cmd>Mason<cr>", { desc = "Mason" })
 map("n", "]d", function()
-  vim.diagnostic.jump({ count = 1, float = true })
+	vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Next Diagnostic" })
 map("n", "[d", function()
-  vim.diagnostic.jump({ count = -1, float = true })
+	vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Prev Diagnostic" })
 
 -- Search behavior
@@ -101,11 +107,11 @@ map("n", "gcO", "O<Esc>Vcx<Esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Commen
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 map({ "n", "x" }, "<leader>cf", function()
-  require("conform").format({ async = true })
+	require("conform").format({ async = true })
 end, { desc = "Format" })
 
 if vim.fn.executable("lazygit") == 1 then
-  map("n", "<leader>gg", function()
-    Snacks.lazygit()
-  end, { desc = "Lazygit" })
+	map("n", "<leader>gg", function()
+		Snacks.lazygit()
+	end, { desc = "Lazygit" })
 end

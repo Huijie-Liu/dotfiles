@@ -20,7 +20,7 @@ opt.relativenumber = true
 opt.scrolloff = 4
 opt.shiftwidth = 2
 opt.shortmess:append({ W = true, I = true, c = true, C = true })
-opt.showmode = false
+opt.showmode = true
 opt.sidescrolloff = 8
 opt.signcolumn = "yes"
 opt.smartcase = true
@@ -35,10 +35,8 @@ opt.updatetime = 200
 opt.wrap = false
 
 if vim.fn.executable("rg") == 1 then
-  opt.grepformat = "%f:%l:%c:%m"
-  opt.grepprg = "rg --vimgrep"
+	opt.grepformat = "%f:%l:%c:%m"
+	opt.grepprg = "rg --vimgrep"
 end
-
-vim.cmd.colorscheme("default")
 
 vim.g.markdown_recommended_style = 0
