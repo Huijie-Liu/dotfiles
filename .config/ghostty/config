@@ -1,26 +1,31 @@
-# Appearance
 theme = "dracula"
+
 font-size = 14
-background-opacity = 0.85
-background-blur-radius = 20
-unfocused-split-opacity = 0.6
-macos-titlebar-style = tabs
-macos-titlebar-proxy-icon = hidden
+font-family = "JetBrainsMono Nerd Font Mono"
+font-thicken = true
+
+window-padding-x = 12
+window-padding-y = 12
+
+background-opacity = 0.92
+background-blur = macos-glass-regular
+
+unfocused-split-opacity = 0.75
+
 quick-terminal-position = bottom
 quick-terminal-animation-duration = 0
 
-# tty config
-confirm-close-surface = false
-shell-integration-features = no-cursor
-cursor-style = block
-cursor-style-blink = true
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = true
-mouse-hide-while-typing = true
 
-# Keybindings
+mouse-hide-while-typing = true
+confirm-close-surface = false
+
+shell-integration-features = no-cursor,ssh-env,ssh-terminfo
+
 keybind = global:option+space=toggle_quick_terminal
 
-# Shaders
 # custom-shader = shaders/bloom.glsl
 # custom-shader = shaders/glitchy.glsl
 # custom-shader = shaders/in-game-crt.glsl
