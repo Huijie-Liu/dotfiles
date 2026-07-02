@@ -260,14 +260,41 @@ link_dotfiles() {
 set_macos_defaults() {
   header "设置 macOS 偏好"
 
+  # 键盘
   defaults write NSGlobalDomain KeyRepeat -int 2
   defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+  # 触控板
   defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
-  defaults write com.apple.dock autohide -bool true
+
+  # 输入
+  defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+  defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+  # Finder
+  defaults write NSGlobalDomain AppleShowAllExtensions -bool true
   defaults write com.apple.finder ShowPathbar -bool true
+
+  # 截图
+  defaults write com.apple.screencapture disable-shadow -bool true
+
+  # 外观
+  defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+  defaults write NSGlobalDomain CGDisableCursorLocationMagnification -bool true
+  defaults write com.apple.universalaccess reduceMotion -bool true
+
+  # Dock
+  defaults write com.apple.dock autohide -bool true
+  defaults write com.apple.dock "minimize-to-application" -bool true
+
+  # 菜单栏时钟 24 小时制
+  defaults write com.apple.menuextra.clock Show24Hour -bool true
+  defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
+  defaults write com.apple.menuextra.clock ShowDayOfMonth -bool true
 
   killall Finder &>/dev/null || true
   killall Dock &>/dev/null || true
+  killall SystemUIServer &>/dev/null || true
 
   success "macOS 偏好设置完成"
 }
