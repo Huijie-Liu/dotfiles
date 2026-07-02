@@ -16,7 +16,9 @@ curl -fsSL https://cdn.jsdelivr.net/gh/Huijie-Liu/dotfiles@macos/bootstrap.sh | 
 - 安装 **Xcode Command Line Tools**
 - 安装 **Homebrew**（国内自动走 USTC 镜像）
 - 安装 Brewfile 中定义的所有软件包
-- 将配置文件符号链接到 `~/.config/`
+- 安装 **fish** 并设为默认 shell
+- 配置 **zsh** 读取 `~/.config/zsh`（写入 `~/.zshenv`）
+- 将配置文件符号链接到 `~/.config/`（已有文件备份为 `*.bak.*`）
 - 设置 macOS 偏好（键盘速度、Dock 自动隐藏等）
 
 > **国内网络说明**：脚本会自动检测网络环境。如果 GitHub 直连失败，自动走 ghproxy 镜像克隆仓库；Homebrew 也会自动切到 USTC 镜像。`--china` 参数可强制跳过检测直接使用国内镜像。
@@ -26,11 +28,8 @@ curl -fsSL https://cdn.jsdelivr.net/gh/Huijie-Liu/dotfiles@macos/bootstrap.sh | 
 | 命令 | 说明 |
 |------|------|
 | `... \| bash -s -- --china` | 强制使用国内镜像 |
-| `... \| bash -s -- --fish` | 同时将 fish 设为默认 shell |
 | `... \| bash -s -- --dotfiles-only` | 只链接配置，不装软件 |
 | `... \| bash -s -- --skip-brew` | 跳过 brew 包安装 |
-
-参数可以组合：`bash -s -- --china --fish`
 
 ### 如果已经克隆了仓库
 
@@ -43,6 +42,8 @@ cd ~/.dotfiles
 ## Bootstrap 做了什么
 
 - 安装 Xcode CLI tools、Homebrew、Brewfile 软件包
+- 安装 fish shell 并设为默认
+- 写入 `~/.zshenv` 让 zsh 读取 `~/.config/zsh` 配置
 - 把 `.config/` 下的每个子目录/文件符号链接到 `~/.config/`（已有文件备份为 `*.bak.*`）
 - 设置 macOS 偏好（键盘、Dock、Finder 等）
 
@@ -50,8 +51,7 @@ cd ~/.dotfiles
 
 - `tmux` 会读取 `~/.config/tmux/tmux.conf`
 - `conda` 会读取 `~/.config/conda/condarc`
-- `zsh` 需要在外层设置 `ZDOTDIR="$HOME/.config/zsh"` 才能使用纯 `.config` 布局
-- fish 用户安装完包后运行 `bootstrap.sh --fish` 或 `chsh -s /opt/homebrew/bin/fish`
+- 重启终端后 fish 生效，zsh 也能正确加载 dotfiles 中的配置
 
 ## What's Included
 

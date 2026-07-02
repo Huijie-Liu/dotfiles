@@ -10,7 +10,6 @@
 #   --china         强制使用国内镜像
 #   --dotfiles-only 只链接配置文件
 #   --skip-brew     跳过 brew 包安装
-#   --fish          将 fish 设为默认 shell
 
 set -euo pipefail
 
@@ -32,16 +31,14 @@ REPO_BRANCH="macos"
 CHINA_MIRROR=false
 DOTFILES_ONLY=false
 SKIP_BREW=false
-SET_FISH_SHELL=false
 
 for arg in "$@"; do
   case "$arg" in
-    --china)     CHINA_MIRROR=true ;;
+    --china)         CHINA_MIRROR=true ;;
     --dotfiles-only) DOTFILES_ONLY=true ;;
-    --skip-brew) SKIP_BREW=true ;;
-    --fish)      SET_FISH_SHELL=true ;;
+    --skip-brew)     SKIP_BREW=true ;;
     --help|-h)
-      echo "Usage: $0 [--china] [--dotfiles-only] [--skip-brew] [--fish]"
+      echo "Usage: $0 [--china] [--dotfiles-only] [--skip-brew]"
       exit 0
       ;;
   esac
@@ -178,26 +175,33 @@ install_brew_packages() {
   success "软件包安装完成"
 }
 
-# ── 安装/配置 Fish Shell ──────────────────────────────
-setup_fish() {
-  if ! command -v fish &>/dev/null; then
-    warn "Fish shell 未安装，跳过"
-    return 0
-  fi
+# ── 安装 Fish Shell 并设为默认 ──────────────────────────
+setup_shell() {
+  header "配置 Shell"
 
+  # 安装 fish
+  if ! command -v fish &>/dev/null; then
+    info "安装 fish..."
+    brew install fish
+  fi
+  success "fish 已安装"
+
+  # 添加到 /etc/shells
   local fish_path
   fish_path="$(command -v fish)"
-
   if ! grep -qF "$fish_path" /etc/shells 2>/dev/null; then
     info "将 $fish_path 添加到 /etc/shells"
     echo "$fish_path" | sudo tee -a /etc/shells >/dev/null
   fi
 
-  if $SET_FISH_SHELL; then
-    info "设置 fish 为默认 shell"
-    chsh -s "$fish_path"
-  else
-    info "提示: 运行 ./bootstrap.sh --fish 将 fish 设为默认 shell"
+  # 设为默认
+  chsh -s "$fish_path"
+  success "默认 shell 已切换为 fish"
+
+  # 给 zsh 设 ZDOTDIR，确保兼容
+  if ! grep -qF 'ZDOTDIR' "$HOME/.zshenv" 2>/dev/null; then
+    echo 'export ZDOTDIR="$HOME/.config/zsh"' >> "$HOME/.zshenv"
+    success "ZDOTDIR 已写入 ~/.zshenv"
   fi
 }
 
@@ -278,9 +282,7 @@ print_summary() {
   echo "  配置文件已链接到: ${BOLD}$HOME/.config/${NC}"
   echo "  Dotfiles 目录:    ${BOLD}$DOTFILES_DIR${NC}"
   echo ""
-  if $SET_FISH_SHELL; then
-    echo "  默认 shell: ${BOLD}fish${NC} — 重新登录生效"
-  fi
+  echo "  默认 shell: ${BOLD}fish${NC} — 重新登录生效"
   echo ""
   echo "  后续步骤:"
   echo "    • 编辑 ~/.dotfiles/.config/ 下的文件来定制配置"
@@ -333,7 +335,7 @@ main() {
   fi
 
   link_dotfiles
-  setup_fish
+  setup_shell
   set_macos_defaults
   print_summary
 }
