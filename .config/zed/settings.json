@@ -7,6 +7,11 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
   "theme": "Ayu Dark",
   "language_models": {
     "openai_compatible": {}
@@ -57,8 +62,7 @@
     "show_menus": false,
     "show_onboarding_banner": true,
     "show_project_items": true,
-    "show_branch_name": true,
-    "show_branch_icon": false
+    "show_branch_name": true
   },
   "vim_mode": true,
   "terminal": {

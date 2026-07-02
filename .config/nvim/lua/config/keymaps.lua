@@ -103,6 +103,22 @@ map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result
 map("n", "gco", "o<Esc>Vcx<Esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
 map("n", "gcO", "O<Esc>Vcx<Esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
 
+-- gx: open URL/file under cursor in browser
+map("n", "gx", function()
+	local url = vim.fn.expand("<cfile>")
+	-- If <cfile> empty or doesn't look like a URL, try <cWORD> (whitespace-delimited)
+	if url == "" or not url:match("%.") then
+		url = vim.fn.expand("<cWORD>")
+	end
+	-- Bare domain (e.g. 123.com) → add https:// so vim.ui.open treats it as a URL
+	if url:match("^[%w%-]+%.[%w%.%-]+") and not url:match("^%w+://") then
+		url = "https://" .. url
+	end
+	if url ~= "" then
+		vim.ui.open(url)
+	end
+end, { desc = "Open URL/file" })
+
 -- Misc
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })

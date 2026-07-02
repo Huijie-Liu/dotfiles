@@ -65,6 +65,7 @@ return {
 				{ "<leader>g", group = "git" },
 				{ "<leader>q", group = "quit" },
 				{ "<leader>s", group = "search" },
+				{ "gx", desc = "Open URL/file in browser", mode = "n" },
 			},
 		},
 	},
