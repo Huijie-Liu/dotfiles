@@ -1,6 +1,21 @@
-# Mac finder file
-.DS_Store
+# macOS
+**/.DS_Store
 
-# Lazyvim plugin version file
+# Fish shell
+.config/fish/fish_variables
+.config/fish/completions/
+.config/fish/conf.d/secrets.fish
+
+# Neovim
 .config/nvim/lazy-lock.json
 .config/nvim/lazyvim.json
+
+# Zed database files
+.config/zed/**/*.mdb
+
+# Karabiner backups
+.config/karabiner/automatic_backups/
+
+# Backup files
+*.bak
+*.bak.*

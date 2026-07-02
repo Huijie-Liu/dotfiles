@@ -1,114 +1,61 @@
-# Development Environment Configuration 🚀
+# Dotfiles (Windows)
 
-This is my personal development environment configuration collection, including terminal, shell, editor, and various tools configurations.
-
-**Note:** These configurations are mainly for reference. It's recommended to selectively use them based on your personal needs. Please proceed with caution!
+One-command setup for a new Windows machine:
 
 ## Quick Start
 
-### Clone Repository
+Open **PowerShell as Administrator** and run:
 
-```bash
-git clone --branch windows https://github.com/Huijie-Liu/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+```powershell
+irm https://cdn.jsdelivr.net/gh/Huijie-Liu/dotfiles@windows/setup.ps1 | iex
 ```
 
-### Automatic Installation
+This single command:
 
-Choose the installation script according to your operating system:
+- Installs **Scoop** package manager
+- Installs core packages (git, fish, neovim, starship, zoxide, fzf, eza, bat, fd, ripgrep, lazygit, wezterm)
+- Symlinks all configs into `~\.config\`
+- Sets up PowerShell profile to source `~\.dotfiles\.PSprofile.ps1`
 
-```bash
-# Windows
-. setup.ps1
+### Options
+
+| Flag | Description |
+|------|-------------|
+| `... \| iex -Args "--dotfiles-only"` | Only symlink configs |
+
+### Already cloned?
+
+```powershell
+cd ~\.dotfiles
+.\setup.ps1                 # Full setup
+.\setup.ps1 -DotfilesOnly   # Just re-link configs
 ```
 
-## Features
+## What's Included
 
-- Support for windows systems
-- Automatic installation and configuration of common development tools
-- Modular configuration file organization
-- Unified theme style
+### Shells
 
-## Directory Structure
+- **PowerShell**: Starship prompt, PSReadLine, fzf keybindings
+- **Fish**: Starship prompt, zoxide, fzf, custom aliases and functions
+- **Zsh** (via WSL)
 
-```
-.
-├── README.md                    # Project documentation
-├── .PSprofile.ps1               # powershell env file
-├── setup.ps1                    # windows environment setup script
-├── .scripts/                   # Utility scripts directory
-├── .config/                    # Configuration files directory
-│   ├── fish/                  # Fish shell config
-│   ├── nvim/                  # Neovim config
-│   ├── starship             # Starship theme config
-│   ├── wezterm/             # Terminal Emulator
-│   └── zsh/                  # Zsh config
-└── .gitignore                 # Git ignore file
-```
+### Tools
 
-## Included Tools
-
-### Terminal Tools
-
-- **Shell**:
-  - PowerShell
-  - Zsh (via Windows Subsystem for Linux - WSL)
-  - Fish (via Windows Subsystem for Linux - WSL)
-- **Terminal Emulator**:
-  - Windows Terminal
-  - Alacritty
-  - WezTerm
-
-### Command Line Tools
-
-- **Basic Tools**:
-
-  - Git
-  - curl
-  - wget
-  - tar
-  - 7-Zip (via `7z` CLI)
-  - Chocolatey (Windows package manager)
-
-- **Development Tools**:
-  - Miniconda (Python environment management)
-  - Rust (Rust toolchain via `rustup`)
-  - Node.js (via `nvm-windows` or Chocolatey)
-  - Neovim (for modern text editing)
-  - lazygit (Git TUI)
-  - Tmux (via WSL)
-
-### Windows Specific
-
-- **Window Management**:
-
-  - PowerToys (Windows productivity enhancements)
-  - FancyZones (window tiling manager via PowerToys)
-
-- **Productivity Tools**:
-  - Windows Terminal Cascadia Code (font customization and themes)
-  - AutoHotkey (hotkey and scripting automation)
-  - Microsoft Power Automate Desktop (workflow automation)
+| Category | Tools |
+|----------|-------|
+| **Editor** | Neovim with LazyVim |
+| **Terminal** | Wezterm |
+| **File Ops** | eza, bat, fd, ripgrep |
+| **Navigation** | zoxide, fzf |
+| **Git** | lazygit |
+| **Prompt** | Starship |
 
 ## Customization
 
-1. Modify Configuration Files
-
-   - Edit corresponding config files under `~/.config`
-   - Adjust shell configuration as needed
-
-2. Add New Tools
-   - Edit installation scripts to add new packages
-   - Add configuration files in the `.config` directory
-
-## Contributing
-
-Issues and Pull Requests are welcome!
+- **Configs**: Edit files under `~\.dotfiles\.config\` — symlinks in `~\.config\` follow automatically
+- **PowerShell**: Edit `~\.dotfiles\.PSprofile.ps1`
+- **Secrets**: Create `~\.config\fish\conf.d\secrets.fish` for API keys (gitignored)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
-## Acknowledgments
-
-Thanks to all the authors of the open source tools!
+MIT. See [LICENSE](LICENSE) for details.
