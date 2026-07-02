@@ -1,4 +1,22 @@
+# macOS
+**/.DS_Store
+
+# Fish shell
 .config/fish/fish_variables
-.config/yazi/flavors/dracula.yazi
-.config/yazi/plugins
+.config/fish/completions/
+.config/fish/conf.d/secrets.fish
+
+# Yazi
+.config/yazi/flavors/
+.config/yazi/plugins/
+
+# Zed database files
+.config/zed/**/*.mdb
+
+# Karabiner backups
+.config/karabiner/automatic_backups/
+
+# Backup files
+*.bak
+*.bak.*
 .config/nvim/lazy-lock.json
