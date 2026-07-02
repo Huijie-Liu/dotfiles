@@ -1,63 +1,52 @@
-# Personal Dotfiles 🚀
+# Dotfiles
 
-新电脑？一行命令搞定全部配置：
+One-command setup for a new Mac:
 
 ## Quick Start
 
 ```bash
-# 国外用户 — GitHub 直连
+# Outside China — GitHub direct
 curl -fsSL https://raw.githubusercontent.com/Huijie-Liu/dotfiles/macos/bootstrap.sh | bash
 
-# 国内用户 — jsDelivr CDN（推荐）
+# Inside China — jsDelivr CDN (recommended)
 curl -fsSL https://cdn.jsdelivr.net/gh/Huijie-Liu/dotfiles@macos/bootstrap.sh | bash -s -- --china
 ```
 
-这一条命令会自动完成：
-- 安装 **Xcode Command Line Tools**
-- 安装 **Homebrew**（国内自动走 USTC 镜像）
-- 安装 Brewfile 中定义的所有软件包
-- 安装 **fish** 并设为默认 shell
-- 配置 **zsh** 读取 `~/.config/zsh`（写入 `~/.zshenv`）
-- 将配置文件符号链接到 `~/.config/`（已有文件备份为 `*.bak.*`）
-- 设置 macOS 偏好（键盘速度、Dock 自动隐藏等）
+This single command:
 
-> **国内网络说明**：脚本会自动检测网络环境。如果 GitHub 直连失败，自动走 ghproxy 镜像克隆仓库；Homebrew 也会自动切到 USTC 镜像。`--china` 参数可强制跳过检测直接使用国内镜像。
+- Installs **Xcode Command Line Tools**
+- Installs **Homebrew** (USTC mirrors when in China)
+- Installs packages from `Brewfile` (if present)
+- Installs **fish** and sets it as the default shell
+- Configures **zsh** to read from `~/.config/zsh` (writes `~/.zshenv`)
+- Symlinks all configs into `~/.config/` (existing files backed up as `*.bak.*`)
+- Applies macOS preferences (key repeat, Dock auto-hide, etc.)
 
-### 可选参数
+> **China notes**: The script auto-detects network environment. GitHub clone falls back to ghproxy; Homebrew falls back to USTC mirrors. Use `--china` to skip detection and force mirrors.
 
-| 命令 | 说明 |
-|------|------|
-| `... \| bash -s -- --china` | 强制使用国内镜像 |
-| `... \| bash -s -- --dotfiles-only` | 只链接配置，不装软件 |
-| `... \| bash -s -- --skip-brew` | 跳过 brew 包安装 |
+### Options
 
-### 如果已经克隆了仓库
+| Flag | Description |
+|------|-------------|
+| `... \| bash -s -- --china` | Force China mirrors |
+| `... \| bash -s -- --dotfiles-only` | Only symlink configs, skip all installs |
+| `... \| bash -s -- --skip-brew` | Skip Brewfile package install |
+
+Combine as needed: `bash -s -- --china --dotfiles-only`
+
+### Already cloned?
 
 ```bash
 cd ~/.dotfiles
-./bootstrap.sh                     # 完整安装
-./bootstrap.sh --dotfiles-only     # 只重新链接配置
+./bootstrap.sh                     # Full setup
+./bootstrap.sh --dotfiles-only     # Just re-link configs
 ```
-
-## Bootstrap 做了什么
-
-- 安装 Xcode CLI tools、Homebrew、Brewfile 软件包
-- 安装 fish shell 并设为默认
-- 写入 `~/.zshenv` 让 zsh 读取 `~/.config/zsh` 配置
-- 把 `.config/` 下的每个子目录/文件符号链接到 `~/.config/`（已有文件备份为 `*.bak.*`）
-- 设置 macOS 偏好（键盘、Dock、Finder 等）
-
-注意事项：
-
-- `tmux` 会读取 `~/.config/tmux/tmux.conf`
-- `conda` 会读取 `~/.config/conda/condarc`
-- 重启终端后 fish 生效，zsh 也能正确加载 dotfiles 中的配置
 
 ## What's Included
 
 ### Core Tools
 
-- **Shells**: Zsh, Fish with modern prompts (Starship)
+- **Shells**: Zsh, Fish with Starship prompt
 - **Terminals**: Alacritty, Wezterm, Ghostty
 - **Multiplexers**: Tmux, Zellij
 - **Editor**: Neovim with LazyVim
@@ -77,11 +66,10 @@ cd ~/.dotfiles
 
 ## Customization
 
-- **Configurations**: Edit `~/.dotfiles/.config/` 下的文件，`~/.config/` 中的符号链接会自动指向它们
-- **Add Tools**: Update `Brewfile` and run `brew bundle --file Brewfile`
-- **Themes**: Modify `starship.toml` and terminal color schemes
-- **Package Management**: Use `brew bundle dump --force` to update Brewfile
+- **Configs**: Edit files under `~/.dotfiles/.config/` — symlinks in `~/.config/` follow automatically
+- **Packages**: Update `Brewfile` and run `brew bundle --file Brewfile`
+- **Export**: Run `brew bundle dump --force` to snapshot installed packages
 
 ## License
 
-Distributed under MIT License. See [LICENSE](LICENSE) for details.
+MIT. See [LICENSE](LICENSE) for details.
