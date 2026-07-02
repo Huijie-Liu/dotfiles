@@ -53,7 +53,7 @@ cd ~/.dotfiles
 
 ### CLI Productivity
 
-- `fzf`, `bat`, `eza`, `zoxide`, `atuin`
+- `fzf`, `bat`, `eza`, `zoxide`
 - `lazygit`, `git-delta` for Git workflow
 - `btop`, `dust`, `fd`, `ripgrep`
 
@@ -62,7 +62,6 @@ cd ~/.dotfiles
 - **Aerospace**: Tiling window manager
 - **SKHD**: Hotkey daemon
 - **Sketchybar**: Custom menu bar
-- **Karabiner**: Keyboard customization
 
 ## Customization
 

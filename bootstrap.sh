@@ -274,6 +274,8 @@ set_macos_defaults() {
   # Finder
   defaults write NSGlobalDomain AppleShowAllExtensions -bool true
   defaults write com.apple.finder ShowPathbar -bool true
+  defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+  defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
   # 截图
   defaults write com.apple.screencapture disable-shadow -bool true
