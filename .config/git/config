@@ -1,0 +1,23 @@
+[init]
+	defaultBranch = main
+[user]
+	name = liuhuijie
+	email = huijieliu@buaa.edu.cn
+[push]
+	autoSetupRemote = true
+	default = current
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[merge]
+	conflictstyle = zdiff3
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+[rerere]
+	enabled = true
+[rebase]
+	autoStash = true
+[core]
+	pager = less -FRX

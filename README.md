@@ -14,9 +14,8 @@ curl -fsSL https://cdn.jsdelivr.net/gh/Huijie-Liu/dotfiles@linux/bootstrap.sh | 
 
 This single command:
 
-- Installs base packages via **apt** (fish, zsh, neovim, tmux, fzf, eza, zoxide, ripgrep, fd, bat)
+- Installs base packages via **apt** (fish, neovim, tmux, eza, zoxide, ripgrep, fd, bat)
 - Installs **fish** and sets it as the default shell
-- Configures **zsh** to read from `~/.config/zsh` (writes `~/.zshenv`)
 - Symlinks all configs into `~/.config/` (existing files backed up as `*.bak.*`)
 
 > **China notes**: Auto-detects network. Git clone falls back to ghproxy. Use `--china` to skip detection.
@@ -40,14 +39,14 @@ cd ~/.dotfiles
 
 ### Core Tools
 
-- **Shells**: Zsh, Fish with Starship prompt
+- **Shell**: Fish
 - **Multiplexers**: Tmux, Zellij
 - **Editor**: Neovim with LazyVim
 - **File manager**: Yazi
 
 ### CLI Productivity
 
-- `fzf`, `bat`, `eza`, `zoxide`
+- `bat`, `eza`, `zoxide`
 - `lazygit`, `git-delta`
 - `ripgrep`, `fd`
 

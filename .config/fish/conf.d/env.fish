@@ -14,8 +14,8 @@ set -x PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig $PKG_CONFIG_PATH
 set -x LD_LIBRARY_PATH /usr/local/cuda-$CUDA_VERSION/lib64 $HOME/.local/lib $LD_LIBRARY_PATH
 
 # EDITOR
-set -Ux EDITOR nvim
-set -Ux VISUAL nvim
+set -x EDITOR nvim
+set -x VISUAL nvim
 
 # NIX
 fish_add_path --prepend "$HOME/.nix-profile/bin"

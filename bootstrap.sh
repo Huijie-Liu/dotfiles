@@ -88,7 +88,7 @@ install_packages() {
   info "Updating apt..."
   sudo apt-get update -qq
 
-  local pkgs="fish zsh git curl tmux neovim fzf bat eza zoxide ripgrep fd-find"
+  local pkgs="fish git curl tmux neovim bat eza zoxide ripgrep fd-find"
   info "Installing: $pkgs"
   sudo apt-get install -y -qq $pkgs || warn "Some packages failed, continuing..."
   success "Base packages installed"
@@ -111,12 +111,6 @@ setup_shell() {
 
   chsh -s "$fish_path"
   success "Default shell set to fish"
-
-  # ZDOTDIR for zsh fallback
-  if ! grep -qF 'ZDOTDIR' "$HOME/.zshenv" 2>/dev/null; then
-    echo 'export ZDOTDIR="$HOME/.config/zsh"' >> "$HOME/.zshenv"
-    success "ZDOTDIR written to ~/.zshenv"
-  fi
 }
 
 link_dotfiles() {
