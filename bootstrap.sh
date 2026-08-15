@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# bootstrap.sh — single-command Linux setup
+# bootstrap.sh — single-command Linux setup (nix + home-manager)
 #
 # Usage:
 #   curl -fsSL https://raw.githubusercontent.com/Huijie-Liu/dotfiles/linux/bootstrap.sh | bash
@@ -17,6 +17,8 @@ NC='\033[0m'
 
 GITHUB_REPO="https://github.com/Huijie-Liu/dotfiles.git"
 GHPROXY_REPO="https://mirror.ghproxy.com/https://github.com/Huijie-Liu/dotfiles.git"
+NIX_INSTALL_URL="https://nixos.org/nix/install"
+NIX_INSTALL_GHPROXY="https://mirror.ghproxy.com/https://nixos.org/nix/install"
 REPO_BRANCH="linux"
 
 CHINA_MIRROR=false
@@ -78,32 +80,62 @@ clone_dotfiles() {
   die "Clone failed. Check network or clone manually to ~/.dotfiles"
 }
 
-install_packages() {
-  header "Install packages"
-  if ! command -v apt-get &>/dev/null; then
-    warn "apt-get not found, skip package install"
+install_nix() {
+  header "Install Nix"
+
+  if command -v nix &>/dev/null; then
+    success "Nix already installed: $(nix --version)"
     return 0
   fi
 
-  info "Updating apt..."
-  sudo apt-get update -qq
+  local install_url="$NIX_INSTALL_URL"
+  if detect_china; then
+    install_url="$NIX_INSTALL_GHPROXY"
+  fi
 
-  local pkgs="fish git curl tmux neovim bat eza zoxide ripgrep fd-find"
-  info "Installing: $pkgs"
-  sudo apt-get install -y -qq $pkgs || warn "Some packages failed, continuing..."
-  success "Base packages installed"
+  info "Installing nix (multi-user)..."
+  if sh <(curl -fsSL "$install_url") --daemon --yes; then
+    success "Nix installed"
+  else
+    if [[ "$install_url" != "$NIX_INSTALL_GHPROXY" ]]; then
+      warn "Direct install failed, trying ghproxy..."
+      sh <(curl -fsSL "$NIX_INSTALL_GHPROXY") --daemon --yes || die "Nix install failed"
+    else
+      die "Nix install failed"
+    fi
+  fi
+
+  # Make nix usable in this shell without re-login
+  export PATH="/nix/var/nix/profiles/default/bin:$HOME/.nix-profile/bin:$PATH"
+
+  # Ensure flakes are enabled
+  if [[ -e /etc/nix/nix.conf ]] && ! grep -q 'experimental-features' /etc/nix/nix.conf; then
+    echo 'experimental-features = nix-command flakes' | sudo tee -a /etc/nix/nix.conf >/dev/null
+  fi
+
+  success "Nix ready"
+}
+
+setup_home_manager() {
+  header "Home Manager"
+
+  local flake="$DOTFILES_DIR/.config/home-manager"
+  [[ -e "$flake/flake.nix" ]] || { warn "No flake at $flake, skip"; return 0; }
+
+  info "First switch fetches nixpkgs, may take a while..."
+  nix --extra-experimental-features "nix-command flakes" \
+    run "$flake#home-manager" -- switch --flake "$flake#jay"
+  success "Home Manager switched"
 }
 
 setup_shell() {
   header "Configure shell"
 
-  if ! command -v fish &>/dev/null; then
-    warn "fish not found, skip"
+  local fish_path="$HOME/.nix-profile/bin/fish"
+  if [[ ! -x "$fish_path" ]]; then
+    warn "fish not found in nix profile, skip"
     return 0
   fi
-
-  local fish_path
-  fish_path="$(command -v fish)"
 
   if ! grep -qF "$fish_path" /etc/shells 2>/dev/null; then
     echo "$fish_path" | sudo tee -a /etc/shells >/dev/null
@@ -175,11 +207,14 @@ print_summary() {
   echo "    • Create ~/.config/fish/conf.d/secrets.fish for API keys"
   echo "    • Restart terminal or exec fish"
   echo ""
+  echo "  Update packages (edit .config/home-manager/home.nix first):"
+  echo "    nix run ~/.dotfiles/.config/home-manager#home-manager -- switch --flake ~/.dotfiles/.config/home-manager#jay"
+  echo ""
 }
 
 main() {
   echo ""
-  printf "${BOLD}🐧 Dotfiles Bootstrap (Linux)${NC}\n"
+  printf "${BOLD}🐧 Dotfiles Bootstrap (Linux, nix + home-manager)${NC}\n"
   echo ""
 
   if [[ -n "${DOTFILES_DIR:-}" ]]; then
@@ -206,8 +241,9 @@ main() {
     exit 0
   fi
 
-  install_packages
+  install_nix
   link_dotfiles
+  setup_home_manager
   setup_shell
   print_summary
 }
