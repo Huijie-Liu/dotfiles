@@ -1,10 +1,17 @@
 #!/bin/bash
 #
-# bootstrap.sh — single-command Linux setup (nix + home-manager)
+# bootstrap.sh — single-command Linux setup (pixi + npm)
 #
 # Usage:
 #   curl -fsSL https://raw.githubusercontent.com/Huijie-Liu/dotfiles/linux/bootstrap.sh | bash
 #   curl -fsSL https://cdn.jsdelivr.net/gh/Huijie-Liu/dotfiles@linux/bootstrap.sh | bash  # China
+#
+# 会询问 sudo 密码（仅 chsh 需要）。工具清单：
+#   pixi global (conda-forge, ~/.pixi/bin):
+#     fish nodejs nvim zellij yazi lazygit lazydocker fastfetch
+#     ripgrep fd-find jq ffmpeg imagemagick poppler 7zip zoxide gh resvg codex
+#   npm global (~/.local, prefix=~/.local):
+#     claude-code、dsh（conda-forge 无 linux 构建 / 无此包，例外走 npm）
 
 set -euo pipefail
 
@@ -17,9 +24,9 @@ NC='\033[0m'
 
 GITHUB_REPO="https://github.com/Huijie-Liu/dotfiles.git"
 GHPROXY_REPO="https://mirror.ghproxy.com/https://github.com/Huijie-Liu/dotfiles.git"
-NIX_INSTALL_URL="https://nixos.org/nix/install"
-NIX_INSTALL_GHPROXY="https://mirror.ghproxy.com/https://nixos.org/nix/install"
 REPO_BRANCH="linux"
+PIXI_BIN="$HOME/.pixi/bin"
+LOCAL_BIN="$HOME/.local/bin"
 
 CHINA_MIRROR=false
 DOTFILES_ONLY=false
@@ -80,69 +87,51 @@ clone_dotfiles() {
   die "Clone failed. Check network or clone manually to ~/.dotfiles"
 }
 
-install_nix() {
-  header "Install Nix"
+install_pixi() {
+  header "Install pixi"
 
-  if command -v nix &>/dev/null; then
-    success "Nix already installed: $(nix --version)"
-    return 0
-  fi
-
-  local install_url="$NIX_INSTALL_URL"
-  if detect_china; then
-    install_url="$NIX_INSTALL_GHPROXY"
-  fi
-
-  info "Installing nix (multi-user)..."
-  if sh <(curl -fsSL "$install_url") --daemon --yes; then
-    success "Nix installed"
+  if command -v pixi &>/dev/null; then
+    success "pixi already installed: $(pixi --version)"
   else
-    if [[ "$install_url" != "$NIX_INSTALL_GHPROXY" ]]; then
-      warn "Direct install failed, trying ghproxy..."
-      sh <(curl -fsSL "$NIX_INSTALL_GHPROXY") --daemon --yes || die "Nix install failed"
-    else
-      die "Nix install failed"
-    fi
+    curl -fsSL https://pixi.sh/install.sh | bash
+    success "pixi installed"
   fi
 
-  # Make nix usable in this shell without re-login
-  export PATH="/nix/var/nix/profiles/default/bin:$HOME/.nix-profile/bin:$PATH"
-
-  # Ensure flakes are enabled
-  if [[ -e /etc/nix/nix.conf ]] && ! grep -q 'experimental-features' /etc/nix/nix.conf; then
-    echo 'experimental-features = nix-command flakes' | sudo tee -a /etc/nix/nix.conf >/dev/null
-  fi
-
-  success "Nix ready"
+  export PATH="$PIXI_BIN:$PATH"
 }
 
-setup_home_manager() {
-  header "Home Manager"
+pixi_global_install() {
+  header "Install tools via pixi global (conda-forge)"
 
-  local flake="$DOTFILES_DIR/.config/home-manager"
-  [[ -e "$flake/flake.nix" ]] || { warn "No flake at $flake, skip"; return 0; }
+  local tools=(fish nodejs nvim zellij yazi lazygit lazydocker fastfetch ripgrep fd-find jq ffmpeg imagemagick poppler 7zip zoxide gh resvg codex)
+  info "Installing: ${tools[*]}"
+  pixi global install "${tools[@]}"
+  success "pixi tools installed to $PIXI_BIN"
+}
 
-  info "First switch fetches nixpkgs, may take a while..."
-  nix --extra-experimental-features "nix-command flakes" \
-    run "$flake#home-manager" -- switch --flake "$flake#jay"
-  success "Home Manager switched"
+install_npm_tools() {
+  header "Install npm tools (claude-code / dsh)"
+
+  mkdir -p "$LOCAL_BIN"
+  npm config set prefix "$HOME/.local"
+
+  info "claude-code..."
+  npm install -g --allow-scripts=@anthropic-ai/claude-code @anthropic-ai/claude-code
+  info "dsh..."
+  npm install -g --allow-scripts=@deepseek-ai/dsh-subprocess-local,koffi,node-pty,@google/genai,protobufjs @deepseek-ai/dsh
+  success "npm tools installed to $LOCAL_BIN"
 }
 
 setup_shell() {
   header "Configure shell"
 
-  local fish_path="$HOME/.nix-profile/bin/fish"
-  if [[ ! -x "$fish_path" ]]; then
-    warn "fish not found in nix profile, skip"
-    return 0
-  fi
-
+  local fish_path="$PIXI_BIN/fish"
   if ! grep -qF "$fish_path" /etc/shells 2>/dev/null; then
     echo "$fish_path" | sudo tee -a /etc/shells >/dev/null
   fi
 
   chsh -s "$fish_path"
-  success "Default shell set to fish"
+  success "Default shell set to $fish_path"
 }
 
 link_dotfiles() {
@@ -202,19 +191,23 @@ print_summary() {
   echo "  Configs linked to: ${BOLD}$HOME/.config/${NC}"
   echo "  Dotfiles dir:      ${BOLD}$DOTFILES_DIR${NC}"
   echo "  Default shell:     ${BOLD}fish${NC} (re-login to apply)"
+  echo "  pixi binaries:     ${BOLD}$PIXI_BIN${NC}"
+  echo "  npm binaries:      ${BOLD}$LOCAL_BIN${NC}"
   echo ""
   echo "  Next steps:"
   echo "    • Create ~/.config/fish/conf.d/secrets.fish for API keys"
   echo "    • Restart terminal or exec fish"
   echo ""
-  echo "  Update packages (edit .config/home-manager/home.nix first):"
-  echo "    nix run ~/.dotfiles/.config/home-manager#home-manager -- switch --flake ~/.dotfiles/.config/home-manager#jay"
+  echo "  Update packages:"
+  echo "    pixi global upgrade-all"
+  echo "    pixi self-update"
+  echo "    npm install -g @anthropic-ai/claude-code @deepseek-ai/dsh"
   echo ""
 }
 
 main() {
   echo ""
-  printf "${BOLD}🐧 Dotfiles Bootstrap (Linux, nix + home-manager)${NC}\n"
+  printf "${BOLD}🐧 Dotfiles Bootstrap (Linux, pixi + npm)${NC}\n"
   echo ""
 
   if [[ -n "${DOTFILES_DIR:-}" ]]; then
@@ -241,9 +234,10 @@ main() {
     exit 0
   fi
 
-  install_nix
+  install_pixi
+  pixi_global_install
+  install_npm_tools
   link_dotfiles
-  setup_home_manager
   setup_shell
   print_summary
 }

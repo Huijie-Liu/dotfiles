@@ -16,7 +16,3 @@ set -x LD_LIBRARY_PATH /usr/local/cuda-$CUDA_VERSION/lib64 $HOME/.local/lib $LD_
 # EDITOR
 set -x EDITOR nvim
 set -x VISUAL nvim
-
-# NIX
-fish_add_path --prepend "$HOME/.nix-profile/bin"
-fish_add_path --prepend "/nix/var/nix/profiles/default/bin"
