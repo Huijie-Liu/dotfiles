@@ -17,7 +17,7 @@ In order, the script:
 1. Clones this repo to `~/.dotfiles` (via ghproxy when in China)
 2. Installs **Xcode Command Line Tools**
 3. Installs **Homebrew** — USTC mirrors when in China
-4. Installs CLI tools: `neovim`, `fish`, `zoxide`, `ripgrep`, `fd`, `jq`, `node`, `lazygit`, `zellij` — plus **Ghostty** (cask)
+4. Installs CLI tools: `neovim`, `fish`, `zoxide`, `ripgrep`, `fd`, `node`, `lazygit`, `zellij` — plus **Ghostty** (cask)
 5. Symlinks everything under `.config/` into `~/.config/` (existing files backed up as `*.bak.*`)
 6. Sets **fish** as the default shell (adds it to `/etc/shells`, runs `chsh`) and writes `~/.zshenv` so zsh reads `~/.config/zsh`
 7. Applies macOS preferences (key repeat, Dock auto-hide, Finder, screenshots, …)

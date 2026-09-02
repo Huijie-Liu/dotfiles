@@ -187,7 +187,7 @@ install_homebrew() {
 install_tools() {
   header "安装 CLI 工具"
 
-  local formulas=(neovim fish zoxide ripgrep fd jq node lazygit zellij)
+  local formulas=(neovim fish zoxide ripgrep fd node lazygit zellij)
   local missing=()
   local pkg
   for pkg in "${formulas[@]}"; do
@@ -336,7 +336,7 @@ set_macos_defaults() {
 print_summary() {
   printf "\n"
   printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-  printf "  ${GREEN}✨ Bootstrap 完成!${NC}\n"
+  printf "  ${GREEN}Bootstrap 完成!${NC}\n"
   printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
   printf "  配置文件已链接到: ${BOLD}%s${NC}\n" "$HOME/.config/"
   printf "  Dotfiles 目录:    ${BOLD}%s${NC}\n" "$DOTFILES_DIR"
@@ -354,7 +354,7 @@ print_summary() {
 
 main() {
   echo ""
-  printf "${BOLD}🚀 Dotfiles Bootstrap${NC}\n"
+  printf "${BOLD}Dotfiles Bootstrap${NC}\n"
   echo ""
 
   resolve_dotfiles_dir
