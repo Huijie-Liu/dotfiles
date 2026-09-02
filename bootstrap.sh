@@ -225,8 +225,8 @@ setup_shell() {
     echo "$fish_path" | sudo tee -a /etc/shells >/dev/null
   fi
 
-  # 设为默认
-  chsh -s "$fish_path"
+  # 设为默认（走 sudo，免去 chsh 的独立密码校验，全程只需开头一次）
+  sudo chsh -s "$fish_path" "$(id -un)"
   success "默认 shell 已切换为 fish"
 
   # 给 zsh 设 ZDOTDIR，确保兼容
