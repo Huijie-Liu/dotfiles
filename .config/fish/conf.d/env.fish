@@ -2,7 +2,7 @@
 eval (/opt/homebrew/bin/brew shellenv)
 
 # PATH 配置
-set -x PATH $HOME/.local/bin $PATH
+fish_add_path ~/.local/bin
 
 set -x EDITOR nvim
 set -x VISUAL nvim

@@ -16,9 +16,8 @@ This single command:
 
 - Installs **Xcode Command Line Tools**
 - Installs **Homebrew** (USTC mirrors when in China)
-- Installs packages from `Brewfile` (if present)
-- Installs **fish** and sets it as the default shell
-- Configures **zsh** to read from `~/.config/zsh` (writes `~/.zshenv`)
+- Installs CLI tools: `neovim`, `fish`, `ghostty`, `tmux`, `zellij`, `zoxide`, `ripgrep`, `fd`, `jq`, `node`, `lazygit`
+- Sets **fish** as the default shell; writes `~/.zshenv` so zsh reads `~/.config/zsh`
 - Symlinks all configs into `~/.config/` (existing files backed up as `*.bak.*`)
 - Applies macOS preferences (key repeat, Dock auto-hide, etc.)
 
@@ -30,7 +29,6 @@ This single command:
 |------|-------------|
 | `... \| bash -s -- --china` | Force China mirrors |
 | `... \| bash -s -- --dotfiles-only` | Only symlink configs, skip all installs |
-| `... \| bash -s -- --skip-brew` | Skip Brewfile package install |
 
 Combine as needed: `bash -s -- --china --dotfiles-only`
 
@@ -44,30 +42,17 @@ cd ~/.dotfiles
 
 ## What's Included
 
-### Core Tools
-
-- **Shells**: Zsh, Fish with Starship prompt
-- **Terminals**: Alacritty, Wezterm, Ghostty
-- **Multiplexers**: Tmux, Zellij
-- **Editor**: Neovim with LazyVim
-
-### CLI Productivity
-
-- `fzf`, `bat`, `eza`, `zoxide`
-- `lazygit`, `git-delta` for Git workflow
-- `btop`, `dust`, `fd`, `ripgrep`
-
-### macOS Enhancements
-
-- **Aerospace**: Tiling window manager
-- **SKHD**: Hotkey daemon
-- **Sketchybar**: Custom menu bar
+- **Shell**: fish (zsh fallback via `ZDOTDIR`), no plugin manager — plain abbr + zoxide
+- **Terminal**: Ghostty (config + shaders)
+- **Multiplexers**: tmux, Zellij
+- **Editor**: Neovim — custom minimal config on lazy.nvim: native `vim.lsp` (no lspconfig), blink.cmp, snacks.nvim, gitsigns, conform, mini.\*, oil
+- **Editor**: Zed settings
+- **Git**: shared git config (`zdiff3`, histogram diff, rerere, rebase autoStash)
 
 ## Customization
 
 - **Configs**: Edit files under `~/.dotfiles/.config/` — symlinks in `~/.config/` follow automatically
-- **Packages**: Update `Brewfile` and run `brew bundle --file Brewfile`
-- **Export**: Run `brew bundle dump --force` to snapshot installed packages
+- **Secrets**: put API keys in `~/.config/fish/conf.d/secrets.fish` (gitignored)
 
 ## License
 

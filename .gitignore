@@ -9,7 +9,6 @@
 # Backup files
 *.bak
 *.bak.*
-.config/nvim/lazy-lock.json
 .config/zed/**/*.mdb
 /.config/zsh/.zcompdump
 /.config/zsh/.zsh_history

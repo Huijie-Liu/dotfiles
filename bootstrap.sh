@@ -9,7 +9,6 @@
 # 参数:
 #   --china         强制使用国内镜像
 #   --dotfiles-only 只链接配置文件
-#   --skip-brew     跳过 brew 包安装
 
 set -euo pipefail
 
@@ -30,15 +29,13 @@ REPO_BRANCH="macos"
 # ── 参数解析 ──────────────────────────────────────────
 CHINA_MIRROR=false
 DOTFILES_ONLY=false
-SKIP_BREW=false
 
 for arg in "$@"; do
   case "$arg" in
     --china)         CHINA_MIRROR=true ;;
     --dotfiles-only) DOTFILES_ONLY=true ;;
-    --skip-brew)     SKIP_BREW=true ;;
     --help|-h)
-      echo "Usage: $0 [--china] [--dotfiles-only] [--skip-brew]"
+      echo "Usage: $0 [--china] [--dotfiles-only]"
       exit 0
       ;;
   esac
@@ -160,19 +157,37 @@ install_homebrew() {
   success "Homebrew 安装完成"
 }
 
-# ── 安装 Brew 包 ─────────────────────────────────────
+# ── 安装 CLI 工具 ─────────────────────────────────────
 install_brew_packages() {
-  header "安装 Homebrew 软件包"
+  header "安装 CLI 工具"
 
-  if [[ ! -f "$DOTFILES_DIR/Brewfile" ]]; then
-    warn "未找到 Brewfile，跳过软件包安装"
-    warn "之后可以手动创建 Brewfile 并运行: brew bundle --file ~/.dotfiles/Brewfile"
-    return 0
+  local formulas=(neovim fish zoxide ripgrep fd jq node lazygit tmux zellij)
+  local missing=()
+  local pkg
+  for pkg in "${formulas[@]}"; do
+    if brew list --formula "$pkg" &>/dev/null; then
+      success "$pkg 已安装"
+    else
+      missing+=("$pkg")
+    fi
+  done
+
+  if ((${#missing[@]} > 0)); then
+    info "安装: ${missing[*]}"
+    brew install "${missing[@]}"
   fi
 
-  info "正在安装 Brewfile 中的软件包..."
-  brew bundle --file "$DOTFILES_DIR/Brewfile" || warn "部分软件包安装失败，继续..."
-  success "软件包安装完成"
+  if ! brew list --cask ghostty &>/dev/null; then
+    brew install --cask ghostty || warn "ghostty 安装失败，可稍后手动安装"
+  fi
+
+  # tmux 插件管理器（tmux.conf 依赖它）
+  if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+    info "安装 tpm..."
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm" || warn "tpm 克隆失败，可稍后手动安装"
+  fi
+
+  success "CLI 工具就绪"
 }
 
 # ── 安装 Fish Shell 并设为默认 ──────────────────────────
@@ -316,7 +331,6 @@ print_summary() {
   echo "  后续步骤:"
   echo "    • 编辑 ~/.dotfiles/.config/ 下的文件来定制配置"
   echo "    • 创建 ~/.config/fish/conf.d/secrets.fish 并填入 API keys"
-  echo "    • 运行 brew bundle dump --force 导出已安装的包到 Brewfile"
   echo "    • 重启终端或 source 对应配置文件使其生效"
   echo ""
 }
@@ -358,10 +372,7 @@ main() {
 
   install_xcode_clt
   install_homebrew
-
-  if ! $SKIP_BREW; then
-    install_brew_packages
-  fi
+  install_brew_packages
 
   link_dotfiles
   setup_shell
