@@ -187,7 +187,7 @@ install_homebrew() {
 install_tools() {
   header "安装 CLI 工具"
 
-  local formulas=(neovim fish zoxide ripgrep fd jq node lazygit tmux zellij)
+  local formulas=(neovim fish zoxide ripgrep fd jq node lazygit zellij)
   local missing=()
   local pkg
   for pkg in "${formulas[@]}"; do
@@ -206,12 +206,6 @@ install_tools() {
 
   if ! brew list --cask ghostty &>/dev/null; then
     brew install --cask ghostty || warn "ghostty 安装失败，可稍后手动安装"
-  fi
-
-  # tmux 插件管理器（tmux.conf 依赖它）
-  if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
-    info "安装 tpm..."
-    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm" || warn "tpm 克隆失败，可稍后手动安装"
   fi
 
   success "CLI 工具就绪"
