@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # bootstrap.sh — 一行命令配置新电脑
 #
@@ -60,13 +60,10 @@ detect_china() {
   fi
   local ipinfo
   ipinfo="$(curl -s --connect-timeout 3 --max-time 5 https://ipapi.co/country_code/ 2>/dev/null || true)"
-  if [[ "$ipinfo" == "CN" ]]; then
-    return 0
-  fi
-  return 1
+  [[ "$ipinfo" == "CN" ]]
 }
 
-# ── 获取 sudo 权限 ────────────────────────────────────
+# ── 获取 sudo 权限（后台保活） ────────────────────────
 sudo_keep_alive() {
   sudo -v
   while true; do
@@ -106,6 +103,29 @@ clone_dotfiles() {
   die "克隆失败。请检查网络，或手动克隆到 ~/.dotfiles 后重试"
 }
 
+# ── 确定 dotfiles 目录 ────────────────────────────────
+# curl | bash 时 $0 是 "bash"，不能拿它定位脚本目录 —— 只有 $0 是
+# 真实文件且旁边有 .config 时才认为是本地 clone，否则默认 ~/.dotfiles。
+resolve_dotfiles_dir() {
+  if [[ -n "${DOTFILES_DIR:-}" ]]; then
+    info "使用指定目录: $DOTFILES_DIR"
+  elif [[ -f "$0" && -d "$(dirname "$0")/.config" ]]; then
+    DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+    info "使用脚本所在仓库: $DOTFILES_DIR"
+  else
+    DOTFILES_DIR="$HOME/.dotfiles"
+    if [[ -d "$DOTFILES_DIR" ]]; then
+      info "仓库已存在: $DOTFILES_DIR"
+      git -C "$DOTFILES_DIR" pull --rebase origin "$REPO_BRANCH" 2>/dev/null ||
+        warn "无法更新仓库（网络不通？），使用已有版本继续"
+    else
+      clone_dotfiles
+    fi
+  fi
+
+  export DOTFILES_DIR
+}
+
 # ── 安装 Xcode Command Line Tools ─────────────────────
 install_xcode_clt() {
   if xcode-select -p &>/dev/null; then
@@ -114,11 +134,17 @@ install_xcode_clt() {
   fi
 
   header "安装 Xcode Command Line Tools"
-  info "正在安装...（可能需要几分钟）"
+  info "正在安装...（可能需要几分钟，请在系统弹窗中确认）"
   xcode-select --install 2>/dev/null || true
 
+  # 最多等 10 分钟，避免无人值守时无限挂起
+  local waited=0
   until xcode-select -p &>/dev/null; do
     sleep 5
+    waited=$((waited + 5))
+    if ((waited >= 600)); then
+      die "等待 Xcode CLI tools 安装超时。请在弹窗中完成安装后重新运行本脚本"
+    fi
   done
   success "Xcode CLI tools 安装完成"
 }
@@ -146,7 +172,7 @@ install_homebrew() {
     install_url="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
   fi
 
-  /bin/bash -c "$(curl -fsSL "$install_url")"
+  /bin/bash -c "$(curl -fsSL "$install_url")" || die "Homebrew 安装失败，请检查网络后重试"
 
   if [[ -x /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -158,7 +184,7 @@ install_homebrew() {
 }
 
 # ── 安装 CLI 工具 ─────────────────────────────────────
-install_brew_packages() {
+install_tools() {
   header "安装 CLI 工具"
 
   local formulas=(neovim fish zoxide ripgrep fd jq node lazygit tmux zellij)
@@ -174,7 +200,8 @@ install_brew_packages() {
 
   if ((${#missing[@]} > 0)); then
     info "安装: ${missing[*]}"
-    brew install "${missing[@]}"
+    brew install "${missing[@]}" ||
+      warn "部分工具安装失败，可稍后手动运行: brew install ${missing[*]}"
   fi
 
   if ! brew list --cask ghostty &>/dev/null; then
@@ -190,16 +217,11 @@ install_brew_packages() {
   success "CLI 工具就绪"
 }
 
-# ── 安装 Fish Shell 并设为默认 ──────────────────────────
+# ── 设置 Fish Shell 为默认 ────────────────────────────
 setup_shell() {
   header "配置 Shell"
 
-  # 安装 fish
-  if ! command -v fish &>/dev/null; then
-    info "安装 fish..."
-    brew install fish
-  fi
-  success "fish 已安装"
+  command -v fish &>/dev/null || die "未找到 fish（install_tools 应已安装）"
 
   # 添加到 /etc/shells
   local fish_path
@@ -318,62 +340,43 @@ set_macos_defaults() {
 
 # ── 打印总结 ─────────────────────────────────────────
 print_summary() {
-  echo ""
-  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  echo "  ${GREEN}✨ Bootstrap 完成!${NC}"
-  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  echo ""
-  echo "  配置文件已链接到: ${BOLD}$HOME/.config/${NC}"
-  echo "  Dotfiles 目录:    ${BOLD}$DOTFILES_DIR${NC}"
-  echo ""
-  echo "  默认 shell: ${BOLD}fish${NC} — 重新登录生效"
-  echo ""
-  echo "  后续步骤:"
-  echo "    • 编辑 ~/.dotfiles/.config/ 下的文件来定制配置"
-  echo "    • 创建 ~/.config/fish/conf.d/secrets.fish 并填入 API keys"
-  echo "    • 重启终端或 source 对应配置文件使其生效"
-  echo ""
+  printf "\n"
+  printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+  printf "  ${GREEN}✨ Bootstrap 完成!${NC}\n"
+  printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+  printf "  配置文件已链接到: ${BOLD}%s${NC}\n" "$HOME/.config/"
+  printf "  Dotfiles 目录:    ${BOLD}%s${NC}\n" "$DOTFILES_DIR"
+  printf "\n"
+  printf "  默认 shell: ${BOLD}fish${NC} — 重新登录生效\n\n"
+  printf "  后续步骤:\n"
+  printf "    • 编辑 ~/.dotfiles/.config/ 下的文件来定制配置\n"
+  printf "    • 创建 ~/.config/fish/conf.d/secrets.fish 并填入 API keys\n"
+  printf "    • 重启终端或 source 对应配置文件使其生效\n\n"
 }
 
-# ═══════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════
 # 主流程
-# ═══════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════
 
 main() {
   echo ""
   printf "${BOLD}🚀 Dotfiles Bootstrap${NC}\n"
   echo ""
 
-  # ── 确定 dotfiles 目录 ──
-  if [[ -n "${DOTFILES_DIR:-}" ]]; then
-    true
-  elif [[ -d "$(dirname "$0")/.config" ]]; then
-    DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
-  else
-    DOTFILES_DIR="$HOME/.dotfiles"
-    if [[ ! -d "$DOTFILES_DIR" ]]; then
-      clone_dotfiles
-    else
-      info "仓库已存在: $DOTFILES_DIR"
-      git -C "$DOTFILES_DIR" pull --rebase origin "$REPO_BRANCH" 2>/dev/null || \
-        warn "无法更新仓库（网络不通？），使用已有版本继续"
-    fi
-  fi
-
-  export DOTFILES_DIR
-
-  sudo_keep_alive
+  resolve_dotfiles_dir
 
   if $DOTFILES_ONLY; then
     link_dotfiles
     print_summary
-    exit 0
+    return 0
   fi
+
+  # 只有写 /etc/shells 和 chsh 需要 sudo；dotfiles-only 模式不需要
+  sudo_keep_alive
 
   install_xcode_clt
   install_homebrew
-  install_brew_packages
-
+  install_tools
   link_dotfiles
   setup_shell
   set_macos_defaults
