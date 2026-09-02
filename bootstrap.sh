@@ -187,7 +187,7 @@ install_homebrew() {
 install_tools() {
   header "安装 CLI 工具"
 
-  local formulas=(neovim fish zoxide ripgrep fd node lazygit zellij)
+  local formulas=(neovim fish zoxide ripgrep fd node lazygit)
   local missing=()
   local pkg
   for pkg in "${formulas[@]}"; do

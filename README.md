@@ -1,6 +1,6 @@
 # dotfiles
 
-macOS setup: fish, Ghostty, zellij, Neovim, Zed.
+macOS setup: fish, Ghostty, Neovim, Zed.
 
 ```bash
 # China
@@ -13,7 +13,5 @@ curl -fsSL https://raw.githubusercontent.com/Huijie-Liu/dotfiles/macos/bootstrap
 Flags: `--china` force mirrors · `--dotfiles-only` only link configs. Already cloned? `./bootstrap.sh` (rerunning skips what's done).
 
 Configs are symlinked from `~/.dotfiles/.config/` into `~/.config/` — edit the repo copy, it's live. Conflicts are backed up as `*.bak.*`.
-
-Secrets go in `~/.config/fish/conf.d/secrets.fish` (gitignored).
 
 MIT
