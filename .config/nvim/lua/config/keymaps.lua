@@ -10,12 +10,12 @@ map("i", "<C-n>", "<Down>", opts)
 map("i", "<C-a>", "<Esc>I", opts)
 map("i", "<C-e>", "<Esc>A", opts)
 map({ "i", "n", "s" }, "<Esc>", function()
-	vim.cmd("nohlsearch")
-	return "<Esc>"
+  vim.cmd("nohlsearch")
+  return "<Esc>"
 end, { expr = true, silent = true })
 
 -- Exit insert mode
-map("i", "jk", "<Esc>", { desc = "Exit insert mode with jk" })
+map("i", "jk", "<Esc>", { remap = true, desc = "Exit insert mode with jk" })
 
 -- Move lines
 map("n", "<A-down>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
@@ -25,9 +25,8 @@ map("i", "<A-up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 map("v", "<A-down>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
 map("v", "<A-up>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
--- Increment/decrement
+-- Increment
 map("n", "+", "<C-a>")
-map("n", "-", "<Cmd>Oil<CR>", { desc = "Open parent directory" })
 
 -- Resize window
 map("n", "<C-w><left>", "<C-w><")
@@ -46,7 +45,7 @@ map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>bd", function()
-	Snacks.bufdelete()
+  Snacks.bufdelete()
 end, { desc = "Delete Buffer" })
 
 -- Save file
@@ -54,42 +53,55 @@ map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
 -- Find / pickers
 map("n", "<leader><leader>", function()
-	Snacks.picker.files()
+  Snacks.picker.files()
 end, { desc = "Find Files" })
 map("n", "<leader>ff", function()
-	Snacks.picker.files()
+  Snacks.picker.files()
 end, { desc = "Find Files" })
 map("n", "<leader>fa", function()
-	Snacks.picker.files({ hidden = true, ignored = true })
+  Snacks.picker.files({ hidden = true, ignored = true })
 end, { desc = "Find All Files" })
 map("n", "<leader>fg", function()
-	Snacks.picker.grep()
+  Snacks.picker.grep()
 end, { desc = "Grep" })
 map("n", "<leader>fr", function()
-	Snacks.picker.recent()
+  Snacks.picker.recent()
 end, { desc = "Recent Files" })
 map("n", "<leader>fb", function()
-	Snacks.picker.buffers()
+  Snacks.picker.buffers()
 end, { desc = "Buffers" })
 map("n", "<leader>fc", function()
-	Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+  Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "Find Config File" })
 
 -- Diagnostics
 map("n", "<leader>sd", function()
-	Snacks.picker.diagnostics()
+  Snacks.picker.diagnostics()
 end, { desc = "Diagnostics" })
 map("n", "<leader>sD", function()
-	Snacks.picker.diagnostics_buffer()
+  Snacks.picker.diagnostics_buffer()
 end, { desc = "Buffer Diagnostics" })
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 map("n", "<leader>cm", "<cmd>Mason<cr>", { desc = "Mason" })
 map("n", "]d", function()
-	vim.diagnostic.jump({ count = 1, float = true })
+  vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Next Diagnostic" })
 map("n", "[d", function()
-	vim.diagnostic.jump({ count = -1, float = true })
+  vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Prev Diagnostic" })
+
+-- Symbols
+map("n", "<leader>ss", function()
+  Snacks.picker.lsp_symbols()
+end, { desc = "Symbols" })
+map("n", "<leader>sS", function()
+  Snacks.picker.lsp_workspace_symbols()
+end, { desc = "Workspace Symbols" })
+
+-- UI toggles
+map("n", "<leader>uh", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+end, { desc = "Toggle Inlay Hints" })
 
 -- Search behavior
 map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
@@ -105,29 +117,24 @@ map("n", "gcO", "O<Esc>Vcx<Esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Commen
 
 -- gx: open URL/file under cursor in browser
 map("n", "gx", function()
-	local url = vim.fn.expand("<cfile>")
-	-- If <cfile> empty or doesn't look like a URL, try <cWORD> (whitespace-delimited)
-	if url == "" or not url:match("%.") then
-		url = vim.fn.expand("<cWORD>")
-	end
-	-- Bare domain (e.g. 123.com) → add https:// so vim.ui.open treats it as a URL
-	if url:match("^[%w%-]+%.[%w%.%-]+") and not url:match("^%w+://") then
-		url = "https://" .. url
-	end
-	if url ~= "" then
-		vim.ui.open(url)
-	end
+  local url = vim.fn.expand("<cfile>")
+  -- If <cfile> empty or doesn't look like a URL, try <cWORD> (whitespace-delimited)
+  if url == "" or not url:match("%.") then
+    url = vim.fn.expand("<cWORD>")
+  end
+  -- Bare domain (e.g. 123.com) → add https:// so vim.ui.open treats it as a URL
+  if url:match("^[%w%-]+%.[%w%.%-]+") and not url:match("^%w+://") then
+    url = "https://" .. url
+  end
+  if url ~= "" then
+    vim.ui.open(url)
+  end
 end, { desc = "Open URL/file" })
 
 -- Misc
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 map({ "n", "x" }, "<leader>cf", function()
-	require("conform").format({ async = true })
+  require("conform").format({ async = true })
 end, { desc = "Format" })
-
-if vim.fn.executable("lazygit") == 1 then
-	map("n", "<leader>gg", function()
-		Snacks.lazygit()
-	end, { desc = "Lazygit" })
-end

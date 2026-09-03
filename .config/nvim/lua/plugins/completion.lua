@@ -1,43 +1,22 @@
 return {
   {
     "saghen/blink.cmp",
+    version = "*", -- stable tag: required for the prebuilt fuzzy binary (downloads fail on main)
     lazy = false,
     ---@module "blink.cmp"
     ---@type blink.cmp.Config
     opts = {
       keymap = {
-        preset = "none",
-        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        preset = "super-tab",
         ["<C-e>"] = { "hide", "fallback" },
-        ["<Tab>"] = {
-          function(cmp)
-            if cmp.snippet_active() then
-              return cmp.accept()
-            end
-            return cmp.select_and_accept()
-          end,
-          "snippet_forward",
-          "fallback",
-        },
-        ["<S-Tab>"] = { "snippet_backward", "fallback" },
-        ["<Up>"] = { "select_prev", "fallback" },
-        ["<Down>"] = { "select_next", "fallback" },
-        ["<C-p>"] = { "select_prev", "fallback" },
-        ["<C-n>"] = { "select_next", "fallback" },
-        ["<C-b>"] = { "scroll_documentation_up", "fallback" },
-        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
-      },
-      appearance = {
-        nerd_font_variant = "mono",
       },
       completion = {
         menu = { border = "single" },
         documentation = {
-          auto_show = false,
           window = { border = "single" },
         },
         list = {
-          selection = { preselect = true, auto_insert = false },
+          selection = { auto_insert = false },
         },
         trigger = { show_in_snippet = false },
       },
@@ -45,10 +24,10 @@ return {
         enabled = true,
         window = { border = "single" },
       },
+      -- no snippets provider: this config ships no snippet collection
       sources = {
         default = { "lsp", "path", "buffer" },
       },
-      fuzzy = { implementation = "lua" },
     },
   },
 }

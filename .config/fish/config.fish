@@ -1,4 +1,6 @@
 set fish_greeting
 
-bind enter accept-autosuggestion execute
-bind escape suppress-autosuggestion cancel
+function fish_user_key_bindings
+    bind enter accept-autosuggestion execute
+    bind escape suppress-autosuggestion cancel
+end
